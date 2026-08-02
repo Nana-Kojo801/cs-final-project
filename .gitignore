@@ -1,0 +1,6 @@
+setup_github_repo.sh
+setup_project_board.sh
+create_starter_issues.sh
+setup_component_field.sh
+populate_issue_descriptions.sh
+tag_issues_with_component.sh
