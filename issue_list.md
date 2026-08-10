@@ -1,49 +1,52 @@
-# CS112 Final Project — Issue List (In Order)
+# CS112 Final Project — Issue List
 
-Ordered by milestone (week), matching what was created via `create_starter_issues.sh`.
+Pulled directly from GitHub (`gh issue list --repo Nana-Kojo801/cs-final-project
+--state all --limit 200 --json number,title,state,labels`) — the `#` column below
+is the real issue number. Grouped by component (their actual GitHub creation
+order); suggested week is a planning guide, not a hard deadline. Refresh this
+file from the command above if issues change on GitHub — don't hand-renumber it.
 
-## Week 1 (Jul 29 - Aug 4)
+## grid-analysis (Week 1–3)
 
-| # | Component | Title |
-|---|-----------|-------|
-| 1 | grid-analysis | Clean and validate grid datasets |
-| 2 | gridcare-lite | Design SQLite schema |
-| 3 | clinic-lite | Design JSON data model |
+| # | State | Title |
+|---|-------|-------|
+| 1 | Closed | Clean and validate grid datasets |
+| 2 | Closed | Build NetworkX graph |
+| 3 | Open | Run N-1 contingency analysis |
+| 4 | Open | Build interactive map |
 
-## Week 2 (Aug 5 - Aug 11)
+## gridcare-lite (Week 1–4)
 
-| # | Component | Title |
-|---|-----------|-------|
-| 4 | grid-analysis | Build NetworkX graph |
-| 5 | gridcare-lite | Implement login and role-based access control |
-| 6 | clinic-lite | Implement auth with bcrypt password hashing |
+| # | State | Title |
+|---|-------|-------|
+| 5 | Open | Design SQLite schema |
+| 6 | Open | Implement login and role-based access control |
+| 7 | Open | Build outage-to-resolution workflow |
+| 8 | Open | Build reporting dashboard |
 
-## Week 3 (Aug 12 - Aug 18)
+## clinic-lite (Week 1–4)
 
-| # | Component | Title |
-|---|-----------|-------|
-| 7 | grid-analysis | Run N-1 contingency analysis |
-| 8 | grid-analysis | Build interactive map |
-| 9 | gridcare-lite | Build outage-to-resolution workflow |
-| 10 | clinic-lite | Build task submission workflow |
-| 11 | clinic-lite | Build messaging and notifications |
+| # | State | Title |
+|---|-------|-------|
+| 9 | Open | Design JSON data model |
+| 10 | Open | Implement auth with bcrypt password hashing |
+| 11 | Open | Build task submission workflow |
+| 12 | Open | Build messaging and notifications |
+| 13 | Open | Build analytics dashboard |
 
-## Week 4 (Aug 19 - Aug 25)
+## shared (Week 4–5)
 
-| # | Component | Title |
-|---|-----------|-------|
-| 12 | gridcare-lite | Build reporting dashboard |
-| 13 | clinic-lite | Build analytics dashboard |
-| 14 | shared | Integration testing across all components |
-
-## Week 5 (Aug 26 - Sep 1)
-
-| # | Component | Title |
-|---|-----------|-------|
-| 15 | shared | Write final technical report |
-| 16 | shared | Prepare presentation slides |
-| 17 | shared | Record demo video |
+| # | State | Title |
+|---|-------|-------|
+| 14 | Open | Integration testing across all components |
+| 15 | Open | Write final technical report |
+| 16 | Open | Prepare presentation slides |
+| 17 | Open | Record demo video |
 
 ---
 
-**Note:** The `#` column above is just sequence order in this list, not the actual GitHub issue number — those were assigned automatically when each issue was created and may differ. Run `gh issue list --repo Nana-Kojo801/cs-final-project --state all` in your terminal if you need the real issue numbers alongside these titles.
+**Note:** issue #1's data-cleaning work also grew a follow-up commit
+(`feature/grid-data-integration`, merged into main) adding the merged dataset,
+data dictionary, and ER diagram that #1's acceptance criteria required but the
+original PR missed. If you're picking up a "closed" issue above, check
+`grid-analysis/` for what's actually there before assuming it's fully done.
