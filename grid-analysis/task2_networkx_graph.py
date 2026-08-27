@@ -7,6 +7,8 @@ NetworkX graph of the grid (substations = nodes, lines = edges), computes
 network metrics, and writes:
   - network_analysis/network_metrics.csv   (per-node metrics)
   - network_analysis/network_analysis_report.md
+  - network_analysis/n1_contingency_results.csv
+  - network_analysis/n1_contingency_report.md
 """
 
 import os
@@ -197,9 +199,166 @@ for i, c in enumerate(communities, start=1):
     log(f"- Community {i} ({len(c)} substations): {', '.join(names)}")
 
 # ---------------------------------------------------------------------------
-# STEP 5: INTERPRETATION
+# STEP 5: N-1 CONTINGENCY ANALYSIS
 # ---------------------------------------------------------------------------
-section("5. Interpretation")
+section("5. N-1 contingency analysis")
+
+# The graph may already contain isolated or separate components. To keep the
+# comparison fair, every scenario uses the same whole-graph measures and
+# computes average shortest path length within that scenario's largest
+# connected component.
+def summarize_topology(graph):
+    components = list(nx.connected_components(graph))
+    largest_component = max(components, key=len) if components else set()
+    largest_subgraph = graph.subgraph(largest_component)
+    avg_path = (
+        nx.average_shortest_path_length(largest_subgraph, weight='length_km')
+        if len(largest_component) > 1
+        else 0.0
+    )
+    return {
+        'connected_components': len(components),
+        'largest_component_size': len(largest_component),
+        'isolated_nodes': sum(1 for component in components if len(component) == 1),
+        # NetworkX global_efficiency uses unweighted reachability; the
+        # length-weighted metric is reported separately below.
+        'global_efficiency': nx.global_efficiency(graph),
+        'avg_shortest_path_km': avg_path,
+        'bridge_count': len(list(nx.bridges(graph))),
+    }
+
+
+def pct_change(before, after):
+    if before == 0:
+        return 0.0
+    return ((after - before) / before) * 100
+
+
+baseline_topology = summarize_topology(G)
+node_candidates = metrics.head(3)['Substation ID'].tolist()
+edge_betweenness = nx.edge_betweenness_centrality(G, weight='length_km')
+edge_candidates = sorted(
+    edge_betweenness,
+    key=edge_betweenness.get,
+    reverse=True,
+)[:3]
+
+contingency_rows = [{
+    'Scenario': 'Baseline',
+    'Failure Type': 'None',
+    'Failed Asset ID': '',
+    'Failed Asset': 'All assets available',
+    'Connected Components': baseline_topology['connected_components'],
+    'Largest Component Size': baseline_topology['largest_component_size'],
+    'Isolated Nodes': baseline_topology['isolated_nodes'],
+    'Global Efficiency': round(baseline_topology['global_efficiency'], 6),
+    'Average Shortest Path (km)': round(baseline_topology['avg_shortest_path_km'], 4),
+    'Bridge Count': baseline_topology['bridge_count'],
+    'Efficiency Change (%)': 0.0,
+    'Average Path Change (%)': 0.0,
+}]
+
+for node in node_candidates:
+    scenario_graph = G.copy()
+    scenario_graph.remove_node(node)
+    after = summarize_topology(scenario_graph)
+    contingency_rows.append({
+        'Scenario': f'Remove substation {node}',
+        'Failure Type': 'Substation removal',
+        'Failed Asset ID': node,
+        'Failed Asset': G.nodes[node]['name'],
+        'Connected Components': after['connected_components'],
+        'Largest Component Size': after['largest_component_size'],
+        'Isolated Nodes': after['isolated_nodes'],
+        'Global Efficiency': round(after['global_efficiency'], 6),
+        'Average Shortest Path (km)': round(after['avg_shortest_path_km'], 4),
+        'Bridge Count': after['bridge_count'],
+        'Efficiency Change (%)': round(pct_change(
+            baseline_topology['global_efficiency'],
+            after['global_efficiency'],
+        ), 2),
+        'Average Path Change (%)': round(pct_change(
+            baseline_topology['avg_shortest_path_km'],
+            after['avg_shortest_path_km'],
+        ), 2),
+    })
+
+for source, destination in edge_candidates:
+    edge_data = G[source][destination]
+    scenario_graph = G.copy()
+    scenario_graph.remove_edge(source, destination)
+    after = summarize_topology(scenario_graph)
+    contingency_rows.append({
+        'Scenario': f"Remove line {edge_data['line_id']}",
+        'Failure Type': 'Line removal',
+        'Failed Asset ID': edge_data['line_id'],
+        'Failed Asset': (
+            f"{G.nodes[source]['name']} <-> {G.nodes[destination]['name']}"
+        ),
+        'Connected Components': after['connected_components'],
+        'Largest Component Size': after['largest_component_size'],
+        'Isolated Nodes': after['isolated_nodes'],
+        'Global Efficiency': round(after['global_efficiency'], 6),
+        'Average Shortest Path (km)': round(after['avg_shortest_path_km'], 4),
+        'Bridge Count': after['bridge_count'],
+        'Efficiency Change (%)': round(pct_change(
+            baseline_topology['global_efficiency'],
+            after['global_efficiency'],
+        ), 2),
+        'Average Path Change (%)': round(pct_change(
+            baseline_topology['avg_shortest_path_km'],
+            after['avg_shortest_path_km'],
+        ), 2),
+    })
+
+contingency_results = pd.DataFrame(contingency_rows)
+contingency_results_path = os.path.join(OUTPUT_DIR, 'n1_contingency_results.csv')
+contingency_results.to_csv(contingency_results_path, index=False)
+log(f"- N-1 comparison written to {contingency_results_path}")
+log("\n**N-1 before/after comparison**\n")
+log(contingency_results.to_string(index=False))
+
+n1_report_path = os.path.join(OUTPUT_DIR, 'n1_contingency_report.md')
+with open(n1_report_path, 'w', encoding='utf-8') as f:
+    f.write('# N-1 Contingency Analysis Report\n')
+    f.write('National Electricity Grid Network Analysis - Issue #3\n\n')
+    f.write('## Method\n\n')
+    f.write(
+        'Candidate substations were selected from the three highest '
+        'betweenness-centrality scores in the network metrics. Candidate '
+        'lines were selected from the three highest weighted edge '
+        'betweenness-centrality scores. Each candidate was removed from a '
+        'copy of the graph, then connected components, largest component '
+        'size, isolated nodes, global efficiency, bridge count, and average '
+        'shortest path within the largest connected component were recomputed.\n\n'
+    )
+    f.write('## Before/after results\n\n')
+    f.write(contingency_results.to_markdown(index=False))
+    f.write('\n\n## Interpretation\n\n')
+    f.write(
+        'The comparison shows how structurally important assets affect the '
+        'resilience of this graph. The global efficiency value is the '
+        'unweighted NetworkX reachability measure. A decrease in global '
+        'efficiency indicates '
+        'that remaining substations become less reachable on average. An '
+        'increase in connected components or isolated nodes indicates '
+        'fragmentation, while a smaller largest component indicates that a '
+        'larger share of the network has been separated from the main group. '
+        'The results should be read alongside the candidate centrality '
+        'scores rather than treated as a prediction of electrical service '
+        'loss.\n\n'
+    )
+    f.write(
+        '> This is a graph-based educational approximation. It is not a '
+        'substitute for real power-flow, transient-stability, or '
+        'protection-coordination studies.\n'
+    )
+log(f"- Dedicated N-1 report written to {n1_report_path}")
+
+# ---------------------------------------------------------------------------
+# STEP 6: INTERPRETATION
+# ---------------------------------------------------------------------------
+section("6. Interpretation")
 
 log(
     "The metrics above are **structural observations about the graph topology "

@@ -1,0 +1,8 @@
+Scenario,Failure Type,Failed Asset ID,Failed Asset,Connected Components,Largest Component Size,Isolated Nodes,Global Efficiency,Average Shortest Path (km),Bridge Count,Efficiency Change (%),Average Path Change (%)
+Baseline,None,,All assets available,3,42,2,0.244048,818.8454,21,0.0,0.0
+Remove substation 16,Substation removal,16,Cape Coast Substation,5,20,2,0.151732,368.3626,21,-37.83,-55.01
+Remove substation 12,Substation removal,12,Takoradi Substation,5,22,2,0.152711,702.8823,19,-37.43,-14.16
+Remove substation 7,Substation removal,7,Kumasi Central Substation,6,26,2,0.149914,699.8009,19,-38.57,-14.54
+Remove line 42,Line removal,42,Takoradi Substation <-> Cape Coast Substation,4,22,2,0.167337,702.8823,20,-31.43,-14.16
+Remove line 43,Line removal,43,Cape Coast Substation <-> Koforidua Substation,4,24,2,0.16992,406.3797,20,-30.37,-50.37
+Remove line 41,Line removal,41,Kumasi Central Substation <-> Takoradi Substation,4,26,2,0.169645,699.8009,20,-30.49,-14.54

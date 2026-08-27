@@ -184,7 +184,23 @@ Substation ID
 - Community 9 (1 substations): Savelugu Substation
 - Community 10 (1 substations): Conakry Transmission Hub
 
-## 5. Interpretation
+## 5. N-1 contingency analysis
+
+- N-1 comparison written to network_analysis\n1_contingency_results.csv
+
+**N-1 before/after comparison**
+
+            Scenario       Failure Type Failed Asset ID                                      Failed Asset  Connected Components  Largest Component Size  Isolated Nodes  Global Efficiency  Average Shortest Path (km)  Bridge Count  Efficiency Change (%)  Average Path Change (%)
+            Baseline               None                                              All assets available                     3                      42               2           0.244048                    818.8454            21                   0.00                     0.00
+Remove substation 16 Substation removal              16                             Cape Coast Substation                     5                      20               2           0.151732                    368.3626            21                 -37.83                   -55.01
+Remove substation 12 Substation removal              12                               Takoradi Substation                     5                      22               2           0.152711                    702.8823            19                 -37.43                   -14.16
+ Remove substation 7 Substation removal               7                         Kumasi Central Substation                     6                      26               2           0.149914                    699.8009            19                 -38.57                   -14.54
+      Remove line 42       Line removal              42     Takoradi Substation <-> Cape Coast Substation                     4                      22               2           0.167337                    702.8823            20                 -31.43                   -14.16
+      Remove line 43       Line removal              43    Cape Coast Substation <-> Koforidua Substation                     4                      24               2           0.169920                    406.3797            20                 -30.37                   -50.37
+      Remove line 41       Line removal              41 Kumasi Central Substation <-> Takoradi Substation                     4                      26               2           0.169645                    699.8009            20                 -30.49                   -14.54
+- Dedicated N-1 report written to network_analysis\n1_contingency_report.md
+
+## 6. Interpretation
 
 The metrics above are **structural observations about the graph topology of a synthetically generated dataset** (`random.seed(42)`), not measurements of real electrical load, voltage stability, or power flow. High betweenness or PageRank identifies substations that sit on many shortest connection paths or are linked to well-connected neighbors - i.e. structurally central positions in the network graph. In a real grid this would be one input among many (alongside load-flow studies, protection schemes, and asset condition) for prioritizing reliability investment, not a standalone answer.
 
