@@ -4,3 +4,6 @@ create_starter_issues.sh
 setup_component_field.sh
 populate_issue_descriptions.sh
 tag_issues_with_component.sh
+# ClinicCare-Lite runtime data
+clinic-lite/clinic_data.json
+clinic-lite/uploads/
