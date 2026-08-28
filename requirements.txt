@@ -1,0 +1,24 @@
+# CS 112 Final Project - Cohort A, Team 3
+# Python 3.11+ (developed and tested on 3.12 / 3.14).
+# Install:  pip install -r requirements.txt
+
+# --- grid-analysis (National Electricity Grid Network Analysis) ---
+pandas>=2.2
+numpy>=1.26
+scipy>=1.11          # networkx.pagerank
+networkx>=3.2
+matplotlib>=3.8
+seaborn>=0.13
+plotly>=5.20
+folium>=0.16
+streamlit>=1.30      # grid-analysis/dashboard_app.py (optional dashboard)
+
+# --- gridcare-lite (Outage & Maintenance Management, Tkinter + SQLite) ---
+bcrypt>=4.1
+# tkinter and sqlite3 ship with CPython (no pip install needed)
+
+# --- clinic-care-lite (Clinic Administration & Communication, Flask + JSON) ---
+Flask>=3.0
+Werkzeug>=3.0
+Jinja2>=3.1
+python-dotenv>=1.0   # optional: auto-loads clinic-care-lite/.env in development
