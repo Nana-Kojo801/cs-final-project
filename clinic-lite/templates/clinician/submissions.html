@@ -1,0 +1,58 @@
+{% extends "base.html" %}
+{% block title %}Submissions - ClinicCare-Lite{% endblock %}
+{% block content %}
+<h1>Submissions</h1>
+<form class="card" method="get">
+  <div class="grid cols-3">
+    <div>
+      <label for="task">Task</label>
+      <select id="task" name="task">
+        <option value="">All</option>
+        {% for t in tasks %}<option value="{{ t.task_id }}" {{ 'selected' if filters.get('task')==t.task_id }}>{{ t.title }}</option>{% endfor %}
+      </select>
+    </div>
+    <div>
+      <label for="patient">Patient</label>
+      <select id="patient" name="patient">
+        <option value="">All</option>
+        {% for p in patients %}<option value="{{ p.user_id }}" {{ 'selected' if filters.get('patient')==p.user_id }}>{{ p.name }}</option>{% endfor %}
+      </select>
+    </div>
+    <div>
+      <label for="status">Review status</label>
+      <select id="status" name="status">
+        <option value="">All</option>
+        {% for o in outcomes %}<option value="{{ o }}" {{ 'selected' if filters.get('status')==o }}>{{ o }}</option>{% endfor %}
+      </select>
+    </div>
+  </div>
+  <div style="margin-top:12px"><button class="btn small" type="submit">Filter</button>
+    <a class="btn ghost small" href="{{ url_for('clinician_submissions') }}">Clear</a></div>
+</form>
+
+<div class="card table-wrap">
+<table>
+  <tr><th>Patient</th><th>Task</th><th>Submitted</th><th>On time</th><th>Completeness</th><th>Status</th><th></th></tr>
+  {% for row in subs %}
+  <tr>
+    <td>{{ row.patient.name if row.patient else row.sub.patient_id }}</td>
+    <td>{{ row.task.title if row.task else row.sub.task_id }}</td>
+    <td>{{ row.sub.timestamp }}</td>
+    <td>{{ 'Yes' if row.sub.on_time else 'No' }}</td>
+    <td>
+      {% if row.sub.completeness and row.sub.completeness.get('skipped') %}<span class="pill">n/a</span>
+      {% elif row.sub.completeness and row.sub.completeness.get('ok') %}<span class="pill ok">passed</span>
+      {% else %}<span class="pill warn">{{ row.sub.completeness.get('issues', [])|length }} issue(s)</span>{% endif %}
+    </td>
+    <td><span class="pill {{ 'ok' if row.sub.review_status != 'Pending' else 'info' }}">{{ row.sub.review_status }}</span></td>
+    <td>
+      <a class="btn small" href="{{ url_for('clinician_review', patient_id=row.sub.patient_id, task_id=row.sub.task_id) }}">Review</a>
+      <a class="btn small ghost" href="{{ url_for('clinician_download', patient_id=row.sub.patient_id, task_id=row.sub.task_id) }}">Download</a>
+    </td>
+  </tr>
+  {% else %}
+  <tr><td colspan="7" class="muted">No submissions match.</td></tr>
+  {% endfor %}
+</table>
+</div>
+{% endblock %}
