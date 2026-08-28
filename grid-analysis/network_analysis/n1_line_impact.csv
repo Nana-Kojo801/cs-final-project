@@ -1,0 +1,56 @@
+Line,Is bridge,Components after,Splits network
+Lome Transmission Hub <-> Cotonou Transmission Hub,True,4,True
+Tamale <-> Yendi,True,4,True
+Koforidua <-> Ho,True,4,True
+Takoradi <-> Cape Coast,True,4,True
+Ho <-> Sunyani,True,4,True
+Hohoe <-> Sogakope,True,4,True
+Sunyani <-> Techiman,True,4,True
+Kumasi Central <-> Takoradi,True,4,True
+Sunyani <-> Tamale,True,4,True
+Techiman <-> Berekum,True,4,True
+Kumasi Central <-> Elubo Border Station,True,4,True
+Tamale <-> Bolgatanga,True,4,True
+Bolgatanga Interconnection <-> Bobo-Dioulasso Hub,True,4,True
+Aflao Border Station <-> Lome Transmission Hub,True,4,True
+Achimota <-> Kumasi Central,True,4,True
+Bolgatanga <-> Bawku,True,4,True
+Elubo Border Station <-> Abidjan Transmission Hub,True,4,True
+Cape Coast <-> Koforidua,True,4,True
+Tema <-> Aflao Border Station,True,4,True
+Bolgatanga <-> Bolgatanga Interconnection,True,4,True
+Bolgatanga <-> Wa,True,4,True
+Kpong <-> Sogakope,False,3,False
+Kasoa <-> Assin Fosu,False,3,False
+Ho <-> Kpong,False,3,False
+Nkawkaw <-> Suhum,False,3,False
+Akosombo <-> Suhum,False,3,False
+Akosombo <-> Nkawkaw,False,3,False
+Koforidua <-> Nkawkaw,False,3,False
+Koforidua <-> Akosombo,False,3,False
+Ho <-> Sogakope,False,3,False
+Achimota <-> Tema,False,3,False
+Winneba <-> Kasoa,False,3,False
+Cape Coast <-> Assin Fosu,False,3,False
+Achimota <-> Kaneshie,False,3,False
+Tema <-> Mallam,False,3,False
+Tema <-> Legon,False,3,False
+Mallam <-> Legon,False,3,False
+Mallam <-> Kaneshie,False,3,False
+Mallam <-> Aboadze Junction,False,3,False
+Legon <-> Kaneshie,False,3,False
+Legon <-> Aboadze Junction,False,3,False
+Kumasi Central <-> Mampong,False,3,False
+Kumasi Central <-> Konongo,False,3,False
+Ejisu <-> Obuasi,False,3,False
+Ejisu <-> Konongo,False,3,False
+Obuasi <-> Konongo,False,3,False
+Mampong <-> Konongo,False,3,False
+Takoradi <-> Aboadze,False,3,False
+Takoradi <-> Tarkwa,False,3,False
+Aboadze <-> Tarkwa,False,3,False
+Aboadze <-> Axim,False,3,False
+Tarkwa <-> Axim,False,3,False
+Cape Coast <-> Winneba,False,3,False
+Achimota <-> Mallam,False,3,False
+Cape Coast <-> Kasoa,False,3,False
