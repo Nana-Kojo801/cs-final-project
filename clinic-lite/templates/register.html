@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+{% block title %}Register - ClinicCare-Lite{% endblock %}
+{% block content %}
+<div class="auth-wrap card">
+  <h1>Register</h1>
+  <form method="post" data-validate-register>
+    <label for="role">I am a</label>
+    <select id="role" name="role">
+      <option value="patient" {{ 'selected' if form.get('role')=='patient' }}>Patient</option>
+      <option value="clinician" {{ 'selected' if form.get('role')=='clinician' }}>Clinician</option>
+    </select>
+    <label for="user_id">User ID (8 digits)</label>
+    <input id="user_id" name="user_id" inputmode="numeric" value="{{ form.get('user_id','') }}" required>
+    <p class="small muted" data-id-hint>Clinician IDs end in 0000; patient IDs end in a year 2022-2028.</p>
+    <label for="name">Full name</label>
+    <input id="name" name="name" value="{{ form.get('name','') }}" required>
+    <label for="email">Email</label>
+    <input id="email" type="email" name="email" value="{{ form.get('email','') }}" required>
+    <label for="password">Password</label>
+    <input id="password" type="password" name="password" required>
+    <p class="small muted">Min 8 chars with upper, lower, digit and a special character.</p>
+    <div style="margin-top:16px"><button class="btn" type="submit">Create account</button></div>
+  </form>
+  <p class="small muted" style="margin-top:14px">
+    Already registered? <a href="{{ url_for('login') }}">Log in</a>.
+  </p>
+</div>
+{% endblock %}
