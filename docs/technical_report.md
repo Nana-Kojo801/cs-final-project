@@ -12,12 +12,10 @@ National Electricity Grid Network Analysis · GridCare-Lite · ClinicCare-Lite
 | **Title** | National Electricity Grid Network Analysis, GridCare-Lite, and ClinicCare-Lite |
 | **Course** | CS 112 — Computer Programming for CS (Summer 2026) |
 | **Cohort / Team** | Cohort A · Team 3 |
-| **Team members** | Nana Kojo Atta-Benyah (*ID*), Brian Edem Bedzrah (*ID*), Shawn Tei Kpoti (*ID*), Nana Ekow Amuah (*ID*) |
-| **Instructor** | *[Course lecturer]* |
+| **Team members** | Nana Kojo Atta-Benyah (90452029), Brian Edem Bedzrah (52722029), Shawn Tei Kpoti (24212029), Nana Ekow Amuah (91262029) |
+| **Instructor** | Robert Sowah |
 | **Date** | 28 August 2026 |
 | **Repository** | https://github.com/Nana-Kojo801/cs-final-project |
-
-*Replace each *ID* with the member's real student ID before submission.*
 
 ---
 
