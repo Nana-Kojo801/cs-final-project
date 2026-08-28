@@ -1,0 +1,32 @@
+{
+  "1": {
+    "clinic_id": "c1",
+    "patient_id": "20142024",
+    "clinician_id": "10000000",
+    "when": "2026-08-29T06:24",
+    "reason": "BP follow-up",
+    "status": "Scheduled",
+    "reminder_sent": false,
+    "created_at": "2026-08-28T04:24:40"
+  },
+  "2": {
+    "clinic_id": "c1",
+    "patient_id": "20232023",
+    "clinician_id": "10000000",
+    "when": "2026-08-23T04:24",
+    "reason": "Initial consult",
+    "status": "No-show",
+    "reminder_sent": false,
+    "created_at": "2026-08-28T04:24:40"
+  },
+  "3": {
+    "clinic_id": "c1",
+    "patient_id": "20452022",
+    "clinician_id": "10000000",
+    "when": "2026-08-25T04:24",
+    "reason": "Review",
+    "status": "Attended",
+    "reminder_sent": false,
+    "created_at": "2026-08-28T04:24:41"
+  }
+}

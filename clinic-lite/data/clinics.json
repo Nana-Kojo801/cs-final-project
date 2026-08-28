@@ -1,0 +1,11 @@
+{
+  "c1": {
+    "name": "Ridge Family Clinic",
+    "clinician_id": "10000000",
+    "patient_ids": [
+      "20142024",
+      "20232023",
+      "20452022"
+    ]
+  }
+}

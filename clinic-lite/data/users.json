@@ -1,0 +1,34 @@
+{
+  "10000000": {
+    "name": "Dr. Nana Mensima",
+    "email": "clinician@example.com",
+    "role": "clinician",
+    "password": "$2b$12$VLy.XG24ygFQjTCDV1VwguNJmFLA6/FVmRXariOvYH3/R0ZGCBPty",
+    "theme": "dark",
+    "engagement_points": 0
+  },
+  "20142024": {
+    "name": "Akosua Boadu",
+    "email": "akosua@example.com",
+    "role": "patient",
+    "password": "$2b$12$gklwLuf8krGiKcQPvn5CDut2B6p3h6biSTzTYCDEyxhjth6w4Y0ce",
+    "theme": "colorful",
+    "engagement_points": 10
+  },
+  "20232023": {
+    "name": "Kwesi Appiah",
+    "email": "kwesi@example.com",
+    "role": "patient",
+    "password": "$2b$12$FkTrwYsQKRysU1nYA2Zr6.chB8FCjHh7wIapLOCds3HvRnU/KRYCq",
+    "theme": "colorful",
+    "engagement_points": 10
+  },
+  "20452022": {
+    "name": "Ama Darko",
+    "email": "ama@example.com",
+    "role": "patient",
+    "password": "$2b$12$CC1yisSfv4jUv2LyqeUn.OmzOXX9O.3tgYAmUSNIT0ayq8sGaLvuu",
+    "theme": "colorful",
+    "engagement_points": 8
+  }
+}

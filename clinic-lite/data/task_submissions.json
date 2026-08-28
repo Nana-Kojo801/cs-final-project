@@ -1,0 +1,40 @@
+{
+  "20142024_1": {
+    "patient_id": "20142024",
+    "task_id": "1",
+    "file_path": "C:\\Users\\PC\\Documents\\Ashesi\\Programming for CS\\Final Project\\clinic-lite\\submissions\\c1\\20142024\\20142024_1.csv",
+    "clinic_id": "c1",
+    "timestamp": "2026-08-28T04:24:40",
+    "review_status": "Reviewed - Normal",
+    "notes": "Readings received, no action needed. Keep logging for the full week.",
+    "reviewer_id": "10000000",
+    "reviewed_at": "2026-08-28T04:24:40",
+    "notified": true,
+    "completeness": {
+      "ok": true,
+      "issues": [],
+      "rows": 3
+    },
+    "on_time": true
+  },
+  "20232023_1": {
+    "patient_id": "20232023",
+    "task_id": "1",
+    "file_path": "C:\\Users\\PC\\Documents\\Ashesi\\Programming for CS\\Final Project\\clinic-lite\\submissions\\c1\\20232023\\20232023_1.csv",
+    "clinic_id": "c1",
+    "timestamp": "2026-08-28T04:24:40",
+    "review_status": "Pending",
+    "notes": null,
+    "reviewer_id": null,
+    "reviewed_at": null,
+    "notified": false,
+    "completeness": {
+      "ok": false,
+      "issues": [
+        "Expected column 'diastolic' is missing."
+      ],
+      "rows": 1
+    },
+    "on_time": true
+  }
+}

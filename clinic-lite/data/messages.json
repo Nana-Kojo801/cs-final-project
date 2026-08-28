@@ -1,0 +1,20 @@
+[
+  {
+    "id": 1,
+    "sender_id": "20142024",
+    "recipient_id": "10000000",
+    "content": "Hi, should I keep taking the morning tablet during the log week?",
+    "timestamp": "2026-08-28T04:24:41",
+    "read": false,
+    "is_announcement": false
+  },
+  {
+    "id": 2,
+    "sender_id": "10000000",
+    "recipient_id": "20142024",
+    "content": "Yes, continue as normal. We'll review at your appointment.",
+    "timestamp": "2026-08-28T04:24:41",
+    "read": false,
+    "is_announcement": false
+  }
+]

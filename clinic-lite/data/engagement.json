@@ -1,0 +1,29 @@
+{
+  "20142024": [
+    {
+      "kind": "task",
+      "ref": "1",
+      "on_time": true,
+      "points": 10,
+      "timestamp": "2026-08-28T04:24:40"
+    }
+  ],
+  "20232023": [
+    {
+      "kind": "task",
+      "ref": "1",
+      "on_time": true,
+      "points": 10,
+      "timestamp": "2026-08-28T04:24:40"
+    }
+  ],
+  "20452022": [
+    {
+      "kind": "appointment",
+      "ref": "3",
+      "on_time": true,
+      "points": 8,
+      "timestamp": "2026-08-28T04:24:41"
+    }
+  ]
+}

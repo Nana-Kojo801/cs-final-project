@@ -1,0 +1,47 @@
+{
+  "1": {
+    "title": "Weekly home blood-pressure log",
+    "description": "Record your morning and evening readings for one week and upload the CSV. Columns: date, systolic, diastolic.",
+    "due_date": "2026-08-31",
+    "clinic_id": "c1",
+    "created_by": "10000000",
+    "attachment": null,
+    "check_spec": {
+      "expected_columns": [
+        "date",
+        "systolic",
+        "diastolic"
+      ],
+      "numeric_columns": [
+        "systolic",
+        "diastolic"
+      ]
+    },
+    "created_at": "2026-08-28T04:24:40"
+  },
+  "2": {
+    "title": "Upload referral letter",
+    "description": "Upload the scanned referral letter from your previous clinic (PDF).",
+    "due_date": "2026-08-31",
+    "clinic_id": "c1",
+    "created_by": "10000000",
+    "attachment": null,
+    "check_spec": {},
+    "created_at": "2026-08-28T04:24:40"
+  },
+  "3": {
+    "title": "Medication list (text)",
+    "description": "List your current medications, one per line as 'Name: dose'.",
+    "due_date": "2026-08-26",
+    "clinic_id": "c1",
+    "created_by": "10000000",
+    "attachment": null,
+    "check_spec": {
+      "required_labels": [
+        "Name",
+        "Date"
+      ]
+    },
+    "created_at": "2026-08-28T04:24:40"
+  }
+}

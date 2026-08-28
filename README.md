@@ -1,22 +1,21 @@
 # CS 112 — Computer Programming for CS · Final Course Project (Summer 2026)
 
 **Cohort A · Team 3**
-Public repository: <https://github.com/Nana-Kojo801/cs-final-project>
+Public repository: [https://github.com/Nana-Kojo801/cs-final-project](https://github.com/Nana-Kojo801/cs-final-project)
 
-| Member | Student ID | Primary responsibility |
-|---|---|---|
-| Nana Kojo Atta-Benyah | *[student ID]* | Data engineering & network analysis lead (grid-analysis Tasks 1, 1b, 2, 4; ClinicCare-Lite data model) |
-| Brian Edem Bedzrah | *[52722029]* | N-1 contingency analysis; ClinicCare-Lite auth & submission workflow |
-| Shawn Tei Kpoti | *[student ID]* | GridCare-Lite lead (schema, RBAC, outage-to-resolution workflow, reporting); integration testing |
-| Nana Ekow Amuah | *[student ID]* | Visualisation, interactive map & dashboards; ClinicCare-Lite messaging, analytics; slides |
-
-> Replace *[student ID]* with each member's real ID before submitting.
+| Member                | Student ID   | Primary responsibility                                                                                 |
+| --------------------- | ------------ | ------------------------------------------------------------------------------------------------------ |
+| Nana Kojo Atta-Benyah | 90452029     | Data engineering & network analysis lead (grid-analysis Tasks 1, 1b, 2, 4; ClinicCare-Lite data model) |
+| Brian Edem Bedzrah    | *52722029* | N-1 contingency analysis; ClinicCare-Lite auth & submission workflow                                   |
+| Shawn Tei Kpoti       | 24212029     | GridCare-Lite lead (schema, RBAC, outage-to-resolution workflow, reporting); integration testing       |
+| Nana Ekow Amuah       | 91262        | Visualisation, interactive map & dashboards; ClinicCare-Lite messaging, analytics; slides              |
 
 ---
 
 ## The three components
 
 ### 1. `grid-analysis/` — National Electricity Grid Network Analysis
+
 A reproducible data-science pipeline over a **synthetic, seeded** Ghana / West-Africa
 electricity-grid dataset (utilities, substations, transmission/distribution lines).
 It cleans and validates the data, integrates the three tables, runs exploratory
@@ -26,6 +25,7 @@ charts plus an interactive map and a Streamlit dashboard. All figures are
 illustrative, not official measurements of Ghana's grid.
 
 ### 2. `gridcare-lite/` — Outage & Maintenance Management System
+
 A role-based **Tkinter desktop application** backed by **SQLite** that simulates
 the internal tool a utility (ECG / GRIDCo) would use to run the outage lifecycle:
 an engineer logs an outage against a real substation (imported from
@@ -35,6 +35,7 @@ log and link complaints. RBAC and state-machine transitions are enforced in the
 service layer and by database constraints — not just by hiding buttons.
 
 ### 3. `clinic-lite/` — Clinic Patient Administration & Communication System
+
 A secure, role-based **Flask web application** (JSON storage) for clinician and
 patient administrative workflows: health-task assignment, patient file
 submission with a **structural** form-completeness check, categorical clinician
@@ -63,6 +64,7 @@ pip install -r requirements.txt
 ## Running each component
 
 ### grid-analysis
+
 ```bash
 cd grid-analysis
 python generate_grid_data.py            # (optional) regenerate the 3 raw CSVs
@@ -74,19 +76,23 @@ python merge_analysis.py          # -> integrated_data/master_lines.csv + charts
 python n1_contingency.py + interactive_map.py # -> charts/, network_analysis/, maps/*.html
 streamlit run dashboard_app.py          # (optional) interactive dashboard at :8501
 ```
+
 Open `maps/grid_interactive_map.html` in a browser for the interactive map.
 
 ### gridcare-lite
+
 ```bash
 cd gridcare-lite
 python seed_data.py --reset             # build gridcare.db, import grid data, add demo content
 python app.py                           # launches the Tkinter GUI
 python -m unittest discover -s tests    # 24 tests
 ```
+
 **Demo accounts** (password `Grid@2026` for all):
 `admin` · `engineer` · `tech1` · `tech2` · `csr`
 
 ### clinic-lite
+
 ```bash
 cd clinic-lite
 cp .env.example .env                    # optional; app runs without it
@@ -94,14 +100,15 @@ python seed_data.py --reset             # create data/ + demo accounts and workf
 python app.py                           # http://127.0.0.1:5000
 python -m unittest discover -s tests    # 28 tests
 ```
+
 **Demo accounts** (password `Clinic@2026` for all):
 
-| Role | ID |
-|---|---|
+| Role      | ID           |
+| --------- | ------------ |
 | Clinician | `10000000` |
-| Patient | `20142024` |
-| Patient | `20232023` |
-| Patient | `20452022` |
+| Patient   | `20142024` |
+| Patient   | `20232023` |
+| Patient   | `20452022` |
 
 With no SMTP configured, all email notifications are written to
 `clinic-lite/data/notifications.log` and mirrored to each user's in-app Inbox.

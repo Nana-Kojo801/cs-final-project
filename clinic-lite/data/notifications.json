@@ -1,0 +1,42 @@
+[
+  {
+    "recipient_id": "10000000",
+    "subject": "New submission for task 'Weekly home blood-pressure log'",
+    "body": "Patient Akosua Boadu (20142024) submitted task 1 on 2026-08-28T04:24:40. Completeness check: passed.",
+    "timestamp": "2026-08-28T04:24:40",
+    "read": false,
+    "delivery": "logged"
+  },
+  {
+    "recipient_id": "20142024",
+    "subject": "Submission received: Weekly home blood-pressure log",
+    "body": "We received your submission for 'Weekly home blood-pressure log' at 2026-08-28T04:24:40. You'll be notified when a clinician has reviewed it.",
+    "timestamp": "2026-08-28T04:24:40",
+    "read": false,
+    "delivery": "logged"
+  },
+  {
+    "recipient_id": "20142024",
+    "subject": "Your submission for 'Weekly home blood-pressure log' has been reviewed",
+    "body": "Outcome: Reviewed - Normal\nClinician notes: Readings received, no action needed. Keep logging for the full week.\n\nThis is an administrative review outcome, not a diagnosis. Contact the clinic if you have questions.",
+    "timestamp": "2026-08-28T04:24:40",
+    "read": false,
+    "delivery": "logged"
+  },
+  {
+    "recipient_id": "10000000",
+    "subject": "New submission for task 'Weekly home blood-pressure log'",
+    "body": "Patient Kwesi Appiah (20232023) submitted task 1 on 2026-08-28T04:24:40. Completeness check: issues: Expected column 'diastolic' is missing..",
+    "timestamp": "2026-08-28T04:24:40",
+    "read": false,
+    "delivery": "logged"
+  },
+  {
+    "recipient_id": "20232023",
+    "subject": "Submission received: Weekly home blood-pressure log",
+    "body": "We received your submission for 'Weekly home blood-pressure log' at 2026-08-28T04:24:40. You'll be notified when a clinician has reviewed it.",
+    "timestamp": "2026-08-28T04:24:40",
+    "read": false,
+    "delivery": "logged"
+  }
+]
