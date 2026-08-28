@@ -1,0 +1,45 @@
+{% extends "base.html" %}
+{% block title %}Review submission - ClinicCare-Lite{% endblock %}
+{% block content %}
+<p><a href="{{ url_for('clinician_submissions') }}">&larr; Submissions</a></p>
+<h1>Review: {{ task.title }}</h1>
+<p class="muted">Patient {{ patient.name }} ({{ patient.user_id }}) · submitted {{ sub.timestamp }}</p>
+
+<div class="grid cols-2">
+  <div class="card">
+    <h3>File preview</h3>
+    {% if preview.kind == 'csv' %}
+      <div class="table-wrap"><table>
+        {% for r in preview.content %}<tr>{% for c in r %}<td>{{ c }}</td>{% endfor %}</tr>{% endfor %}
+      </table></div>
+    {% elif preview.kind == 'text' %}
+      <pre class="small">{{ preview.content }}</pre>
+    {% else %}
+      <p class="muted">{{ preview.content }}</p>
+    {% endif %}
+    <a class="btn small ghost" href="{{ url_for('clinician_download', patient_id=patient.user_id, task_id=task.task_id) }}">Download file</a>
+
+    {% if sub.completeness and sub.completeness.issues %}
+      <p class="small" style="margin-top:12px">Structural completeness check:</p>
+      <ul class="small">{% for i in sub.completeness.issues %}<li>{{ i }}</li>{% endfor %}</ul>
+    {% endif %}
+  </div>
+
+  <div class="card">
+    <h3>Administrative review outcome</h3>
+    <p class="small muted">Categorical triage status, not a diagnosis or a score.</p>
+    <form method="post">
+      <label for="outcome">Outcome</label>
+      <select id="outcome" name="outcome">
+        {% for o in outcomes %}<option value="{{ o }}" {{ 'selected' if sub.review_status==o }}>{{ o }}</option>{% endfor %}
+      </select>
+      <label for="notes">Notes (free text)</label>
+      <textarea id="notes" name="notes">{{ sub.notes or '' }}</textarea>
+      <div style="margin-top:12px"><button class="btn" type="submit">Record review &amp; notify patient</button></div>
+    </form>
+    {% if sub.reviewed_at %}
+      <p class="small muted" style="margin-top:10px">Last reviewed {{ sub.reviewed_at }} by {{ sub.reviewer_id }} · patient notified: {{ 'yes' if sub.notified else 'no' }}</p>
+    {% endif %}
+  </div>
+</div>
+{% endblock %}
