@@ -1,84 +1,155 @@
-# CS 112 Final Project — Grid Analysis, GridCare-Lite & ClinicCare-Lite
+# CS 112 — Computer Programming for CS · Final Course Project (Summer 2026)
 
-Integrated data-science and software-engineering course project (CS 112,
-Summer 2026). Full requirements live in [`CS 112 Computer Programming for CS
-Final Course Project Summer 2026.docx`](<CS%20112%20Computer%20Programming%20for%20CS%20Final%20Course%20Project%20Summer%202026.docx>)
-— that document is the authoritative spec; everything below is a summary.
+**Cohort A · Team 3**
+Public repository: <https://github.com/Nana-Kojo801/cs-final-project>
 
-Three interrelated components:
+| Member | Student ID | Primary responsibility |
+|---|---|---|
+| Nana Kojo Atta-Benyah | *[student ID]* | Data engineering & network analysis lead (grid-analysis Tasks 1, 1b, 2, 4; ClinicCare-Lite data model) |
+| Brian Edem Bedzrah | *[student ID]* | N-1 contingency analysis; ClinicCare-Lite auth & submission workflow |
+| Shawn Tei Kpoti | *[student ID]* | GridCare-Lite lead (schema, RBAC, outage-to-resolution workflow, reporting); integration testing |
+| Nana Ekow Amuah | *[student ID]* | Visualisation, interactive map & dashboards; ClinicCare-Lite messaging, analytics; slides |
 
-1. **National Electricity Grid Network Analysis** (`grid-analysis/`) — clean,
-   integrate, and analyse a synthetic (seeded, reproducible) Ghana/West-Africa
-   grid dataset using pandas and NetworkX: data cleaning, exploratory
-   analysis, graph modelling, network metrics, N-1 contingency analysis, and
-   visualization.
-2. **GridCare-Lite** (`gridcare-lite/`) — a role-based desktop GUI
-   (Tkinter/PyQt) outage-and-maintenance-management system backed by SQLite,
-   simulating the internal tool a utility like ECG or GRIDCo might use.
-3. **ClinicCare-Lite** (`clinic-lite/`) — a secure, role-based clinic
-   administration and communication system (health tasks, patient
-   submissions, clinician review, messaging, analytics), backed by JSON
-   storage. Administrative and communication only — it must never diagnose,
-   interpret symptoms, or recommend treatment.
+> Replace *[student ID]* with each member's real ID before submitting.
 
-All three share the same standards for authentication/RBAC, testing
-discipline, and documentation described in the spec.
+---
 
-## Repository structure
+## The three components
 
-```
-Datasets/                  Seeded dataset generator + raw CSVs (utilities, substations, lines)
-grid-analysis/
-  task1_data_cleaning.py       Load, inspect, clean, validate the raw datasets
-  task1b_data_integration.py   Join the three datasets into a merged dataset
-  task2_networkx_graph.py      Build the grid graph, EDA, network metrics
-  cleaned_data/                 Cleaned CSVs + cleaning/validation report
-  integrated_data/              Merged dataset + integration report
-  network_analysis/             Per-substation metrics + analysis report
-  data_dictionary.md            Field-by-field reference for every dataset above
-  er_diagram.md                 ER diagram of the utilities/substations/lines relationships
-gridcare-lite/              GridCare-Lite application (SQLite schema, GUI, workflow) — in progress
-clinic-lite/                ClinicCare-Lite application (JSON model, GUI/web, workflow) — in progress
-reports/                    Shared/cross-cutting documentation (technical report, test logs, etc.)
-issue_list.md                Real GitHub issue numbers/state, grouped by component
-guide.md                    Conventions for anyone (human or AI assistant) picking up an issue
-```
+### 1. `grid-analysis/` — National Electricity Grid Network Analysis
+A reproducible data-science pipeline over a **synthetic, seeded** Ghana / West-Africa
+electricity-grid dataset (utilities, substations, transmission/distribution lines).
+It cleans and validates the data, integrates the three tables, runs exploratory
+analysis, models the grid as a NetworkX graph, computes centrality and community
+metrics, performs a simplified **N-1 contingency analysis**, and exports static
+charts plus an interactive map and a Streamlit dashboard. All figures are
+illustrative, not official measurements of Ghana's grid.
 
-## Getting started
+### 2. `gridcare-lite/` — Outage & Maintenance Management System
+A role-based **Tkinter desktop application** backed by **SQLite** that simulates
+the internal tool a utility (ECG / GRIDCo) would use to run the outage lifecycle:
+an engineer logs an outage against a real substation (imported from
+grid-analysis), an administrator creates and assigns a work order, a technician
+works and completes it (auto-resolving the outage), and customer-service staff
+log and link complaints. RBAC and state-machine transitions are enforced in the
+service layer and by database constraints — not just by hiding buttons.
+
+### 3. `clinic-lite/` — Clinic Patient Administration & Communication System
+A secure, role-based **Flask web application** (JSON storage) for clinician and
+patient administrative workflows: health-task assignment, patient file
+submission with a **structural** form-completeness check, categorical clinician
+review, in-app notifications and secure non-urgent messaging, appointment
+reminders, a **private** wellness-engagement tracker, and operational analytics.
+**It is administrative and communication only — it never diagnoses, interprets
+symptoms, scores health data, or recommends treatment.**
+
+---
+
+## Setup
+
+Requires **Python 3.11+**. From this folder:
 
 ```bash
-# 1. Generate the seeded datasets (byte-identical for every team member)
-cd Datasets && python generate_grid_data.py
-
-# 2. Clean, integrate, and analyse the grid data
-cd ../grid-analysis
-python task1_data_cleaning.py        # -> cleaned_data/
-python task1b_data_integration.py    # -> integrated_data/
-python task2_networkx_graph.py       # -> network_analysis/
+python -m venv .venv
+# Windows:  .venv\Scripts\activate      macOS/Linux:  source .venv/bin/activate
+pip install -r requirements.txt
 ```
 
-Requires `pandas`, `numpy`, `networkx`, and `scipy` (for PageRank). GridCare-Lite
-and ClinicCare-Lite will add their own requirements (`sqlite3` is stdlib;
-GUI/web framework TBD per component) as those components are built.
+`tkinter` and `sqlite3` ship with CPython. On Debian/Ubuntu install
+`python3-tk` if Tkinter is missing.
 
-## Project status
+---
 
-Tracked entirely through GitHub issues — see [`issue_list.md`](issue_list.md)
-for the current number/state/title of every issue, grouped by component. As
-of the last sync:
+## Running each component
 
-- **grid-analysis**: data cleaning and NetworkX graph modelling done; N-1
-  contingency analysis and interactive map still open.
-- **gridcare-lite**, **clinic-lite**: not started.
-- **shared** (integration testing, final report, presentation, demo video):
-  not started.
+### grid-analysis
+```bash
+cd grid-analysis
+python generate_grid_data.py            # (optional) regenerate the 3 raw CSVs
+python task1_data_cleaning.py           # -> cleaned_data/
+python task1b_data_integration.py       # -> integrated_data/
+python task2_networkx_graph.py          # -> network_analysis/ (metrics + report)
+python eda_charts.py              # -> charts/*.png
+python merge_analysis.py          # -> integrated_data/master_lines.csv + charts
+python n1_contingency.py + interactive_map.py # -> charts/, network_analysis/, maps/*.html
+streamlit run dashboard_app.py          # (optional) interactive dashboard at :8501
+```
+Open `maps/grid_interactive_map.html` in a browser for the interactive map.
 
-## Contributing
+### gridcare-lite
+```bash
+cd gridcare-lite
+python seed_data.py --reset             # build gridcare.db, import grid data, add demo content
+python app.py                           # launches the Tkinter GUI
+python -m unittest discover -s tests    # 24 tests
+```
+**Demo accounts** (password `Grid@2026` for all):
+`admin` · `engineer` · `tech1` · `tech2` · `csr`
 
-- One feature branch per issue, off an up-to-date `main`; PR against `main`
-  with `Closes #<issue-number>` in the body if it resolves the issue; merge
-  only after review.
-- If you're using an AI coding assistant (Claude Code, Copilot, etc.) to work
-  an issue, read [`guide.md`](guide.md) first — it covers branching, commit
-  conventions, and the expectation that finished work is checked against the
-  spec docx, not just the issue's own checklist.
+### clinic-lite
+```bash
+cd clinic-lite
+cp .env.example .env                    # optional; app runs without it
+python seed_data.py --reset             # create data/ + demo accounts and workflow
+python app.py                           # http://127.0.0.1:5000
+python -m unittest discover -s tests    # 28 tests
+```
+**Demo accounts** (password `Clinic@2026` for all):
+
+| Role | ID |
+|---|---|
+| Clinician | `10000000` |
+| Patient | `20142024` |
+| Patient | `20232023` |
+| Patient | `20452022` |
+
+With no SMTP configured, all email notifications are written to
+`clinic-lite/data/notifications.log` and mirrored to each user's in-app Inbox.
+
+---
+
+## Reproducibility
+
+The dataset generator (`grid-analysis/generate_grid_data.py`) is run with
+`random.seed(42)` **unchanged**, so every run produces byte-identical
+`utilities.csv`, `substations.csv` and `lines.csv` (10 utilities, 44
+substations, 55 lines). All analysis outputs in `cleaned_data/`,
+`integrated_data/`, `network_analysis/`, `charts/` and `maps/` were generated
+from that seeded data and can be regenerated with the commands above.
+
+---
+
+## Known limitations
+
+- **Synthetic data.** Coordinates, capacities, commissioning years and
+  connections are illustrative. Network metrics are *structural* observations,
+  not electrical load / power-flow results. The N-1 analysis is a graph-topology
+  approximation, not a real contingency study.
+- **grid-analysis** cleaned graph has 3 connected components (a few isolated
+  substations); this is reported and discussed rather than hidden.
+- **GridCare-Lite** is a single-user desktop app (one SQLite file, no
+  concurrent-write handling) and uses a simple `datetime('now')` clock.
+- **ClinicCare-Lite** uses flat JSON files with a process-level lock — fine for
+  a demo, not for real concurrency. Real-time messaging is periodic polling
+  (12 s), not WebSockets. Email delivery is best-effort and falls back to a log
+  file. Session storage is the default Flask signed cookie.
+- Neither app is hardened for production (no rate limiting, CSRF tokens, or
+  audited deployment configuration).
+
+---
+
+## Repository / documentation map
+
+```
+grid-analysis/      dataset generator, Task 1–5 scripts, cleaned/integrated/network outputs,
+                    charts/ (PNG), maps/ (interactive HTML), dashboard_app.py, data_dictionary.md, er_diagram.md
+gridcare-lite/      core/ (db, auth, services), app.py (Tkinter GUI), schema.sql,
+                    import_grid_data.py, seed_data.py, data_dictionary.md, tests/
+clinic-lite/   app.py, config.py, models/, utils/, templates/, static/, data/, submissions/,
+                    seed_data.py, .env.example, tests/
+docs/               technical report, data-science report, diagrams, user guides,
+                    test plan & report, defect log, team contribution report
+slides/             presentation slides
+video/              demonstration video script (record separately)
+requirements.txt    all Python dependencies
+```
