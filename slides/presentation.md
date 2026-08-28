@@ -157,14 +157,15 @@ Secure **Flask** clinic administration & communication. Roles: **clinician · pa
 
 | Suite | Tests | Result |
 |---|---|---|
-| GridCare-Lite | 19 | all pass |
-| ClinicCare-Lite | 23 | all pass |
-| **Total automated** | **42** | **green on `main`** |
+| GridCare-Lite | 24 | all pass |
+| ClinicCare-Lite | 28 | all pass |
+| **Total automated** | **52** | **green on `main`** |
 
 Plus a 57-case manual test plan executed by ≥ 2 members.
 
-**4 defects found & fixed** (all with regression tests): JSON truncation,
-name-keyed graph, work-order→outage propagation, cross-technician updates.
+**5 defects found & fixed** (all with regression tests): JSON truncation,
+name-keyed graph, work-order→outage propagation, cross-technician updates,
+missing template filter.
 
 ---
 
