@@ -1,0 +1,61 @@
+{% extends "base.html" %}
+{% block title %}My progress - ClinicCare-Lite{% endblock %}
+{% block content %}
+<h1>My progress</h1>
+<div class="notice">
+  This page is <strong>private to you</strong>. ClinicCare-Lite never ranks
+  patients or compares your attendance or completion with anyone else's.
+</div>
+
+<div class="grid cols-3">
+  <div class="card stat"><div class="n">{{ summary.total_points }}</div><div class="l">Engagement Points</div></div>
+  <div class="card stat"><div class="n">{{ summary.current_streak }}</div><div class="l">On-time task streak</div></div>
+  <div class="card stat"><div class="n">{{ summary.on_time_appointments }}</div><div class="l">On-time appointments</div></div>
+</div>
+
+<div class="card">
+  <h3>On-time completions by month</h3>
+  {% for month, n in summary.on_time_by_month.items() %}
+    <div style="margin:6px 0">
+      <span class="small">{{ month }}</span>
+      <div class="bar"><span style="width:{{ (n * 18) if n * 18 < 100 else 100 }}%"></span></div>
+      <span class="small muted">{{ n }}</span>
+    </div>
+  {% else %}
+    <p class="muted">No on-time completions recorded yet.</p>
+  {% endfor %}
+</div>
+
+<div class="card">
+  <h3>My history</h3>
+  <div class="grid cols-2">
+    <div>
+      <p class="small muted">Tasks submitted: {{ personal.tasks_submitted }}</p>
+      <p class="small muted">Reviews received: {{ personal.reviews_received }}</p>
+      <p class="small muted">Appointments attended: {{ personal.appointments_attended }} / {{ personal.appointments_total }}</p>
+      {% if personal.attendance_rate is not none %}
+        <p class="small muted">Attendance rate: {{ personal.attendance_rate }}%</p>
+      {% endif %}
+    </div>
+    <div>
+      <p class="small muted">Review outcomes on my submissions:</p>
+      {% for k, v in personal.outcome_mix.items() %}<span class="pill">{{ k }}: {{ v }}</span> {% endfor %}
+    </div>
+  </div>
+</div>
+
+<div class="card">
+  <h3>Recent engagement events</h3>
+  <div class="table-wrap">
+  <table>
+    <tr><th>When</th><th>Type</th><th>On time</th><th>Points</th></tr>
+    {% for e in summary.events[:15] %}
+    <tr><td>{{ e.timestamp }}</td><td>{{ e.kind }}</td>
+        <td>{{ 'Yes' if e.on_time else 'No' }}</td><td>+{{ e.points }}</td></tr>
+    {% else %}
+    <tr><td colspan="4" class="muted">Nothing yet.</td></tr>
+    {% endfor %}
+  </table>
+  </div>
+</div>
+{% endblock %}
