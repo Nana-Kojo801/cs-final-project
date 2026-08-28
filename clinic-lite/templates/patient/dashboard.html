@@ -1,0 +1,60 @@
+{% extends "base.html" %}
+{% block title %}Patient dashboard - ClinicCare-Lite{% endblock %}
+{% block content %}
+<h1>Welcome, {{ current_user.name }}</h1>
+<p class="muted">Your assigned health tasks, appointments and clinic notices.</p>
+
+<div class="grid cols-3">
+  <div class="card stat"><div class="n">{{ engagement.total_points }}</div><div class="l">Engagement Points (private)</div></div>
+  <div class="card stat"><div class="n">{{ engagement.current_streak }}</div><div class="l">On-time task streak</div></div>
+  <div class="card stat"><div class="n">{{ rows|selectattr('state','equalto','Pending')|list|length }}</div><div class="l">Tasks to do</div></div>
+</div>
+
+{% if announcements %}
+<div class="card">
+  <h3>Clinic announcements</h3>
+  {% for a in announcements %}
+    <p>{% if a.urgent %}<span class="pill danger">Urgent</span> {% endif %}
+       <strong>{{ a.title }}</strong> <span class="small muted">({{ a.publish_date }})</span><br>
+       {{ a.body }}</p>
+  {% endfor %}
+</div>
+{% endif %}
+
+<div class="card">
+  <h3>Health tasks</h3>
+  <div class="table-wrap">
+  <table>
+    <tr><th>Task</th><th>Due</th><th>Status</th><th>Outcome</th><th></th></tr>
+    {% for r in rows %}
+    <tr>
+      <td>{{ r.task.title }}</td>
+      <td>{{ r.task.due_date }}</td>
+      <td>
+        {% set c = {'Pending':'info','Submitted':'warn','Reviewed':'ok','Overdue':'danger'} %}
+        <span class="pill {{ c[r.state] }}">{{ r.state }}</span>
+      </td>
+      <td>{{ r.submission.review_status if r.submission else '-' }}</td>
+      <td><a class="btn small" href="{{ url_for('patient_task', task_id=r.task.task_id) }}">Open</a></td>
+    </tr>
+    {% else %}
+    <tr><td colspan="5" class="muted">No tasks assigned yet.</td></tr>
+    {% endfor %}
+  </table>
+  </div>
+</div>
+
+<div class="card">
+  <h3>Upcoming appointments</h3>
+  <div class="table-wrap">
+  <table>
+    <tr><th>When</th><th>Reason</th><th>Status</th></tr>
+    {% for aid, a in appts %}
+    <tr><td>{{ a.when }}</td><td>{{ a.reason or '-' }}</td><td><span class="pill">{{ a.status }}</span></td></tr>
+    {% else %}
+    <tr><td colspan="3" class="muted">No appointments scheduled.</td></tr>
+    {% endfor %}
+  </table>
+  </div>
+</div>
+{% endblock %}

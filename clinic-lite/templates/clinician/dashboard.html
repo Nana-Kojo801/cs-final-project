@@ -1,0 +1,70 @@
+{% extends "base.html" %}
+{% block title %}Clinician dashboard - ClinicCare-Lite{% endblock %}
+{% block content %}
+<h1>{{ clinic.name if clinic else 'Clinician dashboard' }}</h1>
+<p class="muted">{{ patients|length }} registered patient(s) · {{ tasks|length }} task(s) · {{ pending|length }} submission(s) awaiting review</p>
+
+<div class="grid cols-2">
+  <div class="card">
+    <h3>Create &amp; assign a health task</h3>
+    <form method="post" action="{{ url_for('clinician_create_task') }}">
+      <label for="title">Title</label>
+      <input id="title" name="title" required>
+      <label for="description">Instructions for the patient</label>
+      <textarea id="description" name="description"></textarea>
+      <label for="due_date">Due date</label>
+      <input id="due_date" type="date" name="due_date" required>
+      <label>Assign to</label>
+      <select name="patients" multiple size="4">
+        {% for p in patients %}<option value="{{ p.user_id }}">{{ p.name }} ({{ p.user_id }})</option>{% endfor %}
+      </select>
+      <details style="margin-top:10px">
+        <summary class="small muted">Optional structural completeness check (.csv / .txt)</summary>
+        <label for="expected_columns">Expected CSV columns (comma-separated)</label>
+        <input id="expected_columns" name="expected_columns" placeholder="date, systolic, diastolic">
+        <label for="numeric_columns">Of those, numeric columns</label>
+        <input id="numeric_columns" name="numeric_columns" placeholder="systolic, diastolic">
+        <label for="required_labels">Expected TXT lines (comma-separated labels)</label>
+        <input id="required_labels" name="required_labels" placeholder="Name, Date, Reading">
+      </details>
+      <div style="margin-top:12px"><button class="btn" type="submit">Create task</button></div>
+    </form>
+  </div>
+
+  <div class="card">
+    <h3>Submissions awaiting review</h3>
+    <div class="table-wrap">
+    <table>
+      <tr><th>Patient</th><th>Task</th><th>Submitted</th><th></th></tr>
+      {% for s in pending %}
+      <tr>
+        <td>{{ s.patient_id }}</td>
+        <td>{{ s.task_id }}</td>
+        <td>{{ s.timestamp }}</td>
+        <td><a class="btn small" href="{{ url_for('clinician_review', patient_id=s.patient_id, task_id=s.task_id) }}">Review</a></td>
+      </tr>
+      {% else %}
+      <tr><td colspan="4" class="muted">Nothing pending.</td></tr>
+      {% endfor %}
+    </table>
+    </div>
+    <p style="margin-top:10px"><a href="{{ url_for('clinician_submissions') }}">All submissions &amp; filters &rarr;</a></p>
+  </div>
+</div>
+
+<div class="card">
+  <h3>Tasks</h3>
+  <div class="table-wrap">
+  <table>
+    <tr><th>ID</th><th>Title</th><th>Due</th><th>Assigned</th></tr>
+    {% for t in tasks %}
+    <tr><td>{{ t.task_id }}</td><td>{{ t.title }}</td><td>{{ t.due_date }}</td>
+        <td>{{ t.task_id | assigned_count }}</td></tr>
+    {% else %}
+    <tr><td colspan="4" class="muted">No tasks yet.</td></tr>
+    {% endfor %}
+  </table>
+  </div>
+</div>
+
+{% endblock %}

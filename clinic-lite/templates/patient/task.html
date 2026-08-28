@@ -1,0 +1,48 @@
+{% extends "base.html" %}
+{% block title %}{{ task.title }} - ClinicCare-Lite{% endblock %}
+{% block content %}
+<p><a href="{{ url_for('patient_dashboard') }}">&larr; Dashboard</a></p>
+<div class="card">
+  <h1>{{ task.title }}</h1>
+  <p class="muted">Due {{ task.due_date }}</p>
+  <p>{{ task.description }}</p>
+  {% if task.check_spec %}
+    <div class="notice">
+      Before you submit, a <strong>structural</strong> completeness check runs on
+      .csv/.txt files (checks expected fields are present and well-formed). It does
+      not interpret the meaning of any value.
+      {% if task.check_spec.expected_columns %}<br>Expected columns: {{ task.check_spec.expected_columns|join(', ') }}{% endif %}
+      {% if task.check_spec.required_labels %}<br>Expected lines: {{ task.check_spec.required_labels|join(', ') }}{% endif %}
+    </div>
+  {% endif %}
+</div>
+
+<div class="card">
+  <h3>Your submission</h3>
+  {% if submission %}
+    <p><span class="pill {{ 'ok' if submission.review_status != 'Pending' else 'warn' }}">{{ submission.review_status }}</span>
+       submitted {{ submission.timestamp }}</p>
+    {% if submission.completeness and submission.completeness.issues %}
+      <p class="small">Completeness check flagged:</p>
+      <ul class="small">{% for i in submission.completeness.issues %}<li>{{ i }}</li>{% endfor %}</ul>
+    {% elif submission.completeness and not submission.completeness.get('skipped') %}
+      <p class="small pill ok">Completeness check passed</p>
+    {% endif %}
+    {% if submission.review_status != 'Pending' %}
+      <p><strong>Clinician notes:</strong> {{ submission.notes or '(none)' }}</p>
+      <p class="small muted">This is an administrative review outcome, not a diagnosis.</p>
+    {% endif %}
+  {% else %}
+    <p class="muted">Not submitted yet.</p>
+  {% endif %}
+
+  {% if not submission or submission.review_status == 'Pending' %}
+  <form method="post" enctype="multipart/form-data">
+    <label for="submission">Upload .txt, .csv or .pdf (max 2 MB)</label>
+    <input id="submission" type="file" name="submission" accept=".txt,.csv,.pdf" required>
+    <div style="margin-top:12px"><button class="btn" type="submit">
+      {{ 'Replace submission' if submission else 'Submit' }}</button></div>
+  </form>
+  {% endif %}
+</div>
+{% endblock %}
