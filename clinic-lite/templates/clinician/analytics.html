@@ -1,0 +1,44 @@
+{% extends "base.html" %}
+{% block title %}Analytics - ClinicCare-Lite{% endblock %}
+{% block content %}
+<h1>Operational analytics</h1>
+<p class="muted">Aggregated operational measures for {{ clinic.name }}. No individual patient's confidential data is exposed to other patients.</p>
+
+<div class="grid cols-3">
+  <div class="card stat"><div class="n">{{ metrics.appointment_no_show_rate }}%</div><div class="l">Appointment no-show rate</div></div>
+  <div class="card stat"><div class="n">{{ metrics.task_completion_rate }}%</div><div class="l">Task completion rate</div></div>
+  <div class="card stat"><div class="n">{{ metrics.pending_reviews }}</div><div class="l">Pending reviews</div></div>
+  <div class="card stat"><div class="n">{{ metrics.avg_review_turnaround_hours if metrics.avg_review_turnaround_hours is not none else '-' }}</div><div class="l">Avg review turnaround (h)</div></div>
+  <div class="card stat"><div class="n">{{ metrics.overdue_submissions }}</div><div class="l">Overdue submissions</div></div>
+  <div class="card stat"><div class="n">{{ metrics.monthly_task_volume }}</div><div class="l">Tasks created</div></div>
+</div>
+
+<div class="grid cols-2">
+  <div class="card">
+    <h3>No-show rate by week</h3>
+    {% for wk, rate in metrics.no_show_rate_by_week.items() %}
+      <div style="margin:6px 0"><span class="small">{{ wk }}</span>
+        <div class="bar"><span style="width:{{ rate }}%"></span></div>
+        <span class="small muted">{{ rate }}%</span></div>
+    {% else %}<p class="muted">No completed appointments yet.</p>{% endfor %}
+  </div>
+  <div class="card">
+    <h3>Submissions by task</h3>
+    {% for task, n in metrics.submissions_by_task.items() %}
+      <div style="margin:6px 0"><span class="small">{{ task }}</span>
+        <div class="bar"><span style="width:{{ (n*20) if n*20<100 else 100 }}%"></span></div>
+        <span class="small muted">{{ n }}</span></div>
+    {% else %}<p class="muted">No submissions yet.</p>{% endfor %}
+  </div>
+  <div class="card">
+    <h3>Monthly appointment volume</h3>
+    <div class="table-wrap"><table><tr><th>Month</th><th>Count</th></tr>
+      {% for m, n in metrics.monthly_appointment_volume.items() %}<tr><td>{{ m }}</td><td>{{ n }}</td></tr>{% endfor %}
+    </table></div>
+  </div>
+  <div class="card">
+    <h3>Review outcome mix</h3>
+    {% for k, v in metrics.review_outcome_mix.items() %}<span class="pill">{{ k }}: {{ v }}</span> {% endfor %}
+  </div>
+</div>
+{% endblock %}
