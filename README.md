@@ -8,7 +8,7 @@ Public repository: [https://github.com/Nana-Kojo801/cs-final-project](https://gi
 | Nana Kojo Atta-Benyah | 90452029     | Data engineering & network analysis lead (grid-analysis Tasks 1, 1b, 2, 4; ClinicCare-Lite data model) |
 | Brian Edem Bedzrah    | *52722029* | N-1 contingency analysis; ClinicCare-Lite auth & submission workflow                                   |
 | Shawn Tei Kpoti       | 24212029     | GridCare-Lite lead (schema, RBAC, outage-to-resolution workflow, reporting); integration testing       |
-| Nana Ekow Amuah       | 91262        | Visualisation, interactive map & dashboards; ClinicCare-Lite messaging, analytics; slides              |
+| Nana Ekow Amuah       | 91262029     | Visualisation, interactive map & dashboards; ClinicCare-Lite messaging, analytics; slides              |
 
 ---
 
