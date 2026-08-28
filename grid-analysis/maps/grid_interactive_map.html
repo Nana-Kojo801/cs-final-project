@@ -1,0 +1,2428 @@
+<!DOCTYPE html>
+<html>
+<head>
+    
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+    <script src="https://cdn.jsdelivr.net/npm/leaflet@1.9.3/dist/leaflet.js"></script>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet@1.9.3/dist/leaflet.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap-glyphicons.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.2.0/css/all.min.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/python-visualization/folium/folium/templates/leaflet.awesome.rotate.min.css"/>
+    
+            <meta name="viewport" content="width=device-width,
+                initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+            <style>
+                #map_f67da8de1ead8034b9c1ea86eeade67b {
+                    position: relative;
+                    width: 100.0%;
+                    height: 100.0%;
+                    left: 0.0%;
+                    top: 0.0%;
+                }
+                .leaflet-container { font-size: 1rem; }
+            </style>
+
+            <style>html, body {
+                width: 100%;
+                height: 100%;
+                margin: 0;
+                padding: 0;
+            }
+            </style>
+
+            <style>#map {
+                position:absolute;
+                top:0;
+                bottom:0;
+                right:0;
+                left:0;
+                }
+            </style>
+
+            <script>
+                L_NO_TOUCH = false;
+                L_DISABLE_3D = false;
+            </script>
+
+        
+</head>
+<body>
+    
+    
+<div style="position: fixed; bottom: 24px; left: 24px; z-index: 9999;
+background: white; padding: 10px 12px; border: 1px solid #bbb; font: 12px sans-serif;">
+<b>Voltage (kV)</b><br>
+<span style="color:#8c9eff">&#9679;</span> 11 &nbsp;
+<span style="color:#00bcd4">&#9679;</span> 33 &nbsp;
+<span style="color:#4caf50">&#9679;</span> 69<br>
+<span style="color:#ff9800">&#9679;</span> 161 &nbsp;
+<span style="color:#e53935">&#9679;</span> 330<br>
+Dashed red line = under maintenance
+</div>
+    
+            <div class="folium-map" id="map_f67da8de1ead8034b9c1ea86eeade67b" ></div>
+        
+</body>
+<script>
+    
+    
+            var map_f67da8de1ead8034b9c1ea86eeade67b = L.map(
+                "map_f67da8de1ead8034b9c1ea86eeade67b",
+                {
+                    center: [6.898402272727273, -1.1948681818181817],
+                    crs: L.CRS.EPSG3857,
+                    ...{
+  "zoom": 7,
+  "zoomControl": true,
+  "preferCanvas": false,
+}
+
+                }
+            );
+
+            
+
+        
+    
+            var tile_layer_0c042998e8213dafb8fc6600a29b94c1 = L.tileLayer(
+                "https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png",
+                {
+  "minZoom": 0,
+  "maxZoom": 20,
+  "maxNativeZoom": 20,
+  "noWrap": false,
+  "attribution": "\u0026copy; \u003ca href=\"https://www.openstreetmap.org/copyright\"\u003eOpenStreetMap\u003c/a\u003e contributors \u0026copy; \u003ca href=\"https://carto.com/attributions\"\u003eCARTO\u003c/a\u003e",
+  "subdomains": "abcd",
+  "detectRetina": false,
+  "tms": false,
+  "opacity": 1,
+}
+
+            );
+        
+    
+            tile_layer_0c042998e8213dafb8fc6600a29b94c1.addTo(map_f67da8de1ead8034b9c1ea86eeade67b);
+        
+    
+            var feature_group_08b46d0c459feaa62b446c78774e5317 = L.featureGroup(
+                {
+}
+            );
+        
+    
+            var circle_marker_13dd11e03c470a91da7a93ff419199f4 = L.circleMarker(
+                [5.6085, -0.2193],
+                {"bubblingMouseEvents": true, "color": "#8c9eff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#8c9eff", "fillOpacity": 0.85, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 4.1066666666666665, "stroke": true, "weight": 3}
+            ).addTo(feature_group_08b46d0c459feaa62b446c78774e5317);
+        
+    
+        var popup_34d532a8dd87024161ae6004dd382418 = L.popup({
+  "maxWidth": 260,
+});
+
+        
+            
+                var html_57713adde2a7b43c1356d20682bf0908 = $(`<div id="html_57713adde2a7b43c1356d20682bf0908" style="width: 100.0%; height: 100.0%;"><b>Achimota Substation</b><br>Region: Greater Accra<br>Voltage: 11 kV<br>Capacity: 6.4 MVA<br>Commissioned: 2008<br>Status: Active</div>`)[0];
+                popup_34d532a8dd87024161ae6004dd382418.setContent(html_57713adde2a7b43c1356d20682bf0908);
+            
+        
+
+        circle_marker_13dd11e03c470a91da7a93ff419199f4.bindPopup(popup_34d532a8dd87024161ae6004dd382418)
+        ;
+
+        
+    
+    
+            var circle_marker_50adb975a1eda7d682ad0dd90b55516a = L.circleMarker(
+                [5.6596, -0.0226],
+                {"bubblingMouseEvents": true, "color": "#e53935", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#e53935", "fillOpacity": 0.85, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 4.808333333333334, "stroke": true, "weight": 3}
+            ).addTo(feature_group_08b46d0c459feaa62b446c78774e5317);
+        
+    
+        var popup_716859c52086553612cb0c2386561d37 = L.popup({
+  "maxWidth": 260,
+});
+
+        
+            
+                var html_b89df799d4c4e7c18cb0a9890bfc73c6 = $(`<div id="html_b89df799d4c4e7c18cb0a9890bfc73c6" style="width: 100.0%; height: 100.0%;"><b>Tema Substation</b><br>Region: Greater Accra<br>Voltage: 330 kV<br>Capacity: 48.5 MVA<br>Commissioned: 1997<br>Status: Active</div>`)[0];
+                popup_716859c52086553612cb0c2386561d37.setContent(html_b89df799d4c4e7c18cb0a9890bfc73c6);
+            
+        
+
+        circle_marker_50adb975a1eda7d682ad0dd90b55516a.bindPopup(popup_716859c52086553612cb0c2386561d37)
+        ;
+
+        
+    
+    
+            var circle_marker_7d04d8cb5c9ce7fdcaa1705fe199e22f = L.circleMarker(
+                [5.563, -0.2971],
+                {"bubblingMouseEvents": true, "color": "#e53935", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#e53935", "fillOpacity": 0.85, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 4.42, "stroke": true, "weight": 3}
+            ).addTo(feature_group_08b46d0c459feaa62b446c78774e5317);
+        
+    
+        var popup_d9bf31da1c9f641bdfc6dc8d727289b8 = L.popup({
+  "maxWidth": 260,
+});
+
+        
+            
+                var html_e669b7534e6f500e3a62ad6e16ce1822 = $(`<div id="html_e669b7534e6f500e3a62ad6e16ce1822" style="width: 100.0%; height: 100.0%;"><b>Mallam Substation</b><br>Region: Greater Accra<br>Voltage: 330 kV<br>Capacity: 25.2 MVA<br>Commissioned: 1979<br>Status: Active</div>`)[0];
+                popup_d9bf31da1c9f641bdfc6dc8d727289b8.setContent(html_e669b7534e6f500e3a62ad6e16ce1822);
+            
+        
+
+        circle_marker_7d04d8cb5c9ce7fdcaa1705fe199e22f.bindPopup(popup_d9bf31da1c9f641bdfc6dc8d727289b8)
+        ;
+
+        
+    
+    
+            var circle_marker_7f70590b20c6bfae656a502036dc761e = L.circleMarker(
+                [5.6401, -0.1799],
+                {"bubblingMouseEvents": true, "color": "#ff9800", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#ff9800", "fillOpacity": 0.85, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 8.031666666666666, "stroke": true, "weight": 3}
+            ).addTo(feature_group_08b46d0c459feaa62b446c78774e5317);
+        
+    
+        var popup_4d6d40cee57843cb4c5caf2992eafe0a = L.popup({
+  "maxWidth": 260,
+});
+
+        
+            
+                var html_5b5c4074ac309cf3f11f1f9067164b79 = $(`<div id="html_5b5c4074ac309cf3f11f1f9067164b79" style="width: 100.0%; height: 100.0%;"><b>Legon Substation</b><br>Region: Greater Accra<br>Voltage: 161 kV<br>Capacity: 241.9 MVA<br>Commissioned: 2009<br>Status: Active</div>`)[0];
+                popup_4d6d40cee57843cb4c5caf2992eafe0a.setContent(html_5b5c4074ac309cf3f11f1f9067164b79);
+            
+        
+
+        circle_marker_7f70590b20c6bfae656a502036dc761e.bindPopup(popup_4d6d40cee57843cb4c5caf2992eafe0a)
+        ;
+
+        
+    
+    
+            var circle_marker_d0cac38c3e5a119b9e2382f9891540c6 = L.circleMarker(
+                [5.5691, -0.2413],
+                {"bubblingMouseEvents": true, "color": "#ff9800", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#ff9800", "fillOpacity": 0.85, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6.433333333333334, "stroke": true, "weight": 3}
+            ).addTo(feature_group_08b46d0c459feaa62b446c78774e5317);
+        
+    
+        var popup_9aa2d466b13502e369bca02c5c9040c7 = L.popup({
+  "maxWidth": 260,
+});
+
+        
+            
+                var html_2b416469049728724a9d20ae14f96f7e = $(`<div id="html_2b416469049728724a9d20ae14f96f7e" style="width: 100.0%; height: 100.0%;"><b>Kaneshie Substation</b><br>Region: Greater Accra<br>Voltage: 161 kV<br>Capacity: 146.0 MVA<br>Commissioned: 1970<br>Status: Active</div>`)[0];
+                popup_9aa2d466b13502e369bca02c5c9040c7.setContent(html_2b416469049728724a9d20ae14f96f7e);
+            
+        
+
+        circle_marker_d0cac38c3e5a119b9e2382f9891540c6.bindPopup(popup_9aa2d466b13502e369bca02c5c9040c7)
+        ;
+
+        
+    
+    
+            var circle_marker_e2670fa6576026b6caa0cd3021b5ef5f = L.circleMarker(
+                [5.5921, -0.1439],
+                {"bubblingMouseEvents": true, "color": "#ff9800", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#ff9800", "fillOpacity": 0.85, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 4.87, "stroke": true, "weight": 3}
+            ).addTo(feature_group_08b46d0c459feaa62b446c78774e5317);
+        
+    
+        var popup_d7cb2eea98f4000ccbfc9e6e7e2727f2 = L.popup({
+  "maxWidth": 260,
+});
+
+        
+            
+                var html_7e00d40f8376c5e9febb53203d9b6141 = $(`<div id="html_7e00d40f8376c5e9febb53203d9b6141" style="width: 100.0%; height: 100.0%;"><b>Aboadze Junction Substation</b><br>Region: Greater Accra<br>Voltage: 161 kV<br>Capacity: 52.2 MVA<br>Commissioned: 2011<br>Status: Active</div>`)[0];
+                popup_d7cb2eea98f4000ccbfc9e6e7e2727f2.setContent(html_7e00d40f8376c5e9febb53203d9b6141);
+            
+        
+
+        circle_marker_e2670fa6576026b6caa0cd3021b5ef5f.bindPopup(popup_d7cb2eea98f4000ccbfc9e6e7e2727f2)
+        ;
+
+        
+    
+    
+            var circle_marker_54059b5615e8ac92554435916fdd9c93 = L.circleMarker(
+                [6.6856, -1.623],
+                {"bubblingMouseEvents": true, "color": "#ff9800", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#ff9800", "fillOpacity": 0.85, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 7.6899999999999995, "stroke": true, "weight": 3}
+            ).addTo(feature_group_08b46d0c459feaa62b446c78774e5317);
+        
+    
+        var popup_67fdd1ed3330fd0bdd58160591aef1bb = L.popup({
+  "maxWidth": 260,
+});
+
+        
+            
+                var html_d5c9352cb3105f0db4eaf766ce34e811 = $(`<div id="html_d5c9352cb3105f0db4eaf766ce34e811" style="width: 100.0%; height: 100.0%;"><b>Kumasi Central Substation</b><br>Region: Ashanti<br>Voltage: 161 kV<br>Capacity: 221.4 MVA<br>Commissioned: 2018<br>Status: Active</div>`)[0];
+                popup_67fdd1ed3330fd0bdd58160591aef1bb.setContent(html_d5c9352cb3105f0db4eaf766ce34e811);
+            
+        
+
+        circle_marker_54059b5615e8ac92554435916fdd9c93.bindPopup(popup_67fdd1ed3330fd0bdd58160591aef1bb)
+        ;
+
+        
+    
+    
+            var circle_marker_c1117c48b89eab1ae3600be1bbd32ab0 = L.circleMarker(
+                [6.7128, -1.4716],
+                {"bubblingMouseEvents": true, "color": "#e53935", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#e53935", "fillOpacity": 0.85, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 9.931666666666667, "stroke": true, "weight": 3}
+            ).addTo(feature_group_08b46d0c459feaa62b446c78774e5317);
+        
+    
+        var popup_0fb8c9675d30770969132a702ebce5a4 = L.popup({
+  "maxWidth": 260,
+});
+
+        
+            
+                var html_ee25955ebbd70e48b91e6e4f5033003b = $(`<div id="html_ee25955ebbd70e48b91e6e4f5033003b" style="width: 100.0%; height: 100.0%;"><b>Ejisu Substation</b><br>Region: Ashanti<br>Voltage: 330 kV<br>Capacity: 355.9 MVA<br>Commissioned: 2007<br>Status: Active</div>`)[0];
+                popup_0fb8c9675d30770969132a702ebce5a4.setContent(html_ee25955ebbd70e48b91e6e4f5033003b);
+            
+        
+
+        circle_marker_c1117c48b89eab1ae3600be1bbd32ab0.bindPopup(popup_0fb8c9675d30770969132a702ebce5a4)
+        ;
+
+        
+    
+    
+            var circle_marker_c92b69b8642806210a2aef00fc7dbbd1 = L.circleMarker(
+                [6.2091, -1.6557],
+                {"bubblingMouseEvents": true, "color": "#00bcd4", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#00bcd4", "fillOpacity": 0.85, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 4.791666666666667, "stroke": true, "weight": 3}
+            ).addTo(feature_group_08b46d0c459feaa62b446c78774e5317);
+        
+    
+        var popup_691caf9dd66d0a3a7a5cec7d3db681fe = L.popup({
+  "maxWidth": 260,
+});
+
+        
+            
+                var html_6e703479560690f1d206d13a35a9b6f1 = $(`<div id="html_6e703479560690f1d206d13a35a9b6f1" style="width: 100.0%; height: 100.0%;"><b>Obuasi Substation</b><br>Region: Ashanti<br>Voltage: 33 kV<br>Capacity: 47.5 MVA<br>Commissioned: 1989<br>Status: Active</div>`)[0];
+                popup_691caf9dd66d0a3a7a5cec7d3db681fe.setContent(html_6e703479560690f1d206d13a35a9b6f1);
+            
+        
+
+        circle_marker_c92b69b8642806210a2aef00fc7dbbd1.bindPopup(popup_691caf9dd66d0a3a7a5cec7d3db681fe)
+        ;
+
+        
+    
+    
+            var circle_marker_498ad4c7a76f08a3904f84b2b4802be6 = L.circleMarker(
+                [7.0553, -1.4029],
+                {"bubblingMouseEvents": true, "color": "#4caf50", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#4caf50", "fillOpacity": 0.85, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 7.16, "stroke": true, "weight": 3}
+            ).addTo(feature_group_08b46d0c459feaa62b446c78774e5317);
+        
+    
+        var popup_3e5c3bcc5411a6a0b54b8471606305eb = L.popup({
+  "maxWidth": 260,
+});
+
+        
+            
+                var html_ddcd710314a59463ae284201ee4029fe = $(`<div id="html_ddcd710314a59463ae284201ee4029fe" style="width: 100.0%; height: 100.0%;"><b>Mampong Substation</b><br>Region: Ashanti<br>Voltage: 69 kV<br>Capacity: 189.6 MVA<br>Commissioned: 2007<br>Status: Active</div>`)[0];
+                popup_3e5c3bcc5411a6a0b54b8471606305eb.setContent(html_ddcd710314a59463ae284201ee4029fe);
+            
+        
+
+        circle_marker_498ad4c7a76f08a3904f84b2b4802be6.bindPopup(popup_3e5c3bcc5411a6a0b54b8471606305eb)
+        ;
+
+        
+    
+    
+            var circle_marker_96e69f1d33fcb57a08907de5d4f54fea = L.circleMarker(
+                [6.6094, -1.2163],
+                {"bubblingMouseEvents": true, "color": "#4caf50", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#4caf50", "fillOpacity": 0.85, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 8.753333333333334, "stroke": true, "weight": 3}
+            ).addTo(feature_group_08b46d0c459feaa62b446c78774e5317);
+        
+    
+        var popup_21b53e11ca3cec66b1a64ba08245ff6c = L.popup({
+  "maxWidth": 260,
+});
+
+        
+            
+                var html_e69459a2ccb75857bc465d94af7933e8 = $(`<div id="html_e69459a2ccb75857bc465d94af7933e8" style="width: 100.0%; height: 100.0%;"><b>Konongo Substation</b><br>Region: Ashanti<br>Voltage: 69 kV<br>Capacity: 285.2 MVA<br>Commissioned: 1999<br>Status: Active</div>`)[0];
+                popup_21b53e11ca3cec66b1a64ba08245ff6c.setContent(html_e69459a2ccb75857bc465d94af7933e8);
+            
+        
+
+        circle_marker_96e69f1d33fcb57a08907de5d4f54fea.bindPopup(popup_21b53e11ca3cec66b1a64ba08245ff6c)
+        ;
+
+        
+    
+    
+            var circle_marker_6cb201eb6654baa659bc169485653a90 = L.circleMarker(
+                [4.9048, -1.7562],
+                {"bubblingMouseEvents": true, "color": "#00bcd4", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#00bcd4", "fillOpacity": 0.85, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 4.233333333333333, "stroke": true, "weight": 3}
+            ).addTo(feature_group_08b46d0c459feaa62b446c78774e5317);
+        
+    
+        var popup_71cd9b135151b1b83d0b23658b63f4a3 = L.popup({
+  "maxWidth": 260,
+});
+
+        
+            
+                var html_9c0e11dc848a3ccd3f53dcea8f9314b8 = $(`<div id="html_9c0e11dc848a3ccd3f53dcea8f9314b8" style="width: 100.0%; height: 100.0%;"><b>Takoradi Substation</b><br>Region: Western<br>Voltage: 33 kV<br>Capacity: 14.0 MVA<br>Commissioned: 2000<br>Status: Active</div>`)[0];
+                popup_71cd9b135151b1b83d0b23658b63f4a3.setContent(html_9c0e11dc848a3ccd3f53dcea8f9314b8);
+            
+        
+
+        circle_marker_6cb201eb6654baa659bc169485653a90.bindPopup(popup_71cd9b135151b1b83d0b23658b63f4a3)
+        ;
+
+        
+    
+    
+            var circle_marker_161ec7d2048b09292b6378a7531f8226 = L.circleMarker(
+                [4.9905, -1.7714],
+                {"bubblingMouseEvents": true, "color": "#00bcd4", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#00bcd4", "fillOpacity": 0.85, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 4.711666666666667, "stroke": true, "weight": 3}
+            ).addTo(feature_group_08b46d0c459feaa62b446c78774e5317);
+        
+    
+        var popup_9c9393b3a3c4ab4e3c47dd1018f69e0b = L.popup({
+  "maxWidth": 260,
+});
+
+        
+            
+                var html_97212b01e9b0982b8b858c79953e57c4 = $(`<div id="html_97212b01e9b0982b8b858c79953e57c4" style="width: 100.0%; height: 100.0%;"><b>Aboadze Substation</b><br>Region: Western<br>Voltage: 33 kV<br>Capacity: 42.7 MVA<br>Commissioned: 1967<br>Status: Active</div>`)[0];
+                popup_9c9393b3a3c4ab4e3c47dd1018f69e0b.setContent(html_97212b01e9b0982b8b858c79953e57c4);
+            
+        
+
+        circle_marker_161ec7d2048b09292b6378a7531f8226.bindPopup(popup_9c9393b3a3c4ab4e3c47dd1018f69e0b)
+        ;
+
+        
+    
+    
+            var circle_marker_df2065d2cd0cbee2d6bf898eb3773687 = L.circleMarker(
+                [5.3093, -1.9927],
+                {"bubblingMouseEvents": true, "color": "#4caf50", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#4caf50", "fillOpacity": 0.85, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6.823333333333333, "stroke": true, "weight": 3}
+            ).addTo(feature_group_08b46d0c459feaa62b446c78774e5317);
+        
+    
+        var popup_a98633f95bdaa15cc4377b7209ae33e4 = L.popup({
+  "maxWidth": 260,
+});
+
+        
+            
+                var html_d6a433ee4078b3ed46a3d7176b86557b = $(`<div id="html_d6a433ee4078b3ed46a3d7176b86557b" style="width: 100.0%; height: 100.0%;"><b>Tarkwa Substation</b><br>Region: Western<br>Voltage: 69 kV<br>Capacity: 169.4 MVA<br>Commissioned: 2010<br>Status: Active</div>`)[0];
+                popup_a98633f95bdaa15cc4377b7209ae33e4.setContent(html_d6a433ee4078b3ed46a3d7176b86557b);
+            
+        
+
+        circle_marker_df2065d2cd0cbee2d6bf898eb3773687.bindPopup(popup_a98633f95bdaa15cc4377b7209ae33e4)
+        ;
+
+        
+    
+    
+            var circle_marker_2ed2abcf0b6faec271bf726a5ce5f0b4 = L.circleMarker(
+                [4.8747, -2.2381],
+                {"bubblingMouseEvents": true, "color": "#4caf50", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#4caf50", "fillOpacity": 0.85, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 5.615, "stroke": true, "weight": 3}
+            ).addTo(feature_group_08b46d0c459feaa62b446c78774e5317);
+        
+    
+        var popup_15b13bad9daf41b1a28bc8ed954b6d58 = L.popup({
+  "maxWidth": 260,
+});
+
+        
+            
+                var html_a923bf1d14a66b6aa1aabe18c448adf0 = $(`<div id="html_a923bf1d14a66b6aa1aabe18c448adf0" style="width: 100.0%; height: 100.0%;"><b>Axim Substation</b><br>Region: Western<br>Voltage: 69 kV<br>Capacity: 96.9 MVA<br>Commissioned: 1974<br>Status: Active</div>`)[0];
+                popup_15b13bad9daf41b1a28bc8ed954b6d58.setContent(html_a923bf1d14a66b6aa1aabe18c448adf0);
+            
+        
+
+        circle_marker_2ed2abcf0b6faec271bf726a5ce5f0b4.bindPopup(popup_15b13bad9daf41b1a28bc8ed954b6d58)
+        ;
+
+        
+    
+    
+            var circle_marker_fdcaf3e6378ed4b7a26408035d045b95 = L.circleMarker(
+                [5.1068, -1.2411],
+                {"bubblingMouseEvents": true, "color": "#4caf50", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#4caf50", "fillOpacity": 0.85, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 5.1466666666666665, "stroke": true, "weight": 3}
+            ).addTo(feature_group_08b46d0c459feaa62b446c78774e5317);
+        
+    
+        var popup_71451f413fe7e38cc02cf5da30b258aa = L.popup({
+  "maxWidth": 260,
+});
+
+        
+            
+                var html_010f129b65a994e51f1518155a8d5c8b = $(`<div id="html_010f129b65a994e51f1518155a8d5c8b" style="width: 100.0%; height: 100.0%;"><b>Cape Coast Substation</b><br>Region: Central<br>Voltage: 69 kV<br>Capacity: 68.8 MVA<br>Commissioned: 1992<br>Status: Active</div>`)[0];
+                popup_71451f413fe7e38cc02cf5da30b258aa.setContent(html_010f129b65a994e51f1518155a8d5c8b);
+            
+        
+
+        circle_marker_fdcaf3e6378ed4b7a26408035d045b95.bindPopup(popup_71451f413fe7e38cc02cf5da30b258aa)
+        ;
+
+        
+    
+    
+            var circle_marker_e2722c6b8dd23b3a519755aa9dc9f548 = L.circleMarker(
+                [5.362, -0.6218],
+                {"bubblingMouseEvents": true, "color": "#e53935", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#e53935", "fillOpacity": 0.85, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6.8133333333333335, "stroke": true, "weight": 3}
+            ).addTo(feature_group_08b46d0c459feaa62b446c78774e5317);
+        
+    
+        var popup_63295a1c6fc75dc656fa31369ffa7357 = L.popup({
+  "maxWidth": 260,
+});
+
+        
+            
+                var html_7211dbbae68550194aef6284c6d3f4ee = $(`<div id="html_7211dbbae68550194aef6284c6d3f4ee" style="width: 100.0%; height: 100.0%;"><b>Winneba Substation</b><br>Region: Central<br>Voltage: 330 kV<br>Capacity: 168.8 MVA<br>Commissioned: 1970<br>Status: Active</div>`)[0];
+                popup_63295a1c6fc75dc656fa31369ffa7357.setContent(html_7211dbbae68550194aef6284c6d3f4ee);
+            
+        
+
+        circle_marker_e2722c6b8dd23b3a519755aa9dc9f548.bindPopup(popup_63295a1c6fc75dc656fa31369ffa7357)
+        ;
+
+        
+    
+    
+            var circle_marker_555f3dd12d7c6da952cd1aa84f3b599c = L.circleMarker(
+                [5.5262, -0.4124],
+                {"bubblingMouseEvents": true, "color": "#8c9eff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#8c9eff", "fillOpacity": 0.85, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 4.873333333333333, "stroke": true, "weight": 3}
+            ).addTo(feature_group_08b46d0c459feaa62b446c78774e5317);
+        
+    
+        var popup_d4428675e6ad43e1f457fcf781a69bc7 = L.popup({
+  "maxWidth": 260,
+});
+
+        
+            
+                var html_8ab9d9227df090e2d72c562d8bf6665c = $(`<div id="html_8ab9d9227df090e2d72c562d8bf6665c" style="width: 100.0%; height: 100.0%;"><b>Kasoa Substation</b><br>Region: Central<br>Voltage: 11 kV<br>Capacity: 52.4 MVA<br>Commissioned: 2003<br>Status: Active</div>`)[0];
+                popup_d4428675e6ad43e1f457fcf781a69bc7.setContent(html_8ab9d9227df090e2d72c562d8bf6665c);
+            
+        
+
+        circle_marker_555f3dd12d7c6da952cd1aa84f3b599c.bindPopup(popup_d4428675e6ad43e1f457fcf781a69bc7)
+        ;
+
+        
+    
+    
+            var circle_marker_3318c049359a83eb73d4ff0b8b71dd98 = L.circleMarker(
+                [5.6984, -1.497],
+                {"bubblingMouseEvents": true, "color": "#8c9eff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#8c9eff", "fillOpacity": 0.85, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 4.4366666666666665, "stroke": true, "weight": 3}
+            ).addTo(feature_group_08b46d0c459feaa62b446c78774e5317);
+        
+    
+        var popup_982cc5a97598d164b8abaad217ddead5 = L.popup({
+  "maxWidth": 260,
+});
+
+        
+            
+                var html_a30e2542e575f7bec0e1df7f25a0bb0d = $(`<div id="html_a30e2542e575f7bec0e1df7f25a0bb0d" style="width: 100.0%; height: 100.0%;"><b>Assin Fosu Substation</b><br>Region: Central<br>Voltage: 11 kV<br>Capacity: 26.2 MVA<br>Commissioned: 2000<br>Status: Active</div>`)[0];
+                popup_982cc5a97598d164b8abaad217ddead5.setContent(html_a30e2542e575f7bec0e1df7f25a0bb0d);
+            
+        
+
+        circle_marker_3318c049359a83eb73d4ff0b8b71dd98.bindPopup(popup_982cc5a97598d164b8abaad217ddead5)
+        ;
+
+        
+    
+    
+            var circle_marker_76bc2f32ac73e89d8e0fc8f19fe0b680 = L.circleMarker(
+                [6.1017, -0.254],
+                {"bubblingMouseEvents": true, "color": "#8c9eff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#8c9eff", "fillOpacity": 0.85, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 4.706666666666667, "stroke": true, "weight": 3}
+            ).addTo(feature_group_08b46d0c459feaa62b446c78774e5317);
+        
+    
+        var popup_7c299262d43bc05bdcae8240386745f9 = L.popup({
+  "maxWidth": 260,
+});
+
+        
+            
+                var html_bb126808ce9641723e6cba7ac85855b1 = $(`<div id="html_bb126808ce9641723e6cba7ac85855b1" style="width: 100.0%; height: 100.0%;"><b>Koforidua Substation</b><br>Region: Eastern<br>Voltage: 11 kV<br>Capacity: 42.4 MVA<br>Commissioned: 2014<br>Status: Active</div>`)[0];
+                popup_7c299262d43bc05bdcae8240386745f9.setContent(html_bb126808ce9641723e6cba7ac85855b1);
+            
+        
+
+        circle_marker_76bc2f32ac73e89d8e0fc8f19fe0b680.bindPopup(popup_7c299262d43bc05bdcae8240386745f9)
+        ;
+
+        
+    
+    
+            var circle_marker_9a4830635230e5638d7134fe660d5ec1 = L.circleMarker(
+                [6.2991, 0.0641],
+                {"bubblingMouseEvents": true, "color": "#4caf50", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#4caf50", "fillOpacity": 0.85, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 4.965, "stroke": true, "weight": 3}
+            ).addTo(feature_group_08b46d0c459feaa62b446c78774e5317);
+        
+    
+        var popup_1cff53fad65e0d7c126e370276b0e91d = L.popup({
+  "maxWidth": 260,
+});
+
+        
+            
+                var html_9eba1c4772e4b6575f3cc403d581eac9 = $(`<div id="html_9eba1c4772e4b6575f3cc403d581eac9" style="width: 100.0%; height: 100.0%;"><b>Akosombo Substation</b><br>Region: Eastern<br>Voltage: 69 kV<br>Capacity: 57.9 MVA<br>Commissioned: 2021<br>Status: Active</div>`)[0];
+                popup_1cff53fad65e0d7c126e370276b0e91d.setContent(html_9eba1c4772e4b6575f3cc403d581eac9);
+            
+        
+
+        circle_marker_9a4830635230e5638d7134fe660d5ec1.bindPopup(popup_1cff53fad65e0d7c126e370276b0e91d)
+        ;
+
+        
+    
+    
+            var circle_marker_80410ff2185912fa93ef0baec3311b21 = L.circleMarker(
+                [6.5502, -0.7749],
+                {"bubblingMouseEvents": true, "color": "#4caf50", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#4caf50", "fillOpacity": 0.85, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10.486666666666666, "stroke": true, "weight": 3}
+            ).addTo(feature_group_08b46d0c459feaa62b446c78774e5317);
+        
+    
+        var popup_e2bb98a4b20f12d85bc6114027e18b48 = L.popup({
+  "maxWidth": 260,
+});
+
+        
+            
+                var html_9cb2902fb0cdbb108a1c01a0f309090d = $(`<div id="html_9cb2902fb0cdbb108a1c01a0f309090d" style="width: 100.0%; height: 100.0%;"><b>Nkawkaw Substation</b><br>Region: Eastern<br>Voltage: 69 kV<br>Capacity: 389.2 MVA<br>Commissioned: 2005<br>Status: Active</div>`)[0];
+                popup_e2bb98a4b20f12d85bc6114027e18b48.setContent(html_9cb2902fb0cdbb108a1c01a0f309090d);
+            
+        
+
+        circle_marker_80410ff2185912fa93ef0baec3311b21.bindPopup(popup_e2bb98a4b20f12d85bc6114027e18b48)
+        ;
+
+        
+    
+    
+            var circle_marker_f77104a32e8289d83cf572c4b8b70664 = L.circleMarker(
+                [6.035, -0.4535],
+                {"bubblingMouseEvents": true, "color": "#4caf50", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#4caf50", "fillOpacity": 0.85, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 9.65, "stroke": true, "weight": 3}
+            ).addTo(feature_group_08b46d0c459feaa62b446c78774e5317);
+        
+    
+        var popup_7fb2a137accfce3a6684f5c0512b07df = L.popup({
+  "maxWidth": 260,
+});
+
+        
+            
+                var html_eaf8a6761adea7f2788103f13f78c04b = $(`<div id="html_eaf8a6761adea7f2788103f13f78c04b" style="width: 100.0%; height: 100.0%;"><b>Suhum Substation</b><br>Region: Eastern<br>Voltage: 69 kV<br>Capacity: 339.0 MVA<br>Commissioned: 1975<br>Status: Active</div>`)[0];
+                popup_7fb2a137accfce3a6684f5c0512b07df.setContent(html_eaf8a6761adea7f2788103f13f78c04b);
+            
+        
+
+        circle_marker_f77104a32e8289d83cf572c4b8b70664.bindPopup(popup_7fb2a137accfce3a6684f5c0512b07df)
+        ;
+
+        
+    
+    
+            var circle_marker_8d6e7001e7e6fcb8bc5cf61623305f30 = L.circleMarker(
+                [6.6194, 0.473],
+                {"bubblingMouseEvents": true, "color": "#e53935", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#e53935", "fillOpacity": 0.85, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 10.368333333333334, "stroke": true, "weight": 3}
+            ).addTo(feature_group_08b46d0c459feaa62b446c78774e5317);
+        
+    
+        var popup_d2f69cde2d15cfed9f6f848fd01eb1b9 = L.popup({
+  "maxWidth": 260,
+});
+
+        
+            
+                var html_287c7cae809765cd0d078dd7c8fe081d = $(`<div id="html_287c7cae809765cd0d078dd7c8fe081d" style="width: 100.0%; height: 100.0%;"><b>Ho Substation</b><br>Region: Volta<br>Voltage: 330 kV<br>Capacity: 382.1 MVA<br>Commissioned: 1996<br>Status: Active</div>`)[0];
+                popup_d2f69cde2d15cfed9f6f848fd01eb1b9.setContent(html_287c7cae809765cd0d078dd7c8fe081d);
+            
+        
+
+        circle_marker_8d6e7001e7e6fcb8bc5cf61623305f30.bindPopup(popup_d2f69cde2d15cfed9f6f848fd01eb1b9)
+        ;
+
+        
+    
+    
+            var circle_marker_012229c04226a60fa38217cedc8349c9 = L.circleMarker(
+                [6.1597, 0.1061],
+                {"bubblingMouseEvents": true, "color": "#8c9eff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#8c9eff", "fillOpacity": 0.85, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 4.1866666666666665, "stroke": true, "weight": 3}
+            ).addTo(feature_group_08b46d0c459feaa62b446c78774e5317);
+        
+    
+        var popup_8de4fd0d904a524987b11d5d2cfc47eb = L.popup({
+  "maxWidth": 260,
+});
+
+        
+            
+                var html_35afdc6f074ad9ae619bae1301075aaf = $(`<div id="html_35afdc6f074ad9ae619bae1301075aaf" style="width: 100.0%; height: 100.0%;"><b>Kpong Substation</b><br>Region: Volta<br>Voltage: 11 kV<br>Capacity: 11.2 MVA<br>Commissioned: 1980<br>Status: Active</div>`)[0];
+                popup_8de4fd0d904a524987b11d5d2cfc47eb.setContent(html_35afdc6f074ad9ae619bae1301075aaf);
+            
+        
+
+        circle_marker_012229c04226a60fa38217cedc8349c9.bindPopup(popup_8de4fd0d904a524987b11d5d2cfc47eb)
+        ;
+
+        
+    
+    
+            var circle_marker_8442992e968cdb381e53afa21f23b35f = L.circleMarker(
+                [7.1436, 0.4766],
+                {"bubblingMouseEvents": true, "color": "#8c9eff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#8c9eff", "fillOpacity": 0.85, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 4.303333333333334, "stroke": true, "weight": 3}
+            ).addTo(feature_group_08b46d0c459feaa62b446c78774e5317);
+        
+    
+        var popup_77a87e416f2d36215b1d576db3f966eb = L.popup({
+  "maxWidth": 260,
+});
+
+        
+            
+                var html_a018c53a3d3198a19645c5d9c4cd092e = $(`<div id="html_a018c53a3d3198a19645c5d9c4cd092e" style="width: 100.0%; height: 100.0%;"><b>Hohoe Substation</b><br>Region: Volta<br>Voltage: 11 kV<br>Capacity: 18.2 MVA<br>Commissioned: 2017<br>Status: Active</div>`)[0];
+                popup_77a87e416f2d36215b1d576db3f966eb.setContent(html_a018c53a3d3198a19645c5d9c4cd092e);
+            
+        
+
+        circle_marker_8442992e968cdb381e53afa21f23b35f.bindPopup(popup_77a87e416f2d36215b1d576db3f966eb)
+        ;
+
+        
+    
+    
+            var circle_marker_b6b17f3e6520bd2b0d1a7d4c0b4a34b5 = L.circleMarker(
+                [5.9995, 0.5762],
+                {"bubblingMouseEvents": true, "color": "#8c9eff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#8c9eff", "fillOpacity": 0.85, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 4.98, "stroke": true, "weight": 3}
+            ).addTo(feature_group_08b46d0c459feaa62b446c78774e5317);
+        
+    
+        var popup_d2ca12b4ba59906b0655d4c3cbeea9e6 = L.popup({
+  "maxWidth": 260,
+});
+
+        
+            
+                var html_df07b108e87267b3479c08c9f62aa674 = $(`<div id="html_df07b108e87267b3479c08c9f62aa674" style="width: 100.0%; height: 100.0%;"><b>Sogakope Substation</b><br>Region: Volta<br>Voltage: 11 kV<br>Capacity: 58.8 MVA<br>Commissioned: 2000<br>Status: Active</div>`)[0];
+                popup_d2ca12b4ba59906b0655d4c3cbeea9e6.setContent(html_df07b108e87267b3479c08c9f62aa674);
+            
+        
+
+        circle_marker_b6b17f3e6520bd2b0d1a7d4c0b4a34b5.bindPopup(popup_d2ca12b4ba59906b0655d4c3cbeea9e6)
+        ;
+
+        
+    
+    
+            var circle_marker_fd31e7eb65ad85b5001b50f19bb61c89 = L.circleMarker(
+                [7.3375, -2.3318],
+                {"bubblingMouseEvents": true, "color": "#00bcd4", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#00bcd4", "fillOpacity": 0.85, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 4.326666666666667, "stroke": true, "weight": 3}
+            ).addTo(feature_group_08b46d0c459feaa62b446c78774e5317);
+        
+    
+        var popup_e5de67bda3bb72f2109c2a96922451e0 = L.popup({
+  "maxWidth": 260,
+});
+
+        
+            
+                var html_9e8adb2dde0f68cc36934e8d3b641f16 = $(`<div id="html_9e8adb2dde0f68cc36934e8d3b641f16" style="width: 100.0%; height: 100.0%;"><b>Sunyani Substation</b><br>Region: Bono<br>Voltage: 33 kV<br>Capacity: 19.6 MVA<br>Commissioned: 1999<br>Status: Active</div>`)[0];
+                popup_e5de67bda3bb72f2109c2a96922451e0.setContent(html_9e8adb2dde0f68cc36934e8d3b641f16);
+            
+        
+
+        circle_marker_fd31e7eb65ad85b5001b50f19bb61c89.bindPopup(popup_e5de67bda3bb72f2109c2a96922451e0)
+        ;
+
+        
+    
+    
+            var circle_marker_c3c6a7c2afbf8bffd9e62944fe636776 = L.circleMarker(
+                [7.5934, -1.9405],
+                {"bubblingMouseEvents": true, "color": "#00bcd4", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#00bcd4", "fillOpacity": 0.85, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 4.736666666666666, "stroke": true, "weight": 3}
+            ).addTo(feature_group_08b46d0c459feaa62b446c78774e5317);
+        
+    
+        var popup_44174cf450bed3182796cf3110bbb45f = L.popup({
+  "maxWidth": 260,
+});
+
+        
+            
+                var html_c8072d8172e6467c2d8efcbd561ea166 = $(`<div id="html_c8072d8172e6467c2d8efcbd561ea166" style="width: 100.0%; height: 100.0%;"><b>Techiman Substation</b><br>Region: Bono<br>Voltage: 33 kV<br>Capacity: 44.2 MVA<br>Commissioned: 2022<br>Status: Active</div>`)[0];
+                popup_44174cf450bed3182796cf3110bbb45f.setContent(html_c8072d8172e6467c2d8efcbd561ea166);
+            
+        
+
+        circle_marker_c3c6a7c2afbf8bffd9e62944fe636776.bindPopup(popup_44174cf450bed3182796cf3110bbb45f)
+        ;
+
+        
+    
+    
+            var circle_marker_f3a6b8f69508efd61216474020fab14f = L.circleMarker(
+                [7.4443, -2.5946],
+                {"bubblingMouseEvents": true, "color": "#e53935", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#e53935", "fillOpacity": 0.85, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 7.1466666666666665, "stroke": true, "weight": 3}
+            ).addTo(feature_group_08b46d0c459feaa62b446c78774e5317);
+        
+    
+        var popup_66a72789bcdbd675733946dd211c2d76 = L.popup({
+  "maxWidth": 260,
+});
+
+        
+            
+                var html_703ecf9c45b728ec130cb0f8ff053eb3 = $(`<div id="html_703ecf9c45b728ec130cb0f8ff053eb3" style="width: 100.0%; height: 100.0%;"><b>Berekum Substation</b><br>Region: Bono<br>Voltage: 330 kV<br>Capacity: 188.8 MVA<br>Commissioned: 2000<br>Status: Active</div>`)[0];
+                popup_66a72789bcdbd675733946dd211c2d76.setContent(html_703ecf9c45b728ec130cb0f8ff053eb3);
+            
+        
+
+        circle_marker_f3a6b8f69508efd61216474020fab14f.bindPopup(popup_66a72789bcdbd675733946dd211c2d76)
+        ;
+
+        
+    
+    
+            var circle_marker_90da22d580fa106e574353de344351d2 = L.circleMarker(
+                [9.4072, -0.8508],
+                {"bubblingMouseEvents": true, "color": "#00bcd4", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#00bcd4", "fillOpacity": 0.85, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 4.623333333333333, "stroke": true, "weight": 3}
+            ).addTo(feature_group_08b46d0c459feaa62b446c78774e5317);
+        
+    
+        var popup_dbd00091c74807ba6e52d1522e945cb3 = L.popup({
+  "maxWidth": 260,
+});
+
+        
+            
+                var html_d0bcb4ca4a0b80d13d5b7e3e00d08f5e = $(`<div id="html_d0bcb4ca4a0b80d13d5b7e3e00d08f5e" style="width: 100.0%; height: 100.0%;"><b>Tamale Substation</b><br>Region: Northern<br>Voltage: 33 kV<br>Capacity: 37.4 MVA<br>Commissioned: 1969<br>Status: Inactive</div>`)[0];
+                popup_dbd00091c74807ba6e52d1522e945cb3.setContent(html_d0bcb4ca4a0b80d13d5b7e3e00d08f5e);
+            
+        
+
+        circle_marker_90da22d580fa106e574353de344351d2.bindPopup(popup_dbd00091c74807ba6e52d1522e945cb3)
+        ;
+
+        
+    
+    
+            var circle_marker_e3015b2bda6bd101c2946097ca0106ff = L.circleMarker(
+                [9.4368, -0.0076],
+                {"bubblingMouseEvents": true, "color": "#8c9eff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#8c9eff", "fillOpacity": 0.85, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 4.871666666666666, "stroke": true, "weight": 3}
+            ).addTo(feature_group_08b46d0c459feaa62b446c78774e5317);
+        
+    
+        var popup_5cf9da5159bfc08435afab09e140edf0 = L.popup({
+  "maxWidth": 260,
+});
+
+        
+            
+                var html_9bf730dff7f800b0d3ceaf546ada0725 = $(`<div id="html_9bf730dff7f800b0d3ceaf546ada0725" style="width: 100.0%; height: 100.0%;"><b>Yendi Substation</b><br>Region: Northern<br>Voltage: 11 kV<br>Capacity: 52.3 MVA<br>Commissioned: 1978<br>Status: Active</div>`)[0];
+                popup_5cf9da5159bfc08435afab09e140edf0.setContent(html_9bf730dff7f800b0d3ceaf546ada0725);
+            
+        
+
+        circle_marker_e3015b2bda6bd101c2946097ca0106ff.bindPopup(popup_5cf9da5159bfc08435afab09e140edf0)
+        ;
+
+        
+    
+    
+            var circle_marker_cdbd62689570c63ea02739b41e6b1754 = L.circleMarker(
+                [9.6264, -0.8265],
+                {"bubblingMouseEvents": true, "color": "#e53935", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#e53935", "fillOpacity": 0.85, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 5.098333333333334, "stroke": true, "weight": 3}
+            ).addTo(feature_group_08b46d0c459feaa62b446c78774e5317);
+        
+    
+        var popup_6349b6fb6d7542a7f64754d82f8d7fab = L.popup({
+  "maxWidth": 260,
+});
+
+        
+            
+                var html_d9f1f7dc6b60e711b208ae8dd922192c = $(`<div id="html_d9f1f7dc6b60e711b208ae8dd922192c" style="width: 100.0%; height: 100.0%;"><b>Savelugu Substation</b><br>Region: Northern<br>Voltage: 330 kV<br>Capacity: 65.9 MVA<br>Commissioned: 2015<br>Status: Active</div>`)[0];
+                popup_6349b6fb6d7542a7f64754d82f8d7fab.setContent(html_d9f1f7dc6b60e711b208ae8dd922192c);
+            
+        
+
+        circle_marker_cdbd62689570c63ea02739b41e6b1754.bindPopup(popup_6349b6fb6d7542a7f64754d82f8d7fab)
+        ;
+
+        
+    
+    
+            var circle_marker_6acd03feb0205e43062c7deb13d9841b = L.circleMarker(
+                [10.7789, -0.8524],
+                {"bubblingMouseEvents": true, "color": "#ff9800", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#ff9800", "fillOpacity": 0.85, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 9.431666666666667, "stroke": true, "weight": 3}
+            ).addTo(feature_group_08b46d0c459feaa62b446c78774e5317);
+        
+    
+        var popup_dd2dabc0052ef63de13c6e2f7b2b061b = L.popup({
+  "maxWidth": 260,
+});
+
+        
+            
+                var html_f2638d6d6d29cb17b7cf4caa77180679 = $(`<div id="html_f2638d6d6d29cb17b7cf4caa77180679" style="width: 100.0%; height: 100.0%;"><b>Bolgatanga Substation</b><br>Region: Upper East<br>Voltage: 161 kV<br>Capacity: 325.9 MVA<br>Commissioned: 1992<br>Status: Active</div>`)[0];
+                popup_dd2dabc0052ef63de13c6e2f7b2b061b.setContent(html_f2638d6d6d29cb17b7cf4caa77180679);
+            
+        
+
+        circle_marker_6acd03feb0205e43062c7deb13d9841b.bindPopup(popup_dd2dabc0052ef63de13c6e2f7b2b061b)
+        ;
+
+        
+    
+    
+            var circle_marker_2744a303e61a515be46dcfde70ff97f7 = L.circleMarker(
+                [11.0615, -0.2333],
+                {"bubblingMouseEvents": true, "color": "#ff9800", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#ff9800", "fillOpacity": 0.85, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 7.246666666666667, "stroke": true, "weight": 3}
+            ).addTo(feature_group_08b46d0c459feaa62b446c78774e5317);
+        
+    
+        var popup_44c46c4e95de2883466298c6312e4716 = L.popup({
+  "maxWidth": 260,
+});
+
+        
+            
+                var html_41ab26da0a4a307154dd56aadd4d901e = $(`<div id="html_41ab26da0a4a307154dd56aadd4d901e" style="width: 100.0%; height: 100.0%;"><b>Bawku Substation</b><br>Region: Upper East<br>Voltage: 161 kV<br>Capacity: 194.8 MVA<br>Commissioned: 1971<br>Status: Active</div>`)[0];
+                popup_44c46c4e95de2883466298c6312e4716.setContent(html_41ab26da0a4a307154dd56aadd4d901e);
+            
+        
+
+        circle_marker_2744a303e61a515be46dcfde70ff97f7.bindPopup(popup_44c46c4e95de2883466298c6312e4716)
+        ;
+
+        
+    
+    
+            var circle_marker_53324c1ae623532d4365861f019c2fb5 = L.circleMarker(
+                [10.0682, -2.506],
+                {"bubblingMouseEvents": true, "color": "#8c9eff", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#8c9eff", "fillOpacity": 0.85, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 4.451666666666667, "stroke": true, "weight": 3}
+            ).addTo(feature_group_08b46d0c459feaa62b446c78774e5317);
+        
+    
+        var popup_7af59835151091a30e8098309cad8f3a = L.popup({
+  "maxWidth": 260,
+});
+
+        
+            
+                var html_96a21816d590e486f773303f92a6041a = $(`<div id="html_96a21816d590e486f773303f92a6041a" style="width: 100.0%; height: 100.0%;"><b>Wa Substation</b><br>Region: Upper West<br>Voltage: 11 kV<br>Capacity: 27.1 MVA<br>Commissioned: 1977<br>Status: Active</div>`)[0];
+                popup_7af59835151091a30e8098309cad8f3a.setContent(html_96a21816d590e486f773303f92a6041a);
+            
+        
+
+        circle_marker_53324c1ae623532d4365861f019c2fb5.bindPopup(popup_7af59835151091a30e8098309cad8f3a)
+        ;
+
+        
+    
+    
+            var circle_marker_11b9f9d2f9ce124652b78b78a184e4e9 = L.circleMarker(
+                [11.2, -0.75],
+                {"bubblingMouseEvents": true, "color": "#e53935", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#e53935", "fillOpacity": 0.85, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6.601666666666667, "stroke": true, "weight": 3}
+            ).addTo(feature_group_08b46d0c459feaa62b446c78774e5317);
+        
+    
+        var popup_e4228d7c2a138d76fa24b8252a7c961c = L.popup({
+  "maxWidth": 260,
+});
+
+        
+            
+                var html_4954ecd362d46109defb3c972d0818f0 = $(`<div id="html_4954ecd362d46109defb3c972d0818f0" style="width: 100.0%; height: 100.0%;"><b>Bolgatanga Interconnection</b><br>Region: Burkina Faso border<br>Voltage: 330 kV<br>Capacity: 156.1 MVA<br>Commissioned: 1991<br>Status: Active</div>`)[0];
+                popup_e4228d7c2a138d76fa24b8252a7c961c.setContent(html_4954ecd362d46109defb3c972d0818f0);
+            
+        
+
+        circle_marker_11b9f9d2f9ce124652b78b78a184e4e9.bindPopup(popup_e4228d7c2a138d76fa24b8252a7c961c)
+        ;
+
+        
+    
+    
+            var circle_marker_b8145a7bdbcc58834398550775473434 = L.circleMarker(
+                [5.2, -2.85],
+                {"bubblingMouseEvents": true, "color": "#e53935", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#e53935", "fillOpacity": 0.85, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 8.751666666666667, "stroke": true, "weight": 3}
+            ).addTo(feature_group_08b46d0c459feaa62b446c78774e5317);
+        
+    
+        var popup_3726bd3b106dd71fa78c56691d7a182e = L.popup({
+  "maxWidth": 260,
+});
+
+        
+            
+                var html_80470e97ca151b3d8a122563dae65072 = $(`<div id="html_80470e97ca151b3d8a122563dae65072" style="width: 100.0%; height: 100.0%;"><b>Elubo Border Station</b><br>Region: Cote d'Ivoire border<br>Voltage: 330 kV<br>Capacity: 285.1 MVA<br>Commissioned: 1984<br>Status: Active</div>`)[0];
+                popup_3726bd3b106dd71fa78c56691d7a182e.setContent(html_80470e97ca151b3d8a122563dae65072);
+            
+        
+
+        circle_marker_b8145a7bdbcc58834398550775473434.bindPopup(popup_3726bd3b106dd71fa78c56691d7a182e)
+        ;
+
+        
+    
+    
+            var circle_marker_1ab09a396032a49ded623c55a5f01091 = L.circleMarker(
+                [6.12, 1.19],
+                {"bubblingMouseEvents": true, "color": "#e53935", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#e53935", "fillOpacity": 0.85, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 11.053333333333333, "stroke": true, "weight": 3}
+            ).addTo(feature_group_08b46d0c459feaa62b446c78774e5317);
+        
+    
+        var popup_0a788d1a01e5c6ed80322f09b22707c0 = L.popup({
+  "maxWidth": 260,
+});
+
+        
+            
+                var html_8afe1e496f8f38710087ee086e05d9ed = $(`<div id="html_8afe1e496f8f38710087ee086e05d9ed" style="width: 100.0%; height: 100.0%;"><b>Aflao Border Station</b><br>Region: Togo border<br>Voltage: 330 kV<br>Capacity: 423.2 MVA<br>Commissioned: 2015<br>Status: Active</div>`)[0];
+                popup_0a788d1a01e5c6ed80322f09b22707c0.setContent(html_8afe1e496f8f38710087ee086e05d9ed);
+            
+        
+
+        circle_marker_1ab09a396032a49ded623c55a5f01091.bindPopup(popup_0a788d1a01e5c6ed80322f09b22707c0)
+        ;
+
+        
+    
+    
+            var circle_marker_94aa210594b44037616c6c4659c44b10 = L.circleMarker(
+                [6.13, 1.22],
+                {"bubblingMouseEvents": true, "color": "#ff9800", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#ff9800", "fillOpacity": 0.85, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6.003333333333334, "stroke": true, "weight": 3}
+            ).addTo(feature_group_08b46d0c459feaa62b446c78774e5317);
+        
+    
+        var popup_0aa8e14567967ed41c1474f630b63e95 = L.popup({
+  "maxWidth": 260,
+});
+
+        
+            
+                var html_0d0a6bf8ae98a8b0c6c3b6ce4e603a01 = $(`<div id="html_0d0a6bf8ae98a8b0c6c3b6ce4e603a01" style="width: 100.0%; height: 100.0%;"><b>Lome Transmission Hub</b><br>Region: Togo<br>Voltage: 161 kV<br>Capacity: 120.2 MVA<br>Commissioned: 2014<br>Status: Active</div>`)[0];
+                popup_0aa8e14567967ed41c1474f630b63e95.setContent(html_0d0a6bf8ae98a8b0c6c3b6ce4e603a01);
+            
+        
+
+        circle_marker_94aa210594b44037616c6c4659c44b10.bindPopup(popup_0aa8e14567967ed41c1474f630b63e95)
+        ;
+
+        
+    
+    
+            var circle_marker_56b8e29e82e451b15ab64e8f88153f72 = L.circleMarker(
+                [6.37, 2.43],
+                {"bubblingMouseEvents": true, "color": "#ff9800", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#ff9800", "fillOpacity": 0.85, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 12.126666666666667, "stroke": true, "weight": 3}
+            ).addTo(feature_group_08b46d0c459feaa62b446c78774e5317);
+        
+    
+        var popup_53ce9dcb044784886025724a5d1e7e4b = L.popup({
+  "maxWidth": 260,
+});
+
+        
+            
+                var html_3cb83b2b6f8056bd7ed2d2b9ab9065d7 = $(`<div id="html_3cb83b2b6f8056bd7ed2d2b9ab9065d7" style="width: 100.0%; height: 100.0%;"><b>Cotonou Transmission Hub</b><br>Region: Benin<br>Voltage: 161 kV<br>Capacity: 487.6 MVA<br>Commissioned: 1995<br>Status: Active</div>`)[0];
+                popup_53ce9dcb044784886025724a5d1e7e4b.setContent(html_3cb83b2b6f8056bd7ed2d2b9ab9065d7);
+            
+        
+
+        circle_marker_56b8e29e82e451b15ab64e8f88153f72.bindPopup(popup_53ce9dcb044784886025724a5d1e7e4b)
+        ;
+
+        
+    
+    
+            var circle_marker_72aa78e26324f3ef97c83be001e3e2a7 = L.circleMarker(
+                [5.35, -4.0],
+                {"bubblingMouseEvents": true, "color": "#ff9800", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#ff9800", "fillOpacity": 0.85, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 8.376666666666667, "stroke": true, "weight": 3}
+            ).addTo(feature_group_08b46d0c459feaa62b446c78774e5317);
+        
+    
+        var popup_a31b996c0d7063829d15bf55932e211a = L.popup({
+  "maxWidth": 260,
+});
+
+        
+            
+                var html_aa0f58fbeb168f29db45273b1007136e = $(`<div id="html_aa0f58fbeb168f29db45273b1007136e" style="width: 100.0%; height: 100.0%;"><b>Abidjan Transmission Hub</b><br>Region: Cote d'Ivoire<br>Voltage: 161 kV<br>Capacity: 262.6 MVA<br>Commissioned: 2010<br>Status: Active</div>`)[0];
+                popup_a31b996c0d7063829d15bf55932e211a.setContent(html_aa0f58fbeb168f29db45273b1007136e);
+            
+        
+
+        circle_marker_72aa78e26324f3ef97c83be001e3e2a7.bindPopup(popup_a31b996c0d7063829d15bf55932e211a)
+        ;
+
+        
+    
+    
+            var circle_marker_6b195655b87f3d61c559407e088edb88 = L.circleMarker(
+                [11.18, -4.3],
+                {"bubblingMouseEvents": true, "color": "#ff9800", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#ff9800", "fillOpacity": 0.85, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 11.431666666666667, "stroke": true, "weight": 3}
+            ).addTo(feature_group_08b46d0c459feaa62b446c78774e5317);
+        
+    
+        var popup_9e1ca3e10ab40b4f795c9e9e167fbdfb = L.popup({
+  "maxWidth": 260,
+});
+
+        
+            
+                var html_bfff681018574828dd2ec60529a02ca3 = $(`<div id="html_bfff681018574828dd2ec60529a02ca3" style="width: 100.0%; height: 100.0%;"><b>Bobo-Dioulasso Hub</b><br>Region: Burkina Faso<br>Voltage: 161 kV<br>Capacity: 445.9 MVA<br>Commissioned: 1983<br>Status: Active</div>`)[0];
+                popup_9e1ca3e10ab40b4f795c9e9e167fbdfb.setContent(html_bfff681018574828dd2ec60529a02ca3);
+            
+        
+
+        circle_marker_6b195655b87f3d61c559407e088edb88.bindPopup(popup_9e1ca3e10ab40b4f795c9e9e167fbdfb)
+        ;
+
+        
+    
+    
+            var circle_marker_f352373fb3b704161b51781684f2e733 = L.circleMarker(
+                [9.64, -13.58],
+                {"bubblingMouseEvents": true, "color": "#ff9800", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#ff9800", "fillOpacity": 0.85, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 8.193333333333333, "stroke": true, "weight": 3}
+            ).addTo(feature_group_08b46d0c459feaa62b446c78774e5317);
+        
+    
+        var popup_22995851cd20dfed3392aa97e77ceaf2 = L.popup({
+  "maxWidth": 260,
+});
+
+        
+            
+                var html_7e5e0972b226622be83e78329794fcd4 = $(`<div id="html_7e5e0972b226622be83e78329794fcd4" style="width: 100.0%; height: 100.0%;"><b>Conakry Transmission Hub</b><br>Region: Guinea<br>Voltage: 161 kV<br>Capacity: 251.6 MVA<br>Commissioned: 2004<br>Status: Active</div>`)[0];
+                popup_22995851cd20dfed3392aa97e77ceaf2.setContent(html_7e5e0972b226622be83e78329794fcd4);
+            
+        
+
+        circle_marker_f352373fb3b704161b51781684f2e733.bindPopup(popup_22995851cd20dfed3392aa97e77ceaf2)
+        ;
+
+        
+    
+    
+            feature_group_08b46d0c459feaa62b446c78774e5317.addTo(map_f67da8de1ead8034b9c1ea86eeade67b);
+        
+    
+            var feature_group_07eee3ad96b580fc6e9cd7e203f9d668 = L.featureGroup(
+                {
+}
+            );
+        
+    
+            var poly_line_bad32fd98b82b0e3eb6459004d9c1f66 = L.polyline(
+                [[5.6085, -0.2193], [5.6596, -0.0226]],
+                {"bubblingMouseEvents": true, "color": "#999", "dashArray": null, "dashOffset": null, "fill": false, "fillColor": "#999", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "noClip": false, "opacity": 0.7, "smoothFactor": 1.0, "stroke": true, "weight": 2}
+            ).addTo(feature_group_07eee3ad96b580fc6e9cd7e203f9d668);
+        
+    
+        var popup_0bf7039d18f7078669e5451bd8b9f426 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_00011a4d245c2497141fc7a9c5a26fb5 = $(`<div id="html_00011a4d245c2497141fc7a9c5a26fb5" style="width: 100.0%; height: 100.0%;">Achimota Substation -> Tema Substation (11 kV, 25.2 km, Active)</div>`)[0];
+                popup_0bf7039d18f7078669e5451bd8b9f426.setContent(html_00011a4d245c2497141fc7a9c5a26fb5);
+            
+        
+
+        poly_line_bad32fd98b82b0e3eb6459004d9c1f66.bindPopup(popup_0bf7039d18f7078669e5451bd8b9f426)
+        ;
+
+        
+    
+    
+            var poly_line_de360a965dd6a800fa15bb2877d9a96e = L.polyline(
+                [[5.6085, -0.2193], [5.563, -0.2971]],
+                {"bubblingMouseEvents": true, "color": "#999", "dashArray": null, "dashOffset": null, "fill": false, "fillColor": "#999", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "noClip": false, "opacity": 0.7, "smoothFactor": 1.0, "stroke": true, "weight": 2}
+            ).addTo(feature_group_07eee3ad96b580fc6e9cd7e203f9d668);
+        
+    
+        var popup_36157e88e9dd6d25c26b680be4bdd5ba = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_b59b18e5158f5defe6cf3586a857d892 = $(`<div id="html_b59b18e5158f5defe6cf3586a857d892" style="width: 100.0%; height: 100.0%;">Achimota Substation -> Mallam Substation (11 kV, 11.0 km, Active)</div>`)[0];
+                popup_36157e88e9dd6d25c26b680be4bdd5ba.setContent(html_b59b18e5158f5defe6cf3586a857d892);
+            
+        
+
+        poly_line_de360a965dd6a800fa15bb2877d9a96e.bindPopup(popup_36157e88e9dd6d25c26b680be4bdd5ba)
+        ;
+
+        
+    
+    
+            var poly_line_dd8fef8146d1762609734b0b87c15d2d = L.polyline(
+                [[5.6085, -0.2193], [5.5691, -0.2413]],
+                {"bubblingMouseEvents": true, "color": "#999", "dashArray": null, "dashOffset": null, "fill": false, "fillColor": "#999", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "noClip": false, "opacity": 0.7, "smoothFactor": 1.0, "stroke": true, "weight": 2}
+            ).addTo(feature_group_07eee3ad96b580fc6e9cd7e203f9d668);
+        
+    
+        var popup_1ec1703ad524ca5caf47fa34e7661b16 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_d0d5bd17592186eeb56beba0ebad043b = $(`<div id="html_d0d5bd17592186eeb56beba0ebad043b" style="width: 100.0%; height: 100.0%;">Achimota Substation -> Kaneshie Substation (11 kV, 5.9 km, Active)</div>`)[0];
+                popup_1ec1703ad524ca5caf47fa34e7661b16.setContent(html_d0d5bd17592186eeb56beba0ebad043b);
+            
+        
+
+        poly_line_dd8fef8146d1762609734b0b87c15d2d.bindPopup(popup_1ec1703ad524ca5caf47fa34e7661b16)
+        ;
+
+        
+    
+    
+            var poly_line_0e3b08a4c0d806435d03cad2348b6890 = L.polyline(
+                [[5.6596, -0.0226], [5.563, -0.2971]],
+                {"bubblingMouseEvents": true, "color": "#999", "dashArray": null, "dashOffset": null, "fill": false, "fillColor": "#999", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "noClip": false, "opacity": 0.7, "smoothFactor": 1.0, "stroke": true, "weight": 3.5}
+            ).addTo(feature_group_07eee3ad96b580fc6e9cd7e203f9d668);
+        
+    
+        var popup_99c4af6700fde6eec4d51a4e77da19e0 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_6b94cd63461aea376fd10cb1694d699d = $(`<div id="html_6b94cd63461aea376fd10cb1694d699d" style="width: 100.0%; height: 100.0%;">Tema Substation -> Mallam Substation (330 kV, 34.4 km, Active)</div>`)[0];
+                popup_99c4af6700fde6eec4d51a4e77da19e0.setContent(html_6b94cd63461aea376fd10cb1694d699d);
+            
+        
+
+        poly_line_0e3b08a4c0d806435d03cad2348b6890.bindPopup(popup_99c4af6700fde6eec4d51a4e77da19e0)
+        ;
+
+        
+    
+    
+            var poly_line_5182d3dd67fef09a821f0003608d8de4 = L.polyline(
+                [[5.6596, -0.0226], [5.6401, -0.1799]],
+                {"bubblingMouseEvents": true, "color": "#999", "dashArray": null, "dashOffset": null, "fill": false, "fillColor": "#999", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "noClip": false, "opacity": 0.7, "smoothFactor": 1.0, "stroke": true, "weight": 3.5}
+            ).addTo(feature_group_07eee3ad96b580fc6e9cd7e203f9d668);
+        
+    
+        var popup_0d12a4cafb35974acb01cb69cc846e8b = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_a5a31370971d7ab4d278e0199607d251 = $(`<div id="html_a5a31370971d7ab4d278e0199607d251" style="width: 100.0%; height: 100.0%;">Tema Substation -> Legon Substation (161 kV, 19.5 km, Active)</div>`)[0];
+                popup_0d12a4cafb35974acb01cb69cc846e8b.setContent(html_a5a31370971d7ab4d278e0199607d251);
+            
+        
+
+        poly_line_5182d3dd67fef09a821f0003608d8de4.bindPopup(popup_0d12a4cafb35974acb01cb69cc846e8b)
+        ;
+
+        
+    
+    
+            var poly_line_2901c8ba7db3acbe292b2e92da8f0b47 = L.polyline(
+                [[5.563, -0.2971], [5.6401, -0.1799]],
+                {"bubblingMouseEvents": true, "color": "#999", "dashArray": null, "dashOffset": null, "fill": false, "fillColor": "#999", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "noClip": false, "opacity": 0.7, "smoothFactor": 1.0, "stroke": true, "weight": 3.5}
+            ).addTo(feature_group_07eee3ad96b580fc6e9cd7e203f9d668);
+        
+    
+        var popup_dd2d92bd9104a126718e87247f6ef754 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_7234600708ad110acf34bef68cd3c0c1 = $(`<div id="html_7234600708ad110acf34bef68cd3c0c1" style="width: 100.0%; height: 100.0%;">Mallam Substation -> Legon Substation (161 kV, 17.1 km, Active)</div>`)[0];
+                popup_dd2d92bd9104a126718e87247f6ef754.setContent(html_7234600708ad110acf34bef68cd3c0c1);
+            
+        
+
+        poly_line_2901c8ba7db3acbe292b2e92da8f0b47.bindPopup(popup_dd2d92bd9104a126718e87247f6ef754)
+        ;
+
+        
+    
+    
+            var poly_line_a8f252a57c2cae1fe9eeccdae46fe9c0 = L.polyline(
+                [[5.563, -0.2971], [5.5691, -0.2413]],
+                {"bubblingMouseEvents": true, "color": "#999", "dashArray": null, "dashOffset": null, "fill": false, "fillColor": "#999", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "noClip": false, "opacity": 0.7, "smoothFactor": 1.0, "stroke": true, "weight": 3.5}
+            ).addTo(feature_group_07eee3ad96b580fc6e9cd7e203f9d668);
+        
+    
+        var popup_dfdcbc178cd94d2e6a340712c9d91ad7 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_669700398f16c706d2570ced296ec05b = $(`<div id="html_669700398f16c706d2570ced296ec05b" style="width: 100.0%; height: 100.0%;">Mallam Substation -> Kaneshie Substation (161 kV, 7.0 km, Active)</div>`)[0];
+                popup_dfdcbc178cd94d2e6a340712c9d91ad7.setContent(html_669700398f16c706d2570ced296ec05b);
+            
+        
+
+        poly_line_a8f252a57c2cae1fe9eeccdae46fe9c0.bindPopup(popup_dfdcbc178cd94d2e6a340712c9d91ad7)
+        ;
+
+        
+    
+    
+            var poly_line_d0408f93111cca47c882cb71df86b533 = L.polyline(
+                [[5.563, -0.2971], [5.5921, -0.1439]],
+                {"bubblingMouseEvents": true, "color": "#c0392b", "dashArray": "6", "dashOffset": null, "fill": false, "fillColor": "#c0392b", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "noClip": false, "opacity": 0.7, "smoothFactor": 1.0, "stroke": true, "weight": 3.5}
+            ).addTo(feature_group_07eee3ad96b580fc6e9cd7e203f9d668);
+        
+    
+        var popup_4ac19f2fb6c3d842e56079aa6bca0c3e = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_701f762d3ed6ace8e29af29609eac34e = $(`<div id="html_701f762d3ed6ace8e29af29609eac34e" style="width: 100.0%; height: 100.0%;">Mallam Substation -> Aboadze Junction Substation (161 kV, 22.4 km, Under Maintenance)</div>`)[0];
+                popup_4ac19f2fb6c3d842e56079aa6bca0c3e.setContent(html_701f762d3ed6ace8e29af29609eac34e);
+            
+        
+
+        poly_line_d0408f93111cca47c882cb71df86b533.bindPopup(popup_4ac19f2fb6c3d842e56079aa6bca0c3e)
+        ;
+
+        
+    
+    
+            var poly_line_2ba67433424060f1cda0199abdd71664 = L.polyline(
+                [[5.6401, -0.1799], [5.5691, -0.2413]],
+                {"bubblingMouseEvents": true, "color": "#999", "dashArray": null, "dashOffset": null, "fill": false, "fillColor": "#999", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "noClip": false, "opacity": 0.7, "smoothFactor": 1.0, "stroke": true, "weight": 3.5}
+            ).addTo(feature_group_07eee3ad96b580fc6e9cd7e203f9d668);
+        
+    
+        var popup_48e867be7ef8eb95f2137e5327e94189 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_4398ca56994f6e2d266d3171e002016f = $(`<div id="html_4398ca56994f6e2d266d3171e002016f" style="width: 100.0%; height: 100.0%;">Legon Substation -> Kaneshie Substation (161 kV, 13.4 km, Active)</div>`)[0];
+                popup_48e867be7ef8eb95f2137e5327e94189.setContent(html_4398ca56994f6e2d266d3171e002016f);
+            
+        
+
+        poly_line_2ba67433424060f1cda0199abdd71664.bindPopup(popup_48e867be7ef8eb95f2137e5327e94189)
+        ;
+
+        
+    
+    
+            var poly_line_1a03f93a725951c1e0adda79d969a5c2 = L.polyline(
+                [[5.6401, -0.1799], [5.5921, -0.1439]],
+                {"bubblingMouseEvents": true, "color": "#999", "dashArray": null, "dashOffset": null, "fill": false, "fillColor": "#999", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "noClip": false, "opacity": 0.7, "smoothFactor": 1.0, "stroke": true, "weight": 3.5}
+            ).addTo(feature_group_07eee3ad96b580fc6e9cd7e203f9d668);
+        
+    
+        var popup_7554eeee7e8c4cf86ede9dc234e5459d = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_d0a177cba41f9b97ac89f8852aa409e3 = $(`<div id="html_d0a177cba41f9b97ac89f8852aa409e3" style="width: 100.0%; height: 100.0%;">Legon Substation -> Aboadze Junction Substation (161 kV, 8.4 km, Active)</div>`)[0];
+                popup_7554eeee7e8c4cf86ede9dc234e5459d.setContent(html_d0a177cba41f9b97ac89f8852aa409e3);
+            
+        
+
+        poly_line_1a03f93a725951c1e0adda79d969a5c2.bindPopup(popup_7554eeee7e8c4cf86ede9dc234e5459d)
+        ;
+
+        
+    
+    
+            var poly_line_c31c65c8f24747f6f22a802a138239ce = L.polyline(
+                [[6.6856, -1.623], [7.0553, -1.4029]],
+                {"bubblingMouseEvents": true, "color": "#999", "dashArray": null, "dashOffset": null, "fill": false, "fillColor": "#999", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "noClip": false, "opacity": 0.7, "smoothFactor": 1.0, "stroke": true, "weight": 2}
+            ).addTo(feature_group_07eee3ad96b580fc6e9cd7e203f9d668);
+        
+    
+        var popup_6046e7e3f63eef17926f10c93b640e17 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_8468cc88dd1f36e9ca0a32cd8f125b35 = $(`<div id="html_8468cc88dd1f36e9ca0a32cd8f125b35" style="width: 100.0%; height: 100.0%;">Kumasi Central Substation -> Mampong Substation (69 kV, 53.3 km, Active)</div>`)[0];
+                popup_6046e7e3f63eef17926f10c93b640e17.setContent(html_8468cc88dd1f36e9ca0a32cd8f125b35);
+            
+        
+
+        poly_line_c31c65c8f24747f6f22a802a138239ce.bindPopup(popup_6046e7e3f63eef17926f10c93b640e17)
+        ;
+
+        
+    
+    
+            var poly_line_9bda2809b3db48c966bb7620d5e9f27d = L.polyline(
+                [[6.6856, -1.623], [6.6094, -1.2163]],
+                {"bubblingMouseEvents": true, "color": "#999", "dashArray": null, "dashOffset": null, "fill": false, "fillColor": "#999", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "noClip": false, "opacity": 0.7, "smoothFactor": 1.0, "stroke": true, "weight": 2}
+            ).addTo(feature_group_07eee3ad96b580fc6e9cd7e203f9d668);
+        
+    
+        var popup_36222956f9c82c0d8f20badba7fe134d = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_a6eaad914a93c7923ced5a845bf16e8c = $(`<div id="html_a6eaad914a93c7923ced5a845bf16e8c" style="width: 100.0%; height: 100.0%;">Kumasi Central Substation -> Konongo Substation (69 kV, 50.4 km, Active)</div>`)[0];
+                popup_36222956f9c82c0d8f20badba7fe134d.setContent(html_a6eaad914a93c7923ced5a845bf16e8c);
+            
+        
+
+        poly_line_9bda2809b3db48c966bb7620d5e9f27d.bindPopup(popup_36222956f9c82c0d8f20badba7fe134d)
+        ;
+
+        
+    
+    
+            var poly_line_04aa88c130fc010b06e9ed7b7ae5cd68 = L.polyline(
+                [[6.7128, -1.4716], [6.2091, -1.6557]],
+                {"bubblingMouseEvents": true, "color": "#999", "dashArray": null, "dashOffset": null, "fill": false, "fillColor": "#999", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "noClip": false, "opacity": 0.7, "smoothFactor": 1.0, "stroke": true, "weight": 2}
+            ).addTo(feature_group_07eee3ad96b580fc6e9cd7e203f9d668);
+        
+    
+        var popup_7a07671ff2fbccc4776ee70a404af315 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_e82559371d6ac783938cc8c01c0f1e1c = $(`<div id="html_e82559371d6ac783938cc8c01c0f1e1c" style="width: 100.0%; height: 100.0%;">Ejisu Substation -> Obuasi Substation (33 kV, 76.1 km, Active)</div>`)[0];
+                popup_7a07671ff2fbccc4776ee70a404af315.setContent(html_e82559371d6ac783938cc8c01c0f1e1c);
+            
+        
+
+        poly_line_04aa88c130fc010b06e9ed7b7ae5cd68.bindPopup(popup_7a07671ff2fbccc4776ee70a404af315)
+        ;
+
+        
+    
+    
+            var poly_line_c63741e36676916a6d0364651a70b8d0 = L.polyline(
+                [[6.7128, -1.4716], [6.6094, -1.2163]],
+                {"bubblingMouseEvents": true, "color": "#999", "dashArray": null, "dashOffset": null, "fill": false, "fillColor": "#999", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "noClip": false, "opacity": 0.7, "smoothFactor": 1.0, "stroke": true, "weight": 2}
+            ).addTo(feature_group_07eee3ad96b580fc6e9cd7e203f9d668);
+        
+    
+        var popup_f568db346df661afb2076a2d093f0c18 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_409cc3e2b87d7f75723134828ace6818 = $(`<div id="html_409cc3e2b87d7f75723134828ace6818" style="width: 100.0%; height: 100.0%;">Ejisu Substation -> Konongo Substation (69 kV, 37.8 km, Active)</div>`)[0];
+                popup_f568db346df661afb2076a2d093f0c18.setContent(html_409cc3e2b87d7f75723134828ace6818);
+            
+        
+
+        poly_line_c63741e36676916a6d0364651a70b8d0.bindPopup(popup_f568db346df661afb2076a2d093f0c18)
+        ;
+
+        
+    
+    
+            var poly_line_ddd777e29a42132255689b1fd132c9e1 = L.polyline(
+                [[6.2091, -1.6557], [6.6094, -1.2163]],
+                {"bubblingMouseEvents": true, "color": "#999", "dashArray": null, "dashOffset": null, "fill": false, "fillColor": "#999", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "noClip": false, "opacity": 0.7, "smoothFactor": 1.0, "stroke": true, "weight": 2}
+            ).addTo(feature_group_07eee3ad96b580fc6e9cd7e203f9d668);
+        
+    
+        var popup_9436cb3767f77e92e3f2ba81253febee = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_708235f951e89aa154d765c7bb4ec6db = $(`<div id="html_708235f951e89aa154d765c7bb4ec6db" style="width: 100.0%; height: 100.0%;">Obuasi Substation -> Konongo Substation (33 kV, 71.0 km, Active)</div>`)[0];
+                popup_9436cb3767f77e92e3f2ba81253febee.setContent(html_708235f951e89aa154d765c7bb4ec6db);
+            
+        
+
+        poly_line_ddd777e29a42132255689b1fd132c9e1.bindPopup(popup_9436cb3767f77e92e3f2ba81253febee)
+        ;
+
+        
+    
+    
+            var poly_line_a8aa4785e428acab7cd620d7d96c1e22 = L.polyline(
+                [[7.0553, -1.4029], [6.6094, -1.2163]],
+                {"bubblingMouseEvents": true, "color": "#999", "dashArray": null, "dashOffset": null, "fill": false, "fillColor": "#999", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "noClip": false, "opacity": 0.7, "smoothFactor": 1.0, "stroke": true, "weight": 2}
+            ).addTo(feature_group_07eee3ad96b580fc6e9cd7e203f9d668);
+        
+    
+        var popup_e3a99a5f96e72504324c5b604d53d9f6 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_b4c48ab1a75de8a4d3ea1aaf99f2232e = $(`<div id="html_b4c48ab1a75de8a4d3ea1aaf99f2232e" style="width: 100.0%; height: 100.0%;">Mampong Substation -> Konongo Substation (69 kV, 64.2 km, Active)</div>`)[0];
+                popup_e3a99a5f96e72504324c5b604d53d9f6.setContent(html_b4c48ab1a75de8a4d3ea1aaf99f2232e);
+            
+        
+
+        poly_line_a8aa4785e428acab7cd620d7d96c1e22.bindPopup(popup_e3a99a5f96e72504324c5b604d53d9f6)
+        ;
+
+        
+    
+    
+            var poly_line_e8579182ed49a77dbeef16368591618d = L.polyline(
+                [[4.9048, -1.7562], [4.9905, -1.7714]],
+                {"bubblingMouseEvents": true, "color": "#999", "dashArray": null, "dashOffset": null, "fill": false, "fillColor": "#999", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "noClip": false, "opacity": 0.7, "smoothFactor": 1.0, "stroke": true, "weight": 2}
+            ).addTo(feature_group_07eee3ad96b580fc6e9cd7e203f9d668);
+        
+    
+        var popup_40d4e4d8e490be91d969d1ee4c4c42cc = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_71d83eab56fcd449b15b3b1e8ded240e = $(`<div id="html_71d83eab56fcd449b15b3b1e8ded240e" style="width: 100.0%; height: 100.0%;">Takoradi Substation -> Aboadze Substation (33 kV, 12.3 km, Active)</div>`)[0];
+                popup_40d4e4d8e490be91d969d1ee4c4c42cc.setContent(html_71d83eab56fcd449b15b3b1e8ded240e);
+            
+        
+
+        poly_line_e8579182ed49a77dbeef16368591618d.bindPopup(popup_40d4e4d8e490be91d969d1ee4c4c42cc)
+        ;
+
+        
+    
+    
+            var poly_line_235d2290b6ef098a0d19c76eb7c8683d = L.polyline(
+                [[4.9048, -1.7562], [5.3093, -1.9927]],
+                {"bubblingMouseEvents": true, "color": "#999", "dashArray": null, "dashOffset": null, "fill": false, "fillColor": "#999", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "noClip": false, "opacity": 0.7, "smoothFactor": 1.0, "stroke": true, "weight": 2}
+            ).addTo(feature_group_07eee3ad96b580fc6e9cd7e203f9d668);
+        
+    
+        var popup_b28681d38538fefed2b3ef8d19211ec0 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_3ea233d55fcf92df598df213e578f669 = $(`<div id="html_3ea233d55fcf92df598df213e578f669" style="width: 100.0%; height: 100.0%;">Takoradi Substation -> Tarkwa Substation (33 kV, 66.2 km, Active)</div>`)[0];
+                popup_b28681d38538fefed2b3ef8d19211ec0.setContent(html_3ea233d55fcf92df598df213e578f669);
+            
+        
+
+        poly_line_235d2290b6ef098a0d19c76eb7c8683d.bindPopup(popup_b28681d38538fefed2b3ef8d19211ec0)
+        ;
+
+        
+    
+    
+            var poly_line_71fda0821a11660cdef6fbd53276cba8 = L.polyline(
+                [[4.9905, -1.7714], [5.3093, -1.9927]],
+                {"bubblingMouseEvents": true, "color": "#999", "dashArray": null, "dashOffset": null, "fill": false, "fillColor": "#999", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "noClip": false, "opacity": 0.7, "smoothFactor": 1.0, "stroke": true, "weight": 2}
+            ).addTo(feature_group_07eee3ad96b580fc6e9cd7e203f9d668);
+        
+    
+        var popup_78db39870e5831fdcce18315699c0dfa = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_7fbabbd30d8075181408eaf9c6e7ea82 = $(`<div id="html_7fbabbd30d8075181408eaf9c6e7ea82" style="width: 100.0%; height: 100.0%;">Aboadze Substation -> Tarkwa Substation (33 kV, 55.8 km, Active)</div>`)[0];
+                popup_78db39870e5831fdcce18315699c0dfa.setContent(html_7fbabbd30d8075181408eaf9c6e7ea82);
+            
+        
+
+        poly_line_71fda0821a11660cdef6fbd53276cba8.bindPopup(popup_78db39870e5831fdcce18315699c0dfa)
+        ;
+
+        
+    
+    
+            var poly_line_84741e89bf0e14458c2aca2e0b58d7c6 = L.polyline(
+                [[4.9905, -1.7714], [4.8747, -2.2381]],
+                {"bubblingMouseEvents": true, "color": "#999", "dashArray": null, "dashOffset": null, "fill": false, "fillColor": "#999", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "noClip": false, "opacity": 0.7, "smoothFactor": 1.0, "stroke": true, "weight": 2}
+            ).addTo(feature_group_07eee3ad96b580fc6e9cd7e203f9d668);
+        
+    
+        var popup_43bfac7ab70b7e521433da30218067cc = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_60b6f5d672988105e6c2dceb37830415 = $(`<div id="html_60b6f5d672988105e6c2dceb37830415" style="width: 100.0%; height: 100.0%;">Aboadze Substation -> Axim Substation (33 kV, 66.4 km, Active)</div>`)[0];
+                popup_43bfac7ab70b7e521433da30218067cc.setContent(html_60b6f5d672988105e6c2dceb37830415);
+            
+        
+
+        poly_line_84741e89bf0e14458c2aca2e0b58d7c6.bindPopup(popup_43bfac7ab70b7e521433da30218067cc)
+        ;
+
+        
+    
+    
+            var poly_line_d1522d4be0645e16e4e09d39540ff2f7 = L.polyline(
+                [[5.3093, -1.9927], [4.8747, -2.2381]],
+                {"bubblingMouseEvents": true, "color": "#999", "dashArray": null, "dashOffset": null, "fill": false, "fillColor": "#999", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "noClip": false, "opacity": 0.7, "smoothFactor": 1.0, "stroke": true, "weight": 2}
+            ).addTo(feature_group_07eee3ad96b580fc6e9cd7e203f9d668);
+        
+    
+        var popup_9854962af0072f7778cfb7442cee5893 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_61e4035b5694e2268762ec6dfe4f88e6 = $(`<div id="html_61e4035b5694e2268762ec6dfe4f88e6" style="width: 100.0%; height: 100.0%;">Tarkwa Substation -> Axim Substation (69 kV, 59.7 km, Active)</div>`)[0];
+                popup_9854962af0072f7778cfb7442cee5893.setContent(html_61e4035b5694e2268762ec6dfe4f88e6);
+            
+        
+
+        poly_line_d1522d4be0645e16e4e09d39540ff2f7.bindPopup(popup_9854962af0072f7778cfb7442cee5893)
+        ;
+
+        
+    
+    
+            var poly_line_54a5325c4d756508557df59c2494593f = L.polyline(
+                [[5.1068, -1.2411], [5.362, -0.6218]],
+                {"bubblingMouseEvents": true, "color": "#999", "dashArray": null, "dashOffset": null, "fill": false, "fillColor": "#999", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "noClip": false, "opacity": 0.7, "smoothFactor": 1.0, "stroke": true, "weight": 2}
+            ).addTo(feature_group_07eee3ad96b580fc6e9cd7e203f9d668);
+        
+    
+        var popup_5ad3ac2e0d0c8a451dea86bf6f381af9 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_210b7de5ee966d3345130d9a263b9a16 = $(`<div id="html_210b7de5ee966d3345130d9a263b9a16" style="width: 100.0%; height: 100.0%;">Cape Coast Substation -> Winneba Substation (69 kV, 84.4 km, Active)</div>`)[0];
+                popup_5ad3ac2e0d0c8a451dea86bf6f381af9.setContent(html_210b7de5ee966d3345130d9a263b9a16);
+            
+        
+
+        poly_line_54a5325c4d756508557df59c2494593f.bindPopup(popup_5ad3ac2e0d0c8a451dea86bf6f381af9)
+        ;
+
+        
+    
+    
+            var poly_line_d2ad7e18956c4776f7b08bfb6de3fa53 = L.polyline(
+                [[5.1068, -1.2411], [5.5262, -0.4124]],
+                {"bubblingMouseEvents": true, "color": "#c0392b", "dashArray": "6", "dashOffset": null, "fill": false, "fillColor": "#c0392b", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "noClip": false, "opacity": 0.7, "smoothFactor": 1.0, "stroke": true, "weight": 2}
+            ).addTo(feature_group_07eee3ad96b580fc6e9cd7e203f9d668);
+        
+    
+        var popup_0415dc61e889bdb870942287027f524e = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_a0d43ae8044b5ff829a20d28f4324b63 = $(`<div id="html_a0d43ae8044b5ff829a20d28f4324b63" style="width: 100.0%; height: 100.0%;">Cape Coast Substation -> Kasoa Substation (11 kV, 118.3 km, Under Maintenance)</div>`)[0];
+                popup_0415dc61e889bdb870942287027f524e.setContent(html_a0d43ae8044b5ff829a20d28f4324b63);
+            
+        
+
+        poly_line_d2ad7e18956c4776f7b08bfb6de3fa53.bindPopup(popup_0415dc61e889bdb870942287027f524e)
+        ;
+
+        
+    
+    
+            var poly_line_f1dc636ebd32ad565b1f4d8451fa7a72 = L.polyline(
+                [[5.1068, -1.2411], [5.6984, -1.497]],
+                {"bubblingMouseEvents": true, "color": "#999", "dashArray": null, "dashOffset": null, "fill": false, "fillColor": "#999", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "noClip": false, "opacity": 0.7, "smoothFactor": 1.0, "stroke": true, "weight": 2}
+            ).addTo(feature_group_07eee3ad96b580fc6e9cd7e203f9d668);
+        
+    
+        var popup_13509486881396b3c5a58a8f680961ae = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_7ff7b7d6cf545c639d495196d4b59f86 = $(`<div id="html_7ff7b7d6cf545c639d495196d4b59f86" style="width: 100.0%; height: 100.0%;">Cape Coast Substation -> Assin Fosu Substation (11 kV, 82.4 km, Active)</div>`)[0];
+                popup_13509486881396b3c5a58a8f680961ae.setContent(html_7ff7b7d6cf545c639d495196d4b59f86);
+            
+        
+
+        poly_line_f1dc636ebd32ad565b1f4d8451fa7a72.bindPopup(popup_13509486881396b3c5a58a8f680961ae)
+        ;
+
+        
+    
+    
+            var poly_line_e86c8c7e02bec2afe2baa138d45224a3 = L.polyline(
+                [[5.362, -0.6218], [5.5262, -0.4124]],
+                {"bubblingMouseEvents": true, "color": "#999", "dashArray": null, "dashOffset": null, "fill": false, "fillColor": "#999", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "noClip": false, "opacity": 0.7, "smoothFactor": 1.0, "stroke": true, "weight": 2}
+            ).addTo(feature_group_07eee3ad96b580fc6e9cd7e203f9d668);
+        
+    
+        var popup_dae3a55858714719383a72294008ecbd = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_aa677704da8b27ddd62b7ab373c57467 = $(`<div id="html_aa677704da8b27ddd62b7ab373c57467" style="width: 100.0%; height: 100.0%;">Winneba Substation -> Kasoa Substation (11 kV, 32.3 km, Active)</div>`)[0];
+                popup_dae3a55858714719383a72294008ecbd.setContent(html_aa677704da8b27ddd62b7ab373c57467);
+            
+        
+
+        poly_line_e86c8c7e02bec2afe2baa138d45224a3.bindPopup(popup_dae3a55858714719383a72294008ecbd)
+        ;
+
+        
+    
+    
+            var poly_line_e6ee6d086d90c0444c3a02105e4f0b77 = L.polyline(
+                [[5.5262, -0.4124], [5.6984, -1.497]],
+                {"bubblingMouseEvents": true, "color": "#999", "dashArray": null, "dashOffset": null, "fill": false, "fillColor": "#999", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "noClip": false, "opacity": 0.7, "smoothFactor": 1.0, "stroke": true, "weight": 2}
+            ).addTo(feature_group_07eee3ad96b580fc6e9cd7e203f9d668);
+        
+    
+        var popup_ef4c1eb840d9beb4b709120831b9468f = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_d48b002e0d4e59b48f91364ccd71418c = $(`<div id="html_d48b002e0d4e59b48f91364ccd71418c" style="width: 100.0%; height: 100.0%;">Kasoa Substation -> Assin Fosu Substation (11 kV, 140.9 km, Active)</div>`)[0];
+                popup_ef4c1eb840d9beb4b709120831b9468f.setContent(html_d48b002e0d4e59b48f91364ccd71418c);
+            
+        
+
+        poly_line_e6ee6d086d90c0444c3a02105e4f0b77.bindPopup(popup_ef4c1eb840d9beb4b709120831b9468f)
+        ;
+
+        
+    
+    
+            var poly_line_d21fcfba700d469a599f88f52cd50c12 = L.polyline(
+                [[6.1017, -0.254], [6.2991, 0.0641]],
+                {"bubblingMouseEvents": true, "color": "#999", "dashArray": null, "dashOffset": null, "fill": false, "fillColor": "#999", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "noClip": false, "opacity": 0.7, "smoothFactor": 1.0, "stroke": true, "weight": 2}
+            ).addTo(feature_group_07eee3ad96b580fc6e9cd7e203f9d668);
+        
+    
+        var popup_0af182af4c95b6af78f9d230940a657c = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_6697c04090c761a40fdbaedcdeb83982 = $(`<div id="html_6697c04090c761a40fdbaedcdeb83982" style="width: 100.0%; height: 100.0%;">Koforidua Substation -> Akosombo Substation (11 kV, 48.0 km, Active)</div>`)[0];
+                popup_0af182af4c95b6af78f9d230940a657c.setContent(html_6697c04090c761a40fdbaedcdeb83982);
+            
+        
+
+        poly_line_d21fcfba700d469a599f88f52cd50c12.bindPopup(popup_0af182af4c95b6af78f9d230940a657c)
+        ;
+
+        
+    
+    
+            var poly_line_9cac19e2abed2ade05fd75970d5afa45 = L.polyline(
+                [[6.1017, -0.254], [6.5502, -0.7749]],
+                {"bubblingMouseEvents": true, "color": "#999", "dashArray": null, "dashOffset": null, "fill": false, "fillColor": "#999", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "noClip": false, "opacity": 0.7, "smoothFactor": 1.0, "stroke": true, "weight": 2}
+            ).addTo(feature_group_07eee3ad96b580fc6e9cd7e203f9d668);
+        
+    
+        var popup_2d8b93f6f897f3cae7469c394de551ad = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_a0e5a038ae94f0b98a29a8b0ba5e2ee6 = $(`<div id="html_a0e5a038ae94f0b98a29a8b0ba5e2ee6" style="width: 100.0%; height: 100.0%;">Koforidua Substation -> Nkawkaw Substation (11 kV, 98.0 km, Active)</div>`)[0];
+                popup_2d8b93f6f897f3cae7469c394de551ad.setContent(html_a0e5a038ae94f0b98a29a8b0ba5e2ee6);
+            
+        
+
+        poly_line_9cac19e2abed2ade05fd75970d5afa45.bindPopup(popup_2d8b93f6f897f3cae7469c394de551ad)
+        ;
+
+        
+    
+    
+            var poly_line_926310aa805e0c363e7e908e083f60c8 = L.polyline(
+                [[6.2991, 0.0641], [6.5502, -0.7749]],
+                {"bubblingMouseEvents": true, "color": "#999", "dashArray": null, "dashOffset": null, "fill": false, "fillColor": "#999", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "noClip": false, "opacity": 0.7, "smoothFactor": 1.0, "stroke": true, "weight": 2}
+            ).addTo(feature_group_07eee3ad96b580fc6e9cd7e203f9d668);
+        
+    
+        var popup_70b88b25fa84c09d7a63d96cc2cd1600 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_ce5f229973a4c4e978f106bc61c8c50a = $(`<div id="html_ce5f229973a4c4e978f106bc61c8c50a" style="width: 100.0%; height: 100.0%;">Akosombo Substation -> Nkawkaw Substation (69 kV, 117.8 km, Active)</div>`)[0];
+                popup_70b88b25fa84c09d7a63d96cc2cd1600.setContent(html_ce5f229973a4c4e978f106bc61c8c50a);
+            
+        
+
+        poly_line_926310aa805e0c363e7e908e083f60c8.bindPopup(popup_70b88b25fa84c09d7a63d96cc2cd1600)
+        ;
+
+        
+    
+    
+            var poly_line_8d384245d1cbaf921ea645f82ed3bbb7 = L.polyline(
+                [[6.2991, 0.0641], [6.035, -0.4535]],
+                {"bubblingMouseEvents": true, "color": "#999", "dashArray": null, "dashOffset": null, "fill": false, "fillColor": "#999", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "noClip": false, "opacity": 0.7, "smoothFactor": 1.0, "stroke": true, "weight": 2}
+            ).addTo(feature_group_07eee3ad96b580fc6e9cd7e203f9d668);
+        
+    
+        var popup_09d0652072551db2a5400f4ae28a5cdd = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_0e0259720c20cfa5af6546402e5b09c0 = $(`<div id="html_0e0259720c20cfa5af6546402e5b09c0" style="width: 100.0%; height: 100.0%;">Akosombo Substation -> Suhum Substation (69 kV, 82.7 km, Active)</div>`)[0];
+                popup_09d0652072551db2a5400f4ae28a5cdd.setContent(html_0e0259720c20cfa5af6546402e5b09c0);
+            
+        
+
+        poly_line_8d384245d1cbaf921ea645f82ed3bbb7.bindPopup(popup_09d0652072551db2a5400f4ae28a5cdd)
+        ;
+
+        
+    
+    
+            var poly_line_9225a70093e765dc0db56ec3a904ff19 = L.polyline(
+                [[6.5502, -0.7749], [6.035, -0.4535]],
+                {"bubblingMouseEvents": true, "color": "#999", "dashArray": null, "dashOffset": null, "fill": false, "fillColor": "#999", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "noClip": false, "opacity": 0.7, "smoothFactor": 1.0, "stroke": true, "weight": 2}
+            ).addTo(feature_group_07eee3ad96b580fc6e9cd7e203f9d668);
+        
+    
+        var popup_b6092aa8e071815784e1d7a7560ae723 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_2814534a09dc168281e1aea33de974d4 = $(`<div id="html_2814534a09dc168281e1aea33de974d4" style="width: 100.0%; height: 100.0%;">Nkawkaw Substation -> Suhum Substation (69 kV, 75.9 km, Active)</div>`)[0];
+                popup_b6092aa8e071815784e1d7a7560ae723.setContent(html_2814534a09dc168281e1aea33de974d4);
+            
+        
+
+        poly_line_9225a70093e765dc0db56ec3a904ff19.bindPopup(popup_b6092aa8e071815784e1d7a7560ae723)
+        ;
+
+        
+    
+    
+            var poly_line_97a6cdde3d00ba30d97aaaa31bad31fc = L.polyline(
+                [[6.6194, 0.473], [6.1597, 0.1061]],
+                {"bubblingMouseEvents": true, "color": "#999", "dashArray": null, "dashOffset": null, "fill": false, "fillColor": "#999", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "noClip": false, "opacity": 0.7, "smoothFactor": 1.0, "stroke": true, "weight": 2}
+            ).addTo(feature_group_07eee3ad96b580fc6e9cd7e203f9d668);
+        
+    
+        var popup_4749d0984b9bed0ba9d451f3fa314f49 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_6855390e4c104d09f320b0dd1d5a056d = $(`<div id="html_6855390e4c104d09f320b0dd1d5a056d" style="width: 100.0%; height: 100.0%;">Ho Substation -> Kpong Substation (11 kV, 79.5 km, Active)</div>`)[0];
+                popup_4749d0984b9bed0ba9d451f3fa314f49.setContent(html_6855390e4c104d09f320b0dd1d5a056d);
+            
+        
+
+        poly_line_97a6cdde3d00ba30d97aaaa31bad31fc.bindPopup(popup_4749d0984b9bed0ba9d451f3fa314f49)
+        ;
+
+        
+    
+    
+            var poly_line_97700decfafb3d822d07921354c7f494 = L.polyline(
+                [[6.6194, 0.473], [5.9995, 0.5762]],
+                {"bubblingMouseEvents": true, "color": "#999", "dashArray": null, "dashOffset": null, "fill": false, "fillColor": "#999", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "noClip": false, "opacity": 0.7, "smoothFactor": 1.0, "stroke": true, "weight": 2}
+            ).addTo(feature_group_07eee3ad96b580fc6e9cd7e203f9d668);
+        
+    
+        var popup_1e0f475a92b0db57da5bd01188fe2822 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_e4444e52a96639e08d856f5e863b44cb = $(`<div id="html_e4444e52a96639e08d856f5e863b44cb" style="width: 100.0%; height: 100.0%;">Ho Substation -> Sogakope Substation (11 kV, 84.4 km, Active)</div>`)[0];
+                popup_1e0f475a92b0db57da5bd01188fe2822.setContent(html_e4444e52a96639e08d856f5e863b44cb);
+            
+        
+
+        poly_line_97700decfafb3d822d07921354c7f494.bindPopup(popup_1e0f475a92b0db57da5bd01188fe2822)
+        ;
+
+        
+    
+    
+            var poly_line_46f2ad30d753533ad8fd266808525a5d = L.polyline(
+                [[6.1597, 0.1061], [5.9995, 0.5762]],
+                {"bubblingMouseEvents": true, "color": "#999", "dashArray": null, "dashOffset": null, "fill": false, "fillColor": "#999", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "noClip": false, "opacity": 0.7, "smoothFactor": 1.0, "stroke": true, "weight": 2}
+            ).addTo(feature_group_07eee3ad96b580fc6e9cd7e203f9d668);
+        
+    
+        var popup_819af7c72fc61b399628666274298b92 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_29fa25ca643e300ff38a6a6b13b0b7b6 = $(`<div id="html_29fa25ca643e300ff38a6a6b13b0b7b6" style="width: 100.0%; height: 100.0%;">Kpong Substation -> Sogakope Substation (11 kV, 59.7 km, Active)</div>`)[0];
+                popup_819af7c72fc61b399628666274298b92.setContent(html_29fa25ca643e300ff38a6a6b13b0b7b6);
+            
+        
+
+        poly_line_46f2ad30d753533ad8fd266808525a5d.bindPopup(popup_819af7c72fc61b399628666274298b92)
+        ;
+
+        
+    
+    
+            var poly_line_00fc22cd62b2f4cec1773eb069ea2cab = L.polyline(
+                [[7.1436, 0.4766], [5.9995, 0.5762]],
+                {"bubblingMouseEvents": true, "color": "#999", "dashArray": null, "dashOffset": null, "fill": false, "fillColor": "#999", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "noClip": false, "opacity": 0.7, "smoothFactor": 1.0, "stroke": true, "weight": 2}
+            ).addTo(feature_group_07eee3ad96b580fc6e9cd7e203f9d668);
+        
+    
+        var popup_96d0063ac7cee996f28f96f283690f67 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_61392f45941d0a0b05e4ded2537de2c9 = $(`<div id="html_61392f45941d0a0b05e4ded2537de2c9" style="width: 100.0%; height: 100.0%;">Hohoe Substation -> Sogakope Substation (11 kV, 152.5 km, Active)</div>`)[0];
+                popup_96d0063ac7cee996f28f96f283690f67.setContent(html_61392f45941d0a0b05e4ded2537de2c9);
+            
+        
+
+        poly_line_00fc22cd62b2f4cec1773eb069ea2cab.bindPopup(popup_96d0063ac7cee996f28f96f283690f67)
+        ;
+
+        
+    
+    
+            var poly_line_b2bc6307af568bc6da0917112be8b5a7 = L.polyline(
+                [[7.3375, -2.3318], [7.5934, -1.9405]],
+                {"bubblingMouseEvents": true, "color": "#999", "dashArray": null, "dashOffset": null, "fill": false, "fillColor": "#999", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "noClip": false, "opacity": 0.7, "smoothFactor": 1.0, "stroke": true, "weight": 2}
+            ).addTo(feature_group_07eee3ad96b580fc6e9cd7e203f9d668);
+        
+    
+        var popup_c6fa6f064e45904754e5dff5371429ef = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_3e27eaacb0893e60fb54923618d4604b = $(`<div id="html_3e27eaacb0893e60fb54923618d4604b" style="width: 100.0%; height: 100.0%;">Sunyani Substation -> Techiman Substation (33 kV, 63.1 km, Active)</div>`)[0];
+                popup_c6fa6f064e45904754e5dff5371429ef.setContent(html_3e27eaacb0893e60fb54923618d4604b);
+            
+        
+
+        poly_line_b2bc6307af568bc6da0917112be8b5a7.bindPopup(popup_c6fa6f064e45904754e5dff5371429ef)
+        ;
+
+        
+    
+    
+            var poly_line_a40fc9dc6de2e4150fc8e4b8b363764c = L.polyline(
+                [[7.5934, -1.9405], [7.4443, -2.5946]],
+                {"bubblingMouseEvents": true, "color": "#999", "dashArray": null, "dashOffset": null, "fill": false, "fillColor": "#999", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "noClip": false, "opacity": 0.7, "smoothFactor": 1.0, "stroke": true, "weight": 2}
+            ).addTo(feature_group_07eee3ad96b580fc6e9cd7e203f9d668);
+        
+    
+        var popup_39965e39c8ff03708e12182d09ec26a4 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_20992c4127e6608abc8d20ac222f4663 = $(`<div id="html_20992c4127e6608abc8d20ac222f4663" style="width: 100.0%; height: 100.0%;">Techiman Substation -> Berekum Substation (33 kV, 87.3 km, Active)</div>`)[0];
+                popup_39965e39c8ff03708e12182d09ec26a4.setContent(html_20992c4127e6608abc8d20ac222f4663);
+            
+        
+
+        poly_line_a40fc9dc6de2e4150fc8e4b8b363764c.bindPopup(popup_39965e39c8ff03708e12182d09ec26a4)
+        ;
+
+        
+    
+    
+            var poly_line_842efca213c4c4805e3edf9b8f44a0b5 = L.polyline(
+                [[9.4072, -0.8508], [9.4368, -0.0076]],
+                {"bubblingMouseEvents": true, "color": "#999", "dashArray": null, "dashOffset": null, "fill": false, "fillColor": "#999", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "noClip": false, "opacity": 0.7, "smoothFactor": 1.0, "stroke": true, "weight": 2}
+            ).addTo(feature_group_07eee3ad96b580fc6e9cd7e203f9d668);
+        
+    
+        var popup_6854eb88bf4ccab88569e9dc2b6f4e5a = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_05c9b0ef7c6954dccb705b5cd8916d3a = $(`<div id="html_05c9b0ef7c6954dccb705b5cd8916d3a" style="width: 100.0%; height: 100.0%;">Tamale Substation -> Yendi Substation (11 kV, 112.6 km, Active)</div>`)[0];
+                popup_6854eb88bf4ccab88569e9dc2b6f4e5a.setContent(html_05c9b0ef7c6954dccb705b5cd8916d3a);
+            
+        
+
+        poly_line_842efca213c4c4805e3edf9b8f44a0b5.bindPopup(popup_6854eb88bf4ccab88569e9dc2b6f4e5a)
+        ;
+
+        
+    
+    
+            var poly_line_b96a6bf8f3934769770a462f630b5166 = L.polyline(
+                [[10.7789, -0.8524], [11.0615, -0.2333]],
+                {"bubblingMouseEvents": true, "color": "#999", "dashArray": null, "dashOffset": null, "fill": false, "fillColor": "#999", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "noClip": false, "opacity": 0.7, "smoothFactor": 1.0, "stroke": true, "weight": 3.5}
+            ).addTo(feature_group_07eee3ad96b580fc6e9cd7e203f9d668);
+        
+    
+        var popup_79f132d0438880e4b5db43e49f85ffd2 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_529dd9a34febda40dd9b059c30726cff = $(`<div id="html_529dd9a34febda40dd9b059c30726cff" style="width: 100.0%; height: 100.0%;">Bolgatanga Substation -> Bawku Substation (161 kV, 86.6 km, Active)</div>`)[0];
+                popup_79f132d0438880e4b5db43e49f85ffd2.setContent(html_529dd9a34febda40dd9b059c30726cff);
+            
+        
+
+        poly_line_b96a6bf8f3934769770a462f630b5166.bindPopup(popup_79f132d0438880e4b5db43e49f85ffd2)
+        ;
+
+        
+    
+    
+            var poly_line_b46e8f912c5e5d02d04421a1bc3c986c = L.polyline(
+                [[5.6085, -0.2193], [6.6856, -1.623]],
+                {"bubblingMouseEvents": true, "color": "#999", "dashArray": null, "dashOffset": null, "fill": false, "fillColor": "#999", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "noClip": false, "opacity": 0.7, "smoothFactor": 1.0, "stroke": true, "weight": 3.5}
+            ).addTo(feature_group_07eee3ad96b580fc6e9cd7e203f9d668);
+        
+    
+        var popup_00ae5d8e77233ef94963a4534aec498e = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_1ecc22aad5be00aed07c9cb15d2201e1 = $(`<div id="html_1ecc22aad5be00aed07c9cb15d2201e1" style="width: 100.0%; height: 100.0%;">Achimota Substation -> Kumasi Central Substation (330 kV, 225.4 km, Active)</div>`)[0];
+                popup_00ae5d8e77233ef94963a4534aec498e.setContent(html_1ecc22aad5be00aed07c9cb15d2201e1);
+            
+        
+
+        poly_line_b46e8f912c5e5d02d04421a1bc3c986c.bindPopup(popup_00ae5d8e77233ef94963a4534aec498e)
+        ;
+
+        
+    
+    
+            var poly_line_a207ca8b274a66dc1d057f6957eb5c17 = L.polyline(
+                [[6.6856, -1.623], [4.9048, -1.7562]],
+                {"bubblingMouseEvents": true, "color": "#999", "dashArray": null, "dashOffset": null, "fill": false, "fillColor": "#999", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "noClip": false, "opacity": 0.7, "smoothFactor": 1.0, "stroke": true, "weight": 3.5}
+            ).addTo(feature_group_07eee3ad96b580fc6e9cd7e203f9d668);
+        
+    
+        var popup_b6958eb96d5f559b2dfdd425f9028d64 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_ba6ab34c354f40496f6cd442aa8a7afa = $(`<div id="html_ba6ab34c354f40496f6cd442aa8a7afa" style="width: 100.0%; height: 100.0%;">Kumasi Central Substation -> Takoradi Substation (330 kV, 228.3 km, Active)</div>`)[0];
+                popup_b6958eb96d5f559b2dfdd425f9028d64.setContent(html_ba6ab34c354f40496f6cd442aa8a7afa);
+            
+        
+
+        poly_line_a207ca8b274a66dc1d057f6957eb5c17.bindPopup(popup_b6958eb96d5f559b2dfdd425f9028d64)
+        ;
+
+        
+    
+    
+            var poly_line_07083d6fcadc7ed064b9ef858f2efa35 = L.polyline(
+                [[4.9048, -1.7562], [5.1068, -1.2411]],
+                {"bubblingMouseEvents": true, "color": "#999", "dashArray": null, "dashOffset": null, "fill": false, "fillColor": "#999", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "noClip": false, "opacity": 0.7, "smoothFactor": 1.0, "stroke": true, "weight": 3.5}
+            ).addTo(feature_group_07eee3ad96b580fc6e9cd7e203f9d668);
+        
+    
+        var popup_9ab19911ae8f960c317a2de85aaebecd = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_2b43b403fd88f8e77eb44f4a950cc7c5 = $(`<div id="html_2b43b403fd88f8e77eb44f4a950cc7c5" style="width: 100.0%; height: 100.0%;">Takoradi Substation -> Cape Coast Substation (330 kV, 70.5 km, Active)</div>`)[0];
+                popup_9ab19911ae8f960c317a2de85aaebecd.setContent(html_2b43b403fd88f8e77eb44f4a950cc7c5);
+            
+        
+
+        poly_line_07083d6fcadc7ed064b9ef858f2efa35.bindPopup(popup_9ab19911ae8f960c317a2de85aaebecd)
+        ;
+
+        
+    
+    
+            var poly_line_0297e8c9b1ebb224fb6d2cb92fbf075d = L.polyline(
+                [[5.1068, -1.2411], [6.1017, -0.254]],
+                {"bubblingMouseEvents": true, "color": "#999", "dashArray": null, "dashOffset": null, "fill": false, "fillColor": "#999", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "noClip": false, "opacity": 0.7, "smoothFactor": 1.0, "stroke": true, "weight": 3.5}
+            ).addTo(feature_group_07eee3ad96b580fc6e9cd7e203f9d668);
+        
+    
+        var popup_413686cefb98dae9e64fc961cc8e2d87 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_a2aeb7cb7ae35f9fce43a615c0b5c338 = $(`<div id="html_a2aeb7cb7ae35f9fce43a615c0b5c338" style="width: 100.0%; height: 100.0%;">Cape Coast Substation -> Koforidua Substation (330 kV, 178.8 km, Active)</div>`)[0];
+                popup_413686cefb98dae9e64fc961cc8e2d87.setContent(html_a2aeb7cb7ae35f9fce43a615c0b5c338);
+            
+        
+
+        poly_line_0297e8c9b1ebb224fb6d2cb92fbf075d.bindPopup(popup_413686cefb98dae9e64fc961cc8e2d87)
+        ;
+
+        
+    
+    
+            var poly_line_d12d62232713c37df37f83c0c6161f27 = L.polyline(
+                [[6.1017, -0.254], [6.6194, 0.473]],
+                {"bubblingMouseEvents": true, "color": "#999", "dashArray": null, "dashOffset": null, "fill": false, "fillColor": "#999", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "noClip": false, "opacity": 0.7, "smoothFactor": 1.0, "stroke": true, "weight": 3.5}
+            ).addTo(feature_group_07eee3ad96b580fc6e9cd7e203f9d668);
+        
+    
+        var popup_97dac70c52390657d1b7717e23def547 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_0fc5f519db69eab73a709857364e00a8 = $(`<div id="html_0fc5f519db69eab73a709857364e00a8" style="width: 100.0%; height: 100.0%;">Koforidua Substation -> Ho Substation (330 kV, 113.7 km, Active)</div>`)[0];
+                popup_97dac70c52390657d1b7717e23def547.setContent(html_0fc5f519db69eab73a709857364e00a8);
+            
+        
+
+        poly_line_d12d62232713c37df37f83c0c6161f27.bindPopup(popup_97dac70c52390657d1b7717e23def547)
+        ;
+
+        
+    
+    
+            var poly_line_39e4d84eb70bc60f0b0c12c2e4aaf6c2 = L.polyline(
+                [[6.6194, 0.473], [7.3375, -2.3318]],
+                {"bubblingMouseEvents": true, "color": "#999", "dashArray": null, "dashOffset": null, "fill": false, "fillColor": "#999", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "noClip": false, "opacity": 0.7, "smoothFactor": 1.0, "stroke": true, "weight": 3.5}
+            ).addTo(feature_group_07eee3ad96b580fc6e9cd7e203f9d668);
+        
+    
+        var popup_75a189b50af6cd084f56117d79b148bd = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_25198482e7ebd7e235511eaca90d7967 = $(`<div id="html_25198482e7ebd7e235511eaca90d7967" style="width: 100.0%; height: 100.0%;">Ho Substation -> Sunyani Substation (330 kV, 367.7 km, Active)</div>`)[0];
+                popup_75a189b50af6cd084f56117d79b148bd.setContent(html_25198482e7ebd7e235511eaca90d7967);
+            
+        
+
+        poly_line_39e4d84eb70bc60f0b0c12c2e4aaf6c2.bindPopup(popup_75a189b50af6cd084f56117d79b148bd)
+        ;
+
+        
+    
+    
+            var poly_line_7f7ef03bad4e2a86e724cbdbfe47c028 = L.polyline(
+                [[7.3375, -2.3318], [9.4072, -0.8508]],
+                {"bubblingMouseEvents": true, "color": "#999", "dashArray": null, "dashOffset": null, "fill": false, "fillColor": "#999", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "noClip": false, "opacity": 0.7, "smoothFactor": 1.0, "stroke": true, "weight": 3.5}
+            ).addTo(feature_group_07eee3ad96b580fc6e9cd7e203f9d668);
+        
+    
+        var popup_f9dca8be9b4090d6f91e15efcd7a9077 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_a1a2d151114d75c76781f7a7d1966fbb = $(`<div id="html_a1a2d151114d75c76781f7a7d1966fbb" style="width: 100.0%; height: 100.0%;">Sunyani Substation -> Tamale Substation (330 kV, 324.3 km, Active)</div>`)[0];
+                popup_f9dca8be9b4090d6f91e15efcd7a9077.setContent(html_a1a2d151114d75c76781f7a7d1966fbb);
+            
+        
+
+        poly_line_7f7ef03bad4e2a86e724cbdbfe47c028.bindPopup(popup_f9dca8be9b4090d6f91e15efcd7a9077)
+        ;
+
+        
+    
+    
+            var poly_line_170775096ef825fce22727130511a8a8 = L.polyline(
+                [[9.4072, -0.8508], [10.7789, -0.8524]],
+                {"bubblingMouseEvents": true, "color": "#999", "dashArray": null, "dashOffset": null, "fill": false, "fillColor": "#999", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "noClip": false, "opacity": 0.7, "smoothFactor": 1.0, "stroke": true, "weight": 3.5}
+            ).addTo(feature_group_07eee3ad96b580fc6e9cd7e203f9d668);
+        
+    
+        var popup_3f1e59d1f077658a2a208c1f6d392e9c = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_78056ca5f6d0d12c165d981fcc0aabbb = $(`<div id="html_78056ca5f6d0d12c165d981fcc0aabbb" style="width: 100.0%; height: 100.0%;">Tamale Substation -> Bolgatanga Substation (330 kV, 175.4 km, Active)</div>`)[0];
+                popup_3f1e59d1f077658a2a208c1f6d392e9c.setContent(html_78056ca5f6d0d12c165d981fcc0aabbb);
+            
+        
+
+        poly_line_170775096ef825fce22727130511a8a8.bindPopup(popup_3f1e59d1f077658a2a208c1f6d392e9c)
+        ;
+
+        
+    
+    
+            var poly_line_f2e664a5d0f1eddae4cd6789fbb74d0b = L.polyline(
+                [[10.7789, -0.8524], [10.0682, -2.506]],
+                {"bubblingMouseEvents": true, "color": "#999", "dashArray": null, "dashOffset": null, "fill": false, "fillColor": "#999", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "noClip": false, "opacity": 0.7, "smoothFactor": 1.0, "stroke": true, "weight": 3.5}
+            ).addTo(feature_group_07eee3ad96b580fc6e9cd7e203f9d668);
+        
+    
+        var popup_df1de035429d390da31f8798d2a09f0b = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_2b32b36d2c77cbf33de069ba3a36af4a = $(`<div id="html_2b32b36d2c77cbf33de069ba3a36af4a" style="width: 100.0%; height: 100.0%;">Bolgatanga Substation -> Wa Substation (330 kV, 227.0 km, Active)</div>`)[0];
+                popup_df1de035429d390da31f8798d2a09f0b.setContent(html_2b32b36d2c77cbf33de069ba3a36af4a);
+            
+        
+
+        poly_line_f2e664a5d0f1eddae4cd6789fbb74d0b.bindPopup(popup_df1de035429d390da31f8798d2a09f0b)
+        ;
+
+        
+    
+    
+            var poly_line_043d0d95744afec9e5e18cd5e7752670 = L.polyline(
+                [[10.7789, -0.8524], [11.2, -0.75]],
+                {"bubblingMouseEvents": true, "color": "#999", "dashArray": null, "dashOffset": null, "fill": false, "fillColor": "#999", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "noClip": false, "opacity": 0.7, "smoothFactor": 1.0, "stroke": true, "weight": 3.5}
+            ).addTo(feature_group_07eee3ad96b580fc6e9cd7e203f9d668);
+        
+    
+        var popup_72c733e3b46d6d8f90ff72e791a7bfb0 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_ffb1b2875b89e88c1e97af6f636f3283 = $(`<div id="html_ffb1b2875b89e88c1e97af6f636f3283" style="width: 100.0%; height: 100.0%;">Bolgatanga Substation -> Bolgatanga Interconnection (330 kV, 53.0 km, Active)</div>`)[0];
+                popup_72c733e3b46d6d8f90ff72e791a7bfb0.setContent(html_ffb1b2875b89e88c1e97af6f636f3283);
+            
+        
+
+        poly_line_043d0d95744afec9e5e18cd5e7752670.bindPopup(popup_72c733e3b46d6d8f90ff72e791a7bfb0)
+        ;
+
+        
+    
+    
+            var poly_line_3d87af5a5662ccedfe9601653562c348 = L.polyline(
+                [[11.2, -0.75], [11.18, -4.3]],
+                {"bubblingMouseEvents": true, "color": "#999", "dashArray": null, "dashOffset": null, "fill": false, "fillColor": "#999", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "noClip": false, "opacity": 0.7, "smoothFactor": 1.0, "stroke": true, "weight": 3.5}
+            ).addTo(feature_group_07eee3ad96b580fc6e9cd7e203f9d668);
+        
+    
+        var popup_344ed71e4e7a5e33ccb99a6dca28d657 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_e53b278189e10e62cb09d80cae85b5df = $(`<div id="html_e53b278189e10e62cb09d80cae85b5df" style="width: 100.0%; height: 100.0%;">Bolgatanga Interconnection -> Bobo-Dioulasso Hub (330 kV, 426.0 km, Active)</div>`)[0];
+                popup_344ed71e4e7a5e33ccb99a6dca28d657.setContent(html_e53b278189e10e62cb09d80cae85b5df);
+            
+        
+
+        poly_line_3d87af5a5662ccedfe9601653562c348.bindPopup(popup_344ed71e4e7a5e33ccb99a6dca28d657)
+        ;
+
+        
+    
+    
+            var poly_line_33c57493a070de4fb5a243e9eb94b655 = L.polyline(
+                [[5.2, -2.85], [6.6856, -1.623]],
+                {"bubblingMouseEvents": true, "color": "#999", "dashArray": null, "dashOffset": null, "fill": false, "fillColor": "#999", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "noClip": false, "opacity": 0.7, "smoothFactor": 1.0, "stroke": true, "weight": 3.5}
+            ).addTo(feature_group_07eee3ad96b580fc6e9cd7e203f9d668);
+        
+    
+        var popup_c450e3c449e64eb85884ce9532e411be = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_99679abcd06614ebf74ff75c7c08a7a2 = $(`<div id="html_99679abcd06614ebf74ff75c7c08a7a2" style="width: 100.0%; height: 100.0%;">Elubo Border Station -> Kumasi Central Substation (330 kV, 235.2 km, Active)</div>`)[0];
+                popup_c450e3c449e64eb85884ce9532e411be.setContent(html_99679abcd06614ebf74ff75c7c08a7a2);
+            
+        
+
+        poly_line_33c57493a070de4fb5a243e9eb94b655.bindPopup(popup_c450e3c449e64eb85884ce9532e411be)
+        ;
+
+        
+    
+    
+            var poly_line_9459084e94e933469709ca0f44c36f5f = L.polyline(
+                [[5.2, -2.85], [5.35, -4.0]],
+                {"bubblingMouseEvents": true, "color": "#999", "dashArray": null, "dashOffset": null, "fill": false, "fillColor": "#999", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "noClip": false, "opacity": 0.7, "smoothFactor": 1.0, "stroke": true, "weight": 3.5}
+            ).addTo(feature_group_07eee3ad96b580fc6e9cd7e203f9d668);
+        
+    
+        var popup_097ff921cae0b633e049d09d30747d8b = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_33cf7383776132f643ede51fcacbd26b = $(`<div id="html_33cf7383776132f643ede51fcacbd26b" style="width: 100.0%; height: 100.0%;">Elubo Border Station -> Abidjan Transmission Hub (330 kV, 141.3 km, Active)</div>`)[0];
+                popup_097ff921cae0b633e049d09d30747d8b.setContent(html_33cf7383776132f643ede51fcacbd26b);
+            
+        
+
+        poly_line_9459084e94e933469709ca0f44c36f5f.bindPopup(popup_097ff921cae0b633e049d09d30747d8b)
+        ;
+
+        
+    
+    
+            var poly_line_b22db1d60ae677a9f21aaaf9b2a37c8d = L.polyline(
+                [[6.12, 1.19], [5.6596, -0.0226]],
+                {"bubblingMouseEvents": true, "color": "#999", "dashArray": null, "dashOffset": null, "fill": false, "fillColor": "#999", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "noClip": false, "opacity": 0.7, "smoothFactor": 1.0, "stroke": true, "weight": 3.5}
+            ).addTo(feature_group_07eee3ad96b580fc6e9cd7e203f9d668);
+        
+    
+        var popup_85a0c9a20d0e0323c5ce10a5cef68ed7 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_e8265b5b2978955883701c77e75b913d = $(`<div id="html_e8265b5b2978955883701c77e75b913d" style="width: 100.0%; height: 100.0%;">Aflao Border Station -> Tema Substation (330 kV, 157.9 km, Active)</div>`)[0];
+                popup_85a0c9a20d0e0323c5ce10a5cef68ed7.setContent(html_e8265b5b2978955883701c77e75b913d);
+            
+        
+
+        poly_line_b22db1d60ae677a9f21aaaf9b2a37c8d.bindPopup(popup_85a0c9a20d0e0323c5ce10a5cef68ed7)
+        ;
+
+        
+    
+    
+            var poly_line_010e8b28b8b0fa35b8ce7a8a908e189c = L.polyline(
+                [[6.12, 1.19], [6.13, 1.22]],
+                {"bubblingMouseEvents": true, "color": "#999", "dashArray": null, "dashOffset": null, "fill": false, "fillColor": "#999", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "noClip": false, "opacity": 0.7, "smoothFactor": 1.0, "stroke": true, "weight": 3.5}
+            ).addTo(feature_group_07eee3ad96b580fc6e9cd7e203f9d668);
+        
+    
+        var popup_d704e24af0d28cd5d12b23882d09596a = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_3aedd36294b97babb079387804760617 = $(`<div id="html_3aedd36294b97babb079387804760617" style="width: 100.0%; height: 100.0%;">Aflao Border Station -> Lome Transmission Hub (330 kV, 3.8 km, Active)</div>`)[0];
+                popup_d704e24af0d28cd5d12b23882d09596a.setContent(html_3aedd36294b97babb079387804760617);
+            
+        
+
+        poly_line_010e8b28b8b0fa35b8ce7a8a908e189c.bindPopup(popup_d704e24af0d28cd5d12b23882d09596a)
+        ;
+
+        
+    
+    
+            var poly_line_6a7590ab14022b38552b2a7773ae3925 = L.polyline(
+                [[6.13, 1.22], [6.37, 2.43]],
+                {"bubblingMouseEvents": true, "color": "#999", "dashArray": null, "dashOffset": null, "fill": false, "fillColor": "#999", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "noClip": false, "opacity": 0.7, "smoothFactor": 1.0, "stroke": true, "weight": 3.5}
+            ).addTo(feature_group_07eee3ad96b580fc6e9cd7e203f9d668);
+        
+    
+        var popup_49b8edc1231ecfbd27c433b6ddf70270 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_5dc7e1134f08a43ade0ee8c0b0f7a07e = $(`<div id="html_5dc7e1134f08a43ade0ee8c0b0f7a07e" style="width: 100.0%; height: 100.0%;">Lome Transmission Hub -> Cotonou Transmission Hub (330 kV, 150.0 km, Active)</div>`)[0];
+                popup_49b8edc1231ecfbd27c433b6ddf70270.setContent(html_5dc7e1134f08a43ade0ee8c0b0f7a07e);
+            
+        
+
+        poly_line_6a7590ab14022b38552b2a7773ae3925.bindPopup(popup_49b8edc1231ecfbd27c433b6ddf70270)
+        ;
+
+        
+    
+    
+            feature_group_07eee3ad96b580fc6e9cd7e203f9d668.addTo(map_f67da8de1ead8034b9c1ea86eeade67b);
+        
+    
+            var layer_control_a0411188baa4862c85fac065f57d11a6_layers = {
+                base_layers : {
+                    "cartodbpositron" : tile_layer_0c042998e8213dafb8fc6600a29b94c1,
+                },
+                overlays :  {
+                    "Substations" : feature_group_08b46d0c459feaa62b446c78774e5317,
+                    "Lines" : feature_group_07eee3ad96b580fc6e9cd7e203f9d668,
+                },
+            };
+            let layer_control_a0411188baa4862c85fac065f57d11a6 = L.control.layers(
+                layer_control_a0411188baa4862c85fac065f57d11a6_layers.base_layers,
+                layer_control_a0411188baa4862c85fac065f57d11a6_layers.overlays,
+                {
+  "position": "topright",
+  "collapsed": true,
+  "autoZIndex": true,
+}
+            ).addTo(map_f67da8de1ead8034b9c1ea86eeade67b);
+
+        
+</script>
+</html>
