@@ -21,7 +21,7 @@ at least one other member's pull requests.
 
 | Area | Primary owner | Supporting | Reviewer | Evidence |
 |---|---|---|---|---|
-| Project setup, repo, issue board, conventions | Nana Kojo Atta-Benyah | Shawn Tei Kpoti | team | `guide.md`, `issue_list.md`, `issue_assignments.md`, branch protection |
+| Project setup, repo, issue board, conventions | Nana Kojo Atta-Benyah | Shawn Tei Kpoti | team | `issue_list.md`, `issue_assignments.md`, branch/PR workflow |
 | Dataset generation & reproducibility | Nana Kojo Atta-Benyah | Brian Edem Bedzrah | Nana Ekow Amuah | `grid-analysis/generate_grid_data.py` run notes; README reproducibility section |
 | Data cleaning & validation (Task 1) | Nana Kojo Atta-Benyah | Brian Edem Bedzrah | Shawn Tei Kpoti | `task1_data_cleaning.py`, `cleaned_data/data_cleaning_report.md` |
 | Data integration (Task 1b / Task 4) | Nana Kojo Atta-Benyah | Nana Ekow Amuah | Brian Edem Bedzrah | `task1b_data_integration.py`, `merge_analysis.py`, `integrated_data/` |
@@ -94,7 +94,7 @@ and fixed DEF-05.
 - One feature branch per issue; PRs reviewed by the assigned reviewer before
   merge to `main`; `Closes #<n>` used to auto-close issues.
 - Weekly demos of working software (not "almost done").
-- Shared conventions in `guide.md`; every finished issue checked against the
-  brief, not just the issue checklist.
+- Conventions agreed up front (branching, commit style, PR + review); every
+  finished issue checked against the brief, not just the issue checklist.
 - Every defect in `docs/defect_log.md` links a finder, a fix commit, and a
   regression test.

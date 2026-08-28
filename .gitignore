@@ -6,7 +6,6 @@ populate_issue_descriptions.sh
 tag_issues_with_component.sh
 assign_issue_owners.sh
 CohortA_Team03_FinalProject/
-manual_team_changes/
 __pycache__/
 *.py[cod]
 *.egg-info/
