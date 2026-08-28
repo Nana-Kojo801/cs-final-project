@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+{% block title %}Chat with {{ other.name }} - ClinicCare-Lite{% endblock %}
+{% block content %}
+<p><a href="{{ url_for('messages') }}">&larr; Messages</a></p>
+<h1>{{ other.name }} <span class="small muted">({{ other.role }})</span></h1>
+<div class="notice small">Not monitored in real time — do not use for emergencies.</div>
+
+<div class="card chat" data-poll-conversation style="max-height:52vh;overflow-y:auto">
+  {% for m in messages %}
+    <div class="msg {{ 'me' if m.sender_id == current_user.user_id else 'them' }}">
+      {{ m.content }}<span class="t">{{ m.timestamp }}{{ ' · read' if m.read and m.sender_id == current_user.user_id else '' }}</span>
+    </div>
+  {% else %}
+    <p class="muted">No messages yet — say hello.</p>
+  {% endfor %}
+</div>
+
+<form class="card" method="post">
+  <label for="content">Message</label>
+  <textarea id="content" name="content" required></textarea>
+  <div style="margin-top:10px"><button class="btn" type="submit">Send</button></div>
+</form>
+{% endblock %}

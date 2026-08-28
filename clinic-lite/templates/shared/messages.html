@@ -1,0 +1,33 @@
+{% extends "base.html" %}
+{% block title %}Messages - ClinicCare-Lite{% endblock %}
+{% block content %}
+<h1>Messages</h1>
+<div class="notice">
+  This messaging channel is <strong>not monitored continuously</strong> and must
+  not be used for emergencies or urgent clinical information. For emergencies,
+  contact your local emergency service or attend the clinic directly.
+</div>
+
+<div class="grid cols-2">
+  <div class="card">
+    <h3>Conversations</h3>
+    {% for c in convos %}
+      <p>
+        <a href="{{ url_for('conversation', other_id=c.other_id) }}">{{ c.other.name if c.other else c.other_id }}</a>
+        {% if c.unread %}<span class="badge">{{ c.unread }}</span>{% endif %}<br>
+        <span class="small muted">{{ c.last.content[:60] }} — {{ c.last.timestamp }}</span>
+      </p>
+    {% else %}
+      <p class="muted">No conversations yet.</p>
+    {% endfor %}
+  </div>
+  <div class="card">
+    <h3>Start a conversation</h3>
+    {% for p in contacts %}
+      <p><a class="btn small ghost" href="{{ url_for('conversation', other_id=p.user_id) }}">{{ p.name }}</a></p>
+    {% else %}
+      <p class="muted">No contacts available.</p>
+    {% endfor %}
+  </div>
+</div>
+{% endblock %}
