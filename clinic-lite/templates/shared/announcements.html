@@ -1,0 +1,36 @@
+{% extends "base.html" %}
+{% block title %}Announcements - ClinicCare-Lite{% endblock %}
+{% block content %}
+<h1>Clinic announcements</h1>
+
+{% if can_post %}
+<div class="card">
+  <h3>Post an announcement</h3>
+  <form method="post">
+    <label for="title">Title</label>
+    <input id="title" name="title" required>
+    <label for="body">Message</label>
+    <textarea id="body" name="body" required></textarea>
+    <div class="grid cols-3">
+      <div><label for="publish_date">Publish date</label><input id="publish_date" type="date" name="publish_date"></div>
+      <div><label for="expiry_date">Expiry date</label><input id="expiry_date" type="date" name="expiry_date"></div>
+      <div><label>&nbsp;</label><label class="small"><input type="checkbox" name="urgent" style="width:auto"> Urgent (emails patients)</label></div>
+    </div>
+    <div style="margin-top:12px"><button class="btn" type="submit">Post</button></div>
+  </form>
+</div>
+{% endif %}
+
+<div class="card table-wrap">
+<table>
+  <tr><th>Title</th><th>Publish</th><th>Expiry</th><th>Urgent</th></tr>
+  {% for a in announcements %}
+  <tr><td><strong>{{ a.title }}</strong><br><span class="small muted">{{ a.body }}</span></td>
+      <td>{{ a.publish_date }}</td><td>{{ a.expiry_date or '-' }}</td>
+      <td>{{ 'Yes' if a.urgent else 'No' }}</td></tr>
+  {% else %}
+  <tr><td colspan="4" class="muted">No announcements.</td></tr>
+  {% endfor %}
+</table>
+</div>
+{% endblock %}

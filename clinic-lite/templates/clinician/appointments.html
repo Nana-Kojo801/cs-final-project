@@ -1,0 +1,47 @@
+{% extends "base.html" %}
+{% block title %}Appointments - ClinicCare-Lite{% endblock %}
+{% block content %}
+<h1>Appointments</h1>
+<p><a class="btn ghost small" href="{{ url_for('clinician_run_reminders') }}">Run 24h reminder job</a>
+   <span class="small muted">sends reminders for appointments and tasks due within 24h</span></p>
+
+<div class="card">
+  <h3>Schedule an appointment</h3>
+  <form method="post">
+    <input type="hidden" name="action" value="create">
+    <div class="grid cols-3">
+      <div>
+        <label for="patient">Patient</label>
+        <select id="patient" name="patient" required>
+          {% for p in patients %}<option value="{{ p.user_id }}">{{ p.name }}</option>{% endfor %}
+        </select>
+      </div>
+      <div><label for="when">When</label><input id="when" type="datetime-local" name="when" required></div>
+      <div><label for="reason">Reason</label><input id="reason" name="reason"></div>
+    </div>
+    <div style="margin-top:12px"><button class="btn" type="submit">Schedule</button></div>
+  </form>
+</div>
+
+<div class="card table-wrap">
+<table>
+  <tr><th>When</th><th>Patient</th><th>Reason</th><th>Status</th><th>Update</th></tr>
+  {% for aid, a in appts %}
+  <tr>
+    <td>{{ a.when }}</td><td>{{ a.patient_id }}</td><td>{{ a.reason or '-' }}</td>
+    <td><span class="pill">{{ a.status }}</span></td>
+    <td>
+      <form method="post" style="display:flex;gap:6px">
+        <input type="hidden" name="action" value="status">
+        <input type="hidden" name="appointment_id" value="{{ aid }}">
+        <select name="status">{% for s in statuses %}<option {{ 'selected' if a.status==s }}>{{ s }}</option>{% endfor %}</select>
+        <button class="btn small" type="submit">Save</button>
+      </form>
+    </td>
+  </tr>
+  {% else %}
+  <tr><td colspan="5" class="muted">No appointments.</td></tr>
+  {% endfor %}
+</table>
+</div>
+{% endblock %}

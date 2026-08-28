@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+{% block title %}Inbox - ClinicCare-Lite{% endblock %}
+{% block content %}
+<h1>Inbox</h1>
+<p class="muted">Submission confirmations, review outcomes, reminders and announcements.</p>
+<div class="card">
+  {% for n in notes %}
+    <div style="border-bottom:1px solid var(--border);padding:10px 0">
+      <strong>{{ n.subject }}</strong>
+      <span class="small muted"> · {{ n.timestamp }} · delivery: {{ n.delivery }}</span>
+      <div class="small" style="white-space:pre-wrap">{{ n.body }}</div>
+    </div>
+  {% else %}
+    <p class="muted">No notifications.</p>
+  {% endfor %}
+</div>
+{% endblock %}
