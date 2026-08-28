@@ -6,7 +6,7 @@ Public repository: <https://github.com/Nana-Kojo801/cs-final-project>
 | Member | Student ID | Primary responsibility |
 |---|---|---|
 | Nana Kojo Atta-Benyah | *[student ID]* | Data engineering & network analysis lead (grid-analysis Tasks 1, 1b, 2, 4; ClinicCare-Lite data model) |
-| Brian Edem Bedzrah | *[student ID]* | N-1 contingency analysis; ClinicCare-Lite auth & submission workflow |
+| Brian Edem Bedzrah | *[52722029]* | N-1 contingency analysis; ClinicCare-Lite auth & submission workflow |
 | Shawn Tei Kpoti | *[student ID]* | GridCare-Lite lead (schema, RBAC, outage-to-resolution workflow, reporting); integration testing |
 | Nana Ekow Amuah | *[student ID]* | Visualisation, interactive map & dashboards; ClinicCare-Lite messaging, analytics; slides |
 
